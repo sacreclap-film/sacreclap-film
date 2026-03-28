@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sacréclap Film — Opérateur Caméra & Monteur · Val d'Oise</title>
+  <meta name="description" content="Sacréclap Film — Captation narrative, montage et making-of et making-of au service des productions. GH5 Mark II, DaVinci Resolve Studio. Basé dans le Val d'Oise, disponible partout en France."/>
+  <meta name="author" content="Sacréclap Film"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.sacreclap-film.fr/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Sacréclap Film — Opérateur Caméra & Monteur"/>
+  <meta property="og:description" content="Captation narrative, montage et making-of et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
+  <meta property="og:url" content="https://www.sacreclap-film.fr/"/>
+  <meta property="og:site_name" content="Sacréclap Film"/>
+  <meta property="og:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Sacréclap Film — Opérateur Caméra & Monteur"/>
+  <meta name="twitter:description" content="Captation narrative, montage et making-of et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
+  <meta name="twitter:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5f2ec'/><circle cx='16' cy='16' r='14' fill='none' stroke='%23e07820' stroke-width='2'/><text x='5' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%231a1610'>S</text><text x='16' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%23e07820'>C</text></svg>"/>
+  <meta name="theme-color" content="#f5f2ec"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream: #f5f2ec; --cream-dark: #f0ede6; --ink: #1a1610;
+      --ink-mid: #4a4438; --ink-light: #6a6058; --ink-faint: #9a9080;
+      --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.13);
+      --orange: #e07820; --orange-dark: #b85f10; --dark: #1a1410;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-italic: 'Playfair Display', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); cursor: none; overflow-x: hidden; }
+
+    /* CURSOR */
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(224,120,32,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .3s, height .3s, opacity .3s; }
+    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; }
+    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: .3; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(245,242,236,.93); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .08em; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--ink-faint); text-decoration: none; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; background: var(--ink); color: var(--cream); padding: .6rem 1.4rem; text-decoration: none; transition: background .3s; }
+    .nav-cta:hover { background: var(--orange); }
+
+    /* BURGER */
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 4px; z-index: 300; }
+    .burger-line { width: 24px; height: 1.5px; background: var(--ink); transition: transform .35s, opacity .35s, width .35s; transform-origin: center; }
+    .burger.open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open .burger-line:nth-child(2) { opacity: 0; width: 0; }
+    .burger.open .burger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-overlay { position: fixed; inset: 0; background: var(--cream); z-index: 150; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem 2.5rem; opacity: 0; pointer-events: none; transition: opacity .4s; }
+    .nav-overlay.open { opacity: 1; pointer-events: all; }
+    .nav-overlay-links { list-style: none; display: flex; flex-direction: column; gap: .5rem; width: 100%; }
+    .nav-overlay-links li { overflow: hidden; }
+    .nav-overlay-links a { font-family: var(--font-display); font-size: clamp(3rem, 12vw, 5rem); letter-spacing: .03em; color: var(--ink); text-decoration: none; display: block; line-height: 1.1; transform: translateY(100%); transition: transform .45s ease, color .3s; }
+    .nav-overlay.open .nav-overlay-links a { transform: translateY(0); }
+    .nav-overlay-links li:nth-child(1) a { transition-delay: .05s; }
+    .nav-overlay-links li:nth-child(2) a { transition-delay: .1s; }
+    .nav-overlay-links li:nth-child(3) a { transition-delay: .15s; }
+    .nav-overlay-links li:nth-child(4) a { transition-delay: .2s; }
+    .nav-overlay-links a:hover { color: var(--orange); }
+    .nav-overlay-footer { margin-top: 3rem; font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-faint); opacity: 0; transition: opacity .4s ease .3s; }
+    .nav-overlay.open .nav-overlay-footer { opacity: 1; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1.5fr; border-bottom: 1px solid var(--border); padding-top: 4.5rem; }
+    .hero-left { padding: 3.5rem 3rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: space-between; }
+    .hero-eyebrow { font-size: .68rem; letter-spacing: .28em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .8rem; }
+    .hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--orange); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(4.5rem, 8vw, 9rem); line-height: .88; letter-spacing: -.01em; }
+    .hero-title .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+    .hero-title .accent { font-family: var(--font-italic); font-style: italic; font-size: .42em; color: var(--orange); display: block; margin-top: .5rem; letter-spacing: .04em; -webkit-text-stroke: 0; text-transform: none; }
+    .hero-desc { font-size: .95rem; line-height: 1.9; color: var(--ink-light); font-weight: 300; max-width: 380px; margin-top: 2rem; }
+    .hero-cta { display: flex; gap: 1.2rem; align-items: center; margin-top: 2.5rem; }
+    .btn-primary { display: inline-block; background: var(--ink); color: var(--cream); padding: .9rem 2.2rem; text-decoration: none; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; transition: background .3s, transform .3s; }
+    .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+    .btn-ghost { color: var(--ink-light); text-decoration: none; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; display: flex; align-items: center; gap: .5rem; transition: color .3s; }
+    .btn-ghost:hover { color: var(--orange); }
+    .btn-ghost::after { content: '→'; transition: transform .3s; }
+    .btn-ghost:hover::after { transform: translateX(4px); }
+    .hero-stats { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--border); padding-top: 1.8rem; margin-top: 2rem; }
+    .stat { text-align: center; padding: 0 .5rem; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--orange); line-height: 1; }
+    .stat-label { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-top: .3rem; }
+    .hero-right { display: flex; flex-direction: column; }
+    .hero-video-wrap { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-video-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.3); pointer-events: none; }
+    .hero-video-label { position: absolute; top: 1.2rem; left: 1.5rem; font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(240,235,227,.5); background: rgba(0,0,0,.4); padding: .3rem .7rem; z-index: 2; }
+    .hero-video-title { position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 2; font-family: var(--font-display); font-size: 1.6rem; color: #f0ebe3; letter-spacing: .05em; }
+    .hero-video-title span { display: block; font-family: var(--font-italic); font-style: italic; font-size: .44em; color: rgba(240,235,227,.5); letter-spacing: .12em; text-transform: uppercase; }
+    .hero-filmstrip { display: flex; border-top: 1px solid var(--border); }
+    .hero-film-item { flex: 1; padding: .8rem 1rem; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); border-right: 1px solid var(--border); transition: background .3s, color .3s; cursor: pointer; text-decoration: none; display: block; }
+    .hero-film-item:last-child { border-right: none; }
+    .hero-film-item.active { background: var(--orange); color: var(--cream); }
+    .hero-film-item:not(.active):hover { background: var(--cream-dark); color: var(--ink); }
+    .hero-film-item-sub { display: block; font-size: .55rem; opacity: .6; margin-top: .2rem; }
+
+    /* MARQUEE */
+    .marquee-band { background: var(--ink); padding: .7rem 0; overflow: hidden; white-space: nowrap; }
+    .marquee-inner { display: inline-block; animation: marquee 22s linear infinite; }
+    .marquee-inner span { font-family: var(--font-display); font-size: .9rem; letter-spacing: .14em; margin: 0 1.8rem; color: rgba(245,242,236,.65); }
+    .marquee-inner span.dot { color: var(--orange); font-size: .45rem; vertical-align: middle; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTION LABEL */
+    .section-label { font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: .8rem; margin-bottom: 1.2rem; }
+    .section-label::before { content: ''; width: 16px; height: 1px; background: var(--orange); }
+
+    /* PORTRAIT ABOUT */
+    .about-portrait-wrap { position: relative; margin-bottom: 1.8rem; }
+    .about-portrait { width: 100%; max-width: 220px; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; filter: grayscale(100%); transition: filter .4s; }
+    .about-portrait:hover { filter: grayscale(0%); }
+    .about-portrait-caption { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); margin-top: .6rem; }
+
+    /* ABOUT */
+    .about { display: grid; grid-template-columns: 1fr 1px 1.6fr; border-bottom: 1px solid var(--border); }
+    .about-left { padding: 4rem 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-right { padding: 4rem 3rem; }
+    .vdivider { background: var(--border); }
+    .about-title { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4.2rem); line-height: .95; letter-spacing: .02em; }
+    .about-title em { font-family: var(--font-italic); font-style: italic; font-size: .68em; color: var(--ink-faint); display: block; margin-top: .2rem; -webkit-text-stroke: 0; }
+    .about-body { font-size: .95rem; line-height: 1.9; color: var(--ink-light); font-weight: 300; }
+    .equip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: .5px solid var(--border-strong); margin-top: 1.5rem; }
+    .equip-cat { padding: 1rem 1.2rem; border-right: .5px solid var(--border-strong); border-bottom: .5px solid var(--border-strong); transition: background .3s; }
+    .equip-cat:hover { background: rgba(224,120,32,.04); }
+    .equip-cat:nth-child(3n) { border-right: none; }
+    .equip-cat-title { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); margin-bottom: .6rem; }
+    .equip-list { list-style: none; display: flex; flex-direction: column; gap: .3rem; }
+    .equip-list li { font-size: .8rem; color: var(--ink-mid); font-weight: 300; line-height: 1.4; }
+    .equip-detail { display: block; font-size: .68rem; color: var(--ink-faint); }
+
+    /* SERVICES */
+    .services { border-bottom: 1px solid var(--border); background: var(--cream-dark); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; padding: 3.5rem 3rem 2.5rem; border-bottom: 1px solid var(--border); }
+    .services-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5rem); line-height: .92; }
+    .services-title .ghost { color: transparent; -webkit-text-stroke: 1.5px var(--ink); display: block; }
+    .services-sub { max-width: 300px; font-family: var(--font-italic); font-style: italic; font-size: 1.05rem; line-height: 1.65; color: var(--ink-mid); text-align: right; }
+
+    /* ACCORDION */
+    .accordion { border-top: .5px solid var(--border-strong); }
+    .accordion-item { border-bottom: .5px solid var(--border-strong); overflow: hidden; }
+    .accordion-trigger { width: 100%; background: none; border: none; padding: 1.6rem 3rem; display: flex; align-items: center; gap: 1.8rem; cursor: none; text-align: left; transition: background .3s; }
+    .accordion-trigger:hover { background: rgba(0,0,0,.02); }
+    .accordion-item.active .accordion-trigger { background: rgba(224,120,32,.05); }
+    .accordion-num { font-family: var(--font-display); font-size: 1.3rem; color: var(--orange); min-width: 2.2rem; line-height: 1; opacity: .4; transition: opacity .3s; }
+    .accordion-item.active .accordion-num { opacity: 1; }
+    .accordion-title { font-family: var(--font-display); font-size: clamp(1.5rem, 2.2vw, 2.2rem); letter-spacing: .04em; color: var(--ink); line-height: 1; flex: 1; }
+    .accordion-tags-inline { display: flex; gap: .4rem; flex-wrap: wrap; transition: opacity .2s; }
+    .accordion-item.active .accordion-tags-inline { opacity: 0; pointer-events: none; }
+    .accordion-icon { width: 28px; height: 28px; border: .5px solid var(--border-strong); border-radius: 50%; flex-shrink: 0; position: relative; transition: border-color .3s, transform .4s; }
+    .accordion-icon::before, .accordion-icon::after { content: ''; position: absolute; background: var(--ink); transition: background .3s; }
+    .accordion-icon::before { width: 10px; height: 1px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .accordion-icon::after  { width: 1px; height: 10px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .accordion-item.active .accordion-icon { border-color: var(--orange); transform: rotate(45deg); }
+    .accordion-item.active .accordion-icon::before, .accordion-item.active .accordion-icon::after { background: var(--orange); }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height .55s cubic-bezier(.4,0,.2,1); }
+    .accordion-item.active .accordion-body { max-height: 700px; }
+    .accordion-body-inner { padding: .5rem 3rem 2.2rem 6.5rem; }
+    .accordion-desc { font-size: .92rem; line-height: 1.9; color: var(--ink-light); font-weight: 300; max-width: 620px; margin-bottom: 1rem; }
+    .accordion-body-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .service-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; padding: .25rem .65rem; border: .5px solid rgba(224,120,32,.4); color: var(--orange); }
+    .wedding-reel-label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: .7rem; }
+    .wedding-video-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--dark); overflow: hidden; }
+    .wedding-video { width: 100%; height: 100%; object-fit: cover; display: block; border: none; }
+
+    /* PROCESS */
+    .process { padding: 4rem 3rem; border-bottom: 1px solid var(--border); background: var(--cream); }
+    .process-header { margin-bottom: 3.5rem; }
+    .process-title { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4.5rem); line-height: .92; }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 1.8rem; left: 0; right: 0; height: 1px; background: linear-gradient(to right, var(--orange), rgba(224,120,32,.12)); }
+    .step { padding: 4rem 2rem 1.5rem 0; }
+    .step-num { font-family: var(--font-display); font-size: 4rem; color: var(--orange); line-height: 1; margin-bottom: 1rem; }
+    .step-title { font-size: .82rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; margin-bottom: .6rem; color: var(--ink); }
+    .step-desc { font-size: .88rem; line-height: 1.8; color: var(--ink-light); font-weight: 300; }
+
+    /* PORTFOLIO */
+    .portfolio { padding: 4rem 3rem; border-bottom: 1px solid var(--border); background: var(--cream-dark); }
+    .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
+    .portfolio-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5rem); line-height: .9; }
+    .portfolio-featured { display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: var(--border-strong); margin-bottom: 1px; }
+    .portfolio-embed-wrap { position: relative; aspect-ratio: 16/9; background: var(--dark); overflow: hidden; }
+    .portfolio-thumb-link { display: block; width: 100%; height: 100%; position: relative; overflow: hidden; }
+    .portfolio-thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+    .portfolio-thumb-link:hover .portfolio-thumb-img { transform: scale(1.04); }
+    .portfolio-thumb-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.45); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .7rem; transition: background .3s; }
+    .portfolio-thumb-link:hover .portfolio-thumb-overlay { background: rgba(26,20,16,.22); }
+    .portfolio-thumb-play { width: 56px; height: 56px; border: 1.5px solid rgba(240,235,227,.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .3s, border-color .3s, transform .2s; }
+    .portfolio-thumb-link:hover .portfolio-thumb-play { background: var(--orange); border-color: var(--orange); transform: scale(1.1); }
+    .portfolio-thumb-tri { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 16px solid #f0ebe3; margin-left: 4px; }
+    .portfolio-thumb-hint { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(240,235,227,.65); }
+    .portfolio-featured-info { background: var(--cream); padding: 2rem 2.2rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .portfolio-featured-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .portfolio-featured-title { font-family: var(--font-display); font-size: clamp(1.5rem, 2.2vw, 2.2rem); letter-spacing: .03em; color: var(--ink); }
+    .portfolio-featured-type { font-family: var(--font-italic); font-style: italic; font-size: .88rem; color: var(--ink-light); line-height: 1.7; margin-top: .8rem; }
+    .portfolio-featured-meta { display: flex; flex-direction: column; gap: .4rem; padding-top: 1.2rem; border-top: .5px solid var(--border-strong); margin-top: 1.2rem; }
+    .portfolio-meta-line { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+    .portfolio-meta-line span { color: var(--ink-mid); font-weight: 500; }
+    .portfolio-watch-link { display: inline-flex; align-items: center; gap: .5rem; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); text-decoration: none; margin-top: 1.2rem; transition: gap .3s; }
+    .portfolio-watch-link:hover { gap: .9rem; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border-strong); }
+    .portfolio-item { position: relative; overflow: hidden; cursor: pointer; height: 160px; }
+    .portfolio-bg { width: 100%; height: 100%; transition: transform .6s; }
+    .portfolio-item:hover .portfolio-bg { transform: scale(1.05); }
+    .p-bg-1 { background: linear-gradient(135deg, #2a1f1a, #3d2820); }
+    .p-bg-2 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+    .p-bg-3 { background: linear-gradient(135deg, #1c1c1c, #2d2d2d); }
+    .p-bg-4 { background: linear-gradient(135deg, #1a2020, #1e2e2e); }
+    .p-bg-5 { background: linear-gradient(135deg, #20181a, #2e1820); }
+    .portfolio-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.2rem; background: linear-gradient(transparent, rgba(0,0,0,.82)); transform: translateY(6px); opacity: 0; transition: all .4s; }
+    .portfolio-item:hover .portfolio-info { transform: translateY(0); opacity: 1; }
+    .portfolio-info-title { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: #f0ebe3; }
+    .portfolio-info-type { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-top: .2rem; }
+    .portfolio-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(.8); width: 46px; height: 46px; border: 1px solid rgba(240,235,227,.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: all .3s; }
+    .portfolio-item:hover .portfolio-play { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    .portfolio-play-tri { width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 12px solid white; margin-left: 2px; }
+    .portfolio-label { position: absolute; top: .9rem; left: 1.1rem; font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.55); background: rgba(0,0,0,.45); padding: .25rem .6rem; }
+    .portfolio-item--soon { background: var(--cream); display: flex; align-items: center; justify-content: center; border: .5px dashed rgba(0,0,0,.1); }
+    .portfolio-soon-text { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-faint); opacity: .5; }
+    .portfolio-item--video { position: relative; overflow: hidden; cursor: pointer; }
+    .portfolio-video-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    .portfolio-video-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; background: rgba(10,10,10,.45); transition: background .3s; }
+    .portfolio-item--video:hover .portfolio-video-overlay { background: rgba(10,10,10,.22); }
+    .portfolio-video-overlay.playing { background: transparent; }
+    .portfolio-video-overlay.playing:hover { background: rgba(10,10,10,.15); }
+    .portfolio-video-play-btn { width: 46px; height: 46px; border: 1.5px solid rgba(240,235,227,.7); border-radius: 50%; background: transparent; display: flex; align-items: center; justify-content: center; cursor: none; transition: background .3s, border-color .3s, transform .2s, opacity .3s; }
+    .portfolio-video-overlay.playing .portfolio-video-play-btn { opacity: 0; }
+    .portfolio-video-overlay.playing:hover .portfolio-video-play-btn { opacity: 1; }
+    .portfolio-item--video:hover .portfolio-video-play-btn { background: var(--orange); border-color: var(--orange); transform: scale(1.1); }
+    .portfolio-play-tri-lg { width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 14px solid #f0ebe3; margin-left: 3px; }
+    .portfolio-item--video .portfolio-info, .portfolio-item--video .portfolio-label { z-index: 4; }
+
+    /* TESTIMONIAL */
+    .testimonial { padding: 4rem 3rem; background: var(--ink); color: #f0ebe3; display: flex; align-items: center; gap: 4rem; position: relative; overflow: hidden; }
+    .testimonial::before { content: '"'; position: absolute; font-family: var(--font-display); font-size: 24rem; color: rgba(255,255,255,.04); top: -4rem; left: 1rem; line-height: 1; }
+    .testimonial-quote { font-family: var(--font-italic); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.8rem); line-height: 1.6; color: #f0ebe3; flex: 1; position: relative; z-index: 1; }
+    .testimonial-author { text-align: right; min-width: 180px; position: relative; z-index: 1; }
+    .author-name { font-family: var(--font-display); font-size: 1.4rem; color: #f0ebe3; letter-spacing: .08em; }
+    .author-role { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.4); margin-top: .3rem; }
+    .author-line { width: 30px; height: 1px; background: rgba(240,235,227,.22); margin: 1.2rem 0 0 auto; }
+
+    /* CONTACT */
+    .contact { display: grid; grid-template-columns: 1fr 1.4fr; border-bottom: 1px solid var(--border); }
+    .contact-info { padding: 4rem 3rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+    .contact-title { font-family: var(--font-display); font-size: clamp(3.5rem, 5.5vw, 6rem); line-height: .88; letter-spacing: -.01em; }
+    .contact-title .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+    .contact-sub { font-size: .92rem; line-height: 1.8; color: var(--ink-light); font-weight: 300; }
+    .contact-form-wrap { padding: 3rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+    .form-field { background: rgba(0,0,0,.025); border: .5px solid var(--border-strong); margin-bottom: 1px; transition: background .3s; }
+    .form-field:focus-within { background: rgba(224,120,32,.04); border-color: rgba(224,120,32,.4); }
+    .form-field label { display: block; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); padding: .9rem 1.1rem 0; }
+    .form-field input, .form-field select, .form-field textarea { width: 100%; background: transparent; border: none; outline: none; color: var(--ink); font-family: var(--font-body); font-size: .88rem; padding: .3rem 1.1rem .9rem; resize: none; }
+    .form-field select option { background: var(--cream); }
+    .form-submit { margin-top: 1px; background: var(--ink); color: var(--cream); border: none; padding: 1.2rem 1.8rem; font-family: var(--font-body); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; cursor: none; transition: background .3s; display: flex; justify-content: space-between; align-items: center; }
+    .form-submit:hover { background: var(--orange); }
+    .submit-arrow { font-size: 1.1rem; }
+    #formSuccess { display:none; margin-top:.8rem; padding:.9rem 1.1rem; background:rgba(224,120,32,.08); border-left:3px solid var(--orange); font-size:.8rem; color:var(--ink); }
+    #formError { display:none; margin-top:.8rem; padding:.9rem 1.1rem; background:rgba(0,0,0,.04); border-left:3px solid var(--border-strong); font-size:.8rem; color:var(--ink-light); }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .08em; color: var(--ink); }
+    .footer-logo span { color: var(--orange); }
+    .footer-copy { font-size: .65rem; letter-spacing: .1em; color: var(--ink-faint); text-transform: uppercase; }
+    .footer-socials { display: flex; gap: 1.8rem; }
+    .footer-socials a { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; transition: color .3s; }
+    .footer-socials a:hover { color: var(--orange); }
+
+    .hero-thumb-link { display:block; width:100%; height:100%; position:relative; }
+    .hero-thumb-link:hover .hero-video-overlay { background: rgba(26,20,16,.2); }
+    .hero-thumb-play { width:64px; height:64px; border:1.5px solid rgba(240,235,227,.7); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background .3s, border-color .3s, transform .2s; }
+    .hero-thumb-link:hover .hero-thumb-play { background:var(--orange); border-color:var(--orange); transform:scale(1.08); }
+    .hero-thumb-tri { width:0; height:0; border-top:11px solid transparent; border-bottom:11px solid transparent; border-left:19px solid #f0ebe3; margin-left:5px; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .burger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { display: none; }
+      .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .about { grid-template-columns: 1fr; }
+      .vdivider { display: none; }
+      .about-left, .about-right { padding: 3rem 1.5rem; }
+      .equip-grid { grid-template-columns: repeat(2,1fr); }
+      .equip-cat:nth-child(3n) { border-right: .5px solid var(--border-strong); }
+      .equip-cat:nth-child(2n) { border-right: none; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2.5rem 1.5rem 2rem; }
+      .services-sub { text-align: left; }
+      .accordion-trigger { padding: 1.2rem 1.5rem; gap: 1rem; }
+      .accordion-body-inner { padding: .5rem 1.5rem 1.8rem; }
+      .accordion-body-split { grid-template-columns: 1fr; }
+      .accordion-tags-inline { display: none; }
+      .process { padding: 3rem 1.5rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .portfolio { padding: 3rem 1.5rem; }
+      .portfolio-featured { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .testimonial { flex-direction: column; padding: 3rem 1.5rem; gap: 2rem; }
+      .testimonial-author { text-align: left; }
+      .author-line { margin: 1rem auto 0 0; }
+      .contact { grid-template-columns: 1fr; }
+      .contact-info { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .contact-form-wrap { padding: 2rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="#" class="nav-logo">SACRÉ<span>CLAP</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Travaux</a></li>
+      <li><a href="#processus">Processus</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Démarrer un projet</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-overlay-links">
+      <li><a href="#services" class="nav-overlay-link">Services</a></li>
+      <li><a href="#portfolio" class="nav-overlay-link">Travaux</a></li>
+      <li><a href="#processus" class="nav-overlay-link">Processus</a></li>
+      <li><a href="#contact" class="nav-overlay-link">Contact</a></li>
+    </ul>
+    <div class="nav-overlay-footer">Sacréclap Film · Val d'Oise</div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left reveal">
+      <div>
+        <p class="hero-eyebrow">Captation & Montage · Val d'Oise — GH5 Mark II · 4K</p>
+        <h1 class="hero-title">
+          FILMER
+          <span class="outline">L'ESSENTIEL</span>
+          <span class="accent">avec précision</span>
+        </h1>
+        <p class="hero-desc">Opérateur-monteur disponible pour renforcer vos équipes ou prendre en charge vos projets de A à Z — fiction, documentaire, spot, making-of.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">Démarrer un projet</a>
+          <a href="#portfolio" class="btn-ghost">Voir les travaux</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Projets</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Années</div></div>
+        <div class="stat"><div class="stat-num">4K</div><div class="stat-label">GH5 Mark II</div></div>
+        <div class="stat"><div class="stat-num">600K</div><div class="stat-label">Vues générées</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-video-wrap">
+        <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" class="hero-thumb-link">
+          <img
+            src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg"
+            alt="Paradis Fleuri — Gîte du Vexin"
+            class="hero-video"
+            style="object-fit:cover;"
+            loading="lazy"
+            onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'"
+          />
+          <div class="hero-video-overlay" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
+            <div class="hero-thumb-play">
+              <div class="hero-thumb-tri"></div>
+            </div>
+            <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,227,.65);">Voir le spot</div>
+          </div>
+        </a>
+        <div class="hero-video-label">Réalisation & Montage · 2025</div>
+        <div class="hero-video-title">PARADIS FLEURI<span>Spot publicitaire · Gîte du Vexin</span></div>
+      </div>
+      <div class="hero-filmstrip">
+        <a href="https://www.youtube.com/watch?v=UtmcoWIJStQ" target="_blank" rel="noopener" class="hero-film-item active">Noeud-nous<span class="hero-film-item-sub">Événement · 2025</span></a>
+        <a href="https://www.youtube.com/watch?v=ybCipCtC9eI" target="_blank" rel="noopener" class="hero-film-item">Bruissements<span class="hero-film-item-sub">Danse · 2025</span></a>
+        <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" class="hero-film-item">Paradis Fleuri<span class="hero-film-item-sub">Spot pub · 2025</span></a>
+        <a href="https://vimeo.com/1173826309" target="_blank" rel="noopener" class="hero-film-item">Éloge du silence<span class="hero-film-item-sub">Concert · 2025</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-band">
+    <div class="marquee-inner">
+      <span>Captation</span><span class="dot">◆</span><span>Montage</span><span class="dot">◆</span><span>Making-of</span><span class="dot">◆</span><span>Court-métrage</span><span class="dot">◆</span><span>Interview documentaire</span><span class="dot">◆</span><span>Sacréclap Film</span><span class="dot">◆</span><span>Captation</span><span class="dot">◆</span><span>Montage</span><span class="dot">◆</span><span>Making-of</span><span class="dot">◆</span><span>Court-métrage</span><span class="dot">◆</span><span>Interview documentaire</span><span class="dot">◆</span><span>Sacréclap Film</span><span class="dot">◆</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-left reveal">
+      <p class="section-label">À propos</p>
+      <div class="about-portrait-wrap">
+        <img src="maxence-portrait.jpg" alt="Maxence — Sacréclap Film" class="about-portrait"/>
+        <div class="about-portrait-caption">Maxence · Opérateur-monteur</div>
+      </div>
+      <h2 class="about-title">L'IMAGE<br>AU SERVICE<em>du récit</em></h2>
+      <p class="about-body">Chaque tournage est une rencontre. Chaque montage, une façon de lui donner une forme qui dure. Je travaille avec ceux qui croient que l'image peut dire ce que les mots ne suffisent pas à exprimer.</p>
+      <p class="about-body">Basé dans le Val d'Oise, je collabore avec des boîtes de production, des réalisateurs indépendants et des créateurs qui cherchent un opérateur-monteur fiable, réactif et à l'écoute.</p>
+      <div><a href="#contact" class="btn-primary">Disponible pour vos projets</a></div>
+    </div>
+    <div class="vdivider"></div>
+    <div class="about-right reveal">
+      <p class="section-label">Équipement</p>
+      <div class="equip-grid">
+        <div class="equip-cat"><div class="equip-cat-title">Caméra & Optiques</div><ul class="equip-list"><li>Panasonic GH5 Mark II <span class="equip-detail">+ cage</span></li><li>Lumix 12-35mm f/2.8</li></ul></div>
+        <div class="equip-cat"><div class="equip-cat-title">Audio</div><ul class="equip-list"><li>Røde VideoMic NTG <span class="equip-detail">micro canon</span></li></ul></div>
+        <div class="equip-cat"><div class="equip-cat-title">Stabilisation</div><ul class="equip-list"><li>DJI RS3 <span class="equip-detail">+ follow focus</span></li><li>Trépied Smallrig <span class="equip-detail">tête fluide</span></li><li>Poignées & déclencheurs</li></ul></div>
+        <div class="equip-cat"><div class="equip-cat-title">Moniteur</div><ul class="equip-list"><li>Atomos Ninja V <span class="equip-detail">enregistreur 4K HDR</span></li></ul></div>
+        <div class="equip-cat"><div class="equip-cat-title">Éclairage</div><ul class="equip-list"><li>Smallrig 220B <span class="equip-detail">+ softbox</span></li><li>2× Panneaux LED RGB <span class="equip-detail">60W</span></li></ul></div>
+        <div class="equip-cat" style="border-right:none"><div class="equip-cat-title">Post-production</div><ul class="equip-list"><li>DaVinci Resolve Studio <span class="equip-detail">montage & étalonnage</span></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header reveal">
+      <h2 class="services-title">CE QUE<br><span class="ghost">JE FAIS</span></h2>
+      <p class="services-sub">Des compétences complémentaires au service d'une même exigence : la qualité de l'image et la force du récit.</p>
+    </div>
+    <div class="accordion reveal">
+      <div class="accordion-item active">
+        <button class="accordion-trigger">
+          <span class="accordion-num">01</span>
+          <span class="accordion-title">PRISE DE VUE & TOURNAGE</span>
+          <span class="accordion-tags-inline"><span class="tag">GH5 Mark II</span><span class="tag">Fiction</span><span class="tag">Docu</span></span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p class="accordion-desc">Opérateur caméra disponible pour renforcer vos équipes sur tournage fiction, documentaire ou clip. GH5 Mark II riggé selon les besoins du format : moniteur externe pour un contrôle précis de l'exposition, micro canon pour le son direct, filtres ND variable pour la gestion de la lumière, poignées latérales pour le cadrage à mains levées, ou stabilisateur pour les mouvements fluides — un rig polyvalent, prêt à s'adapter à chaque condition de tournage.</p>
+          <div class="service-tags"><span class="tag">Fiction</span><span class="tag">Documentaire</span><span class="tag">Clip / Promo</span><span class="tag">GH5 Mark II</span><span class="tag">Stabilisateur</span><span class="tag">Filtres ND</span><span class="tag">Son direct</span></div>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span class="accordion-num">02</span>
+          <span class="accordion-title">MONTAGE & POST-PROD</span>
+          <span class="accordion-tags-inline"><span class="tag">Court-métrage</span><span class="tag">YouTube</span><span class="tag">DaVinci</span></span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p class="accordion-desc">Montage narratif de courts-métrages, vidéos YouTube et contenus de marque. Étalonnage narratif, sound design, sous-titrage. Je prends en charge vos rushes de A à Z ou interviens à une étape précise.</p>
+          <div class="service-tags"><span class="tag">Court-métrage</span><span class="tag">YouTube</span><span class="tag">Étalonnage</span><span class="tag">Sound design</span></div>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span class="accordion-num">03</span>
+          <span class="accordion-title">MAKING-OF & COULISSES</span>
+          <span class="accordion-tags-inline"><span class="tag">Tournage fiction</span><span class="tag">Clip</span></span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p class="accordion-desc">Présence discrète sur vos tournages pour capturer les coulisses dans leur authenticité. Un regard extérieur qui documente votre processus créatif sans jamais en interrompre le cours.</p>
+          <div class="service-tags"><span class="tag">Tournage fiction</span><span class="tag">Clip</span><span class="tag">Événement pro</span></div>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          <span class="accordion-num">04</span>
+          <span class="accordion-title">MARIAGE & ÉVÉNEMENTS</span>
+          <span class="accordion-tags-inline"><span class="tag">Film de mariage</span><span class="tag">Long format</span></span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <div class="accordion-body-split">
+            <div>
+              <p class="accordion-desc">Un souvenir cinématographique, esthétique et émotionnel — conçu pour refléter avec sensibilité et précision la singularité de votre journée. Pas un simple montage de clips : un film documentaire personnel, pensé dès la pré-production avec un rendez-vous créatif, une analyse du déroulé et une préparation technique sur-mesure.</p>
+              <p class="accordion-desc" style="margin-top:.8rem;">Le jour J, je capte avec discrétion et exigence jusqu'à 10 heures de tournage : préparatifs, cérémonie, moments clés, décors, ambiances — en 4K, stabilisation, optiques dédiées et micro-enregistreurs.</p>
+
+              <div style="margin-top:1.2rem;border-top:.5px solid var(--border-strong);padding-top:1.2rem;">
+                <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.8rem;">Livrables inclus</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem .5rem;">
+                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>Film principal <span style="color:var(--ink-faint);font-size:.75rem;">8 à 12 min</span></div>
+                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>Teaser <span style="color:var(--ink-faint);font-size:.75rem;">30 sec – 1 min</span></div>
+                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>Pack Réseaux <span style="color:var(--ink-faint);font-size:.75rem;">2 vidéos verticales 4/3, 30–45 sec</span></div>
+                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>2 cycles de modifications inclus</div>
+                </div>
+              </div>
+
+              <div class="service-tags" style="margin-top:1.2rem;"><span class="tag">Film de mariage</span><span class="tag">Teaser</span><span class="tag">Pack réseaux</span><span class="tag">4K</span><span class="tag">Journée complète</span></div>
+            </div>
+            <div>
+              <div class="wedding-reel-label">Extrait — réalisation</div>
+              <div class="wedding-video-wrap">
+                <iframe src="https://player.vimeo.com/video/1173826309?badge=0&autopause=0&player_id=0&app_id=58479" class="wedding-video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="L'Éloge du Silence" style="border:none;"></iframe>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-header reveal">
+      <h2 class="portfolio-title">QUELQUES<br>TRAVAUX</h2>
+      <a href="https://www.youtube.com/@sacreclap" target="_blank" rel="noopener" class="btn-ghost">Voir la chaîne</a>
+    </div>
+    <div class="portfolio-featured reveal">
+      <div class="portfolio-embed-wrap">
+        <a href="https://www.youtube.com/watch?v=UtmcoWIJStQ" target="_blank" rel="noopener" class="portfolio-thumb-link">
+          <img src="https://img.youtube.com/vi/UtmcoWIJStQ/maxresdefault.jpg" alt="Noeud-nous — Compagnie l'Êttre-Louve accompagnée de Taïga Tribe" class="portfolio-thumb-img" loading="lazy" onerror="this.src='https://img.youtube.com/vi/UtmcoWIJStQ/hqdefault.jpg'"/>
+          <div class="portfolio-thumb-overlay">
+            <div class="portfolio-thumb-play"><div class="portfolio-thumb-tri"></div></div>
+            <div class="portfolio-thumb-hint">Voir sur YouTube</div>
+          </div>
+        </a>
+      </div>
+      <div class="portfolio-featured-info">
+        <div>
+          <div class="portfolio-featured-label">Captation & Montage · Événement</div>
+          <div class="portfolio-featured-title">NOEUD-NOUS</div>
+          <div class="portfolio-featured-type">Compagnie l'Êttre-Louve accompagnée du groupe Taïga Tribe — Performance captée dans le cadre de Mille et une Zic, organisé par la Boîte de Concerts à la MJC Boris Vian de Pontault-Combault.</div>
+        </div>
+        <div>
+          <div class="portfolio-featured-meta">
+            <div class="portfolio-meta-line">Date · <span>08 février 2025</span></div>
+            <div class="portfolio-meta-line">Lieu · <span>MJC Boris Vian, Pontault-Combault</span></div>
+            <div class="portfolio-meta-line">Client · <span>La Boîte de Concerts</span></div>
+            <div class="portfolio-meta-line">Format · <span>Captation scène + montage</span></div>
+          </div>
+          <a href="https://www.youtube.com/watch?v=UtmcoWIJStQ" target="_blank" rel="noopener" class="portfolio-watch-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-item">
+        <a href="https://www.youtube.com/watch?v=ybCipCtC9eI" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;position:relative;">
+          <img src="https://img.youtube.com/vi/ybCipCtC9eI/maxresdefault.jpg" alt="Les Bruissements du Vivant" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;" onerror="this.src='https://img.youtube.com/vi/ybCipCtC9eI/hqdefault.jpg'" loading="lazy"/>
+          <span class="portfolio-label">Captation & Montage</span>
+          <div class="portfolio-play"><div class="portfolio-play-tri"></div></div>
+          <div class="portfolio-info"><div class="portfolio-info-title">LES BRUISSEMENTS DU VIVANT</div><div class="portfolio-info-type">Cie l'Êttre-Louve · Danse & Écologie · 2025</div></div>
+        </a>
+      </div>
+      <div class="portfolio-item">
+        <a href="https://vimeo.com/1173826309" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;position:relative;">
+          <img src="eloge-du-silence-thumb.png" alt="L'Éloge du Silence — Marc Béhin & Liubov" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;" loading="lazy"/>
+          <span class="portfolio-label">Réalisation</span>
+          <div class="portfolio-play"><div class="portfolio-play-tri"></div></div>
+          <div class="portfolio-info"><div class="portfolio-info-title">L'ÉLOGE DU SILENCE</div><div class="portfolio-info-type">Marc Béhin & Liubov · Concert franco-ukrainien · Nov. 2025</div></div>
+        </a>
+      </div>
+      <div class="portfolio-item">
+        <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;position:relative;">
+          <img src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg" alt="Paradis Fleuri — Gîte du Vexin" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;" onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'" loading="lazy"/>
+          <span class="portfolio-label">Réalisation & Montage</span>
+          <div class="portfolio-play"><div class="portfolio-play-tri"></div></div>
+          <div class="portfolio-info">
+            <div class="portfolio-info-title">PARADIS FLEURI</div>
+            <div class="portfolio-info-type">Spot publicitaire · Gîte du Vexin · 2025</div>
+          </div>
+        </a>
+      </div>
+      <div class="portfolio-item">
+        <a href="https://www.youtube.com/watch?v=V3qE1Ge5v34" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;position:relative;">
+          <img src="https://img.youtube.com/vi/V3qE1Ge5v34/maxresdefault.jpg" alt="17H35 — Nikon Film Festival 2026" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;" onerror="this.src='https://img.youtube.com/vi/V3qE1Ge5v34/hqdefault.jpg'" loading="lazy"/>
+          <span class="portfolio-label">Chef opérateur & montage</span>
+          <div class="portfolio-play"><div class="portfolio-play-tri"></div></div>
+          <div class="portfolio-info">
+            <div class="portfolio-info-title">17H35</div>
+            <div class="portfolio-info-type">Manon Da Costa Mallet · Nikon Film Festival 2026 · La Beauté</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="processus">
+    <div class="process-header reveal">
+      <p class="section-label">Comment ça marche</p>
+      <h2 class="process-title">MON<br>PROCESSUS</h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="step"><div class="step-num">01</div><div class="step-title">Échange</div><p class="step-desc">On parle du projet : format, intentions artistiques, contraintes de tournage ou de livraison. Je lis vos scripts, visionne vos références, comprends l'univers avant d'intervenir.</p></div>
+      <div class="step"><div class="step-num">02</div><div class="step-title">Préparation</div><p class="step-desc">Repérage technique, configuration caméra, organisation des rushes. En montage : ingestion, synchronisation, découpage du matériel. Chaque projet démarre sur des bases solides.</p></div>
+      <div class="step"><div class="step-num">03</div><div class="step-title">Tournage</div><p class="step-desc">Sur le plateau, je m'adapte au rythme de l'équipe et à l'imprévu. En post-prod, je construis la narration en lien constant avec le réalisateur, par itérations successives.</p></div>
+      <div class="step"><div class="step-num">04</div><div class="step-title">Livraison</div><p class="step-desc">Export en haute définition, formats adaptés à la diffusion (web, festival, broadcast). Fichiers sources disponibles sur demande. Réactivité et respect des délais.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <div class="testimonial">
+    <blockquote class="testimonial-quote">"Ponctuel, à l'écoute, sensible et rigoureux. C'est un plaisir de travailler avec lui, car il est passionné !"</blockquote>
+    <div class="testimonial-author">
+      <div class="author-name">LOUISE SOULIÉ</div>
+      <div class="author-role">Compagnie l'Êttre-Louve · Captation de performance</div>
+      <div class="author-line"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-info reveal">
+      <p class="section-label">Travaillons ensemble</p>
+      <h2 class="contact-title">PARLONS<span class="outline">PROJET</span></h2>
+      <p class="contact-sub">Vous avez un tournage à venir, des rushes à monter ou un making-of à capturer ? Décrivez-moi votre projet, je vous réponds sous 24h.</p>
+    </div>
+    <div class="contact-form-wrap reveal">
+      <div class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-field"><label>Prénom</label><input type="text" id="prenom" placeholder="Marie" required/></div>
+          <div class="form-field"><label>Nom</label><input type="text" id="nom" placeholder="Dupont" required/></div>
+        </div>
+        <div class="form-field"><label>Email</label><input type="email" id="email" placeholder="marie@production.fr" required/></div>
+        <div class="form-field">
+          <label>Type de projet</label>
+          <select id="projet" required>
+            <option value="">Sélectionner...</option>
+            <option>Captation (tournage)</option>
+            <option>Montage court-métrage</option>
+            <option>Montage YouTube / contenu</option>
+            <option>Making-of de tournage</option>
+            <option>Interview / documentaire</option>
+            <option>Film de mariage</option>
+            <option>Post-production uniquement</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Date de tournage</label><input type="text" id="date_tournage" placeholder="Ex : 15 juin 2025"/></div>
+          <div class="form-field">
+            <label>Budget estimé</label>
+            <select id="budget">
+              <option value="">Sélectionner...</option>
+              <option>Moins de 500 €</option>
+              <option>500 € – 1 000 €</option>
+              <option>1 000 € – 2 000 €</option>
+              <option>2 000 € – 5 000 €</option>
+              <option>+ de 5 000 €</option>
+              <option>À définir ensemble</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field"><label>Votre projet</label><textarea rows="4" id="message" placeholder="Format, lieu, intentions artistiques, contraintes..."></textarea></div>
+        <button class="form-submit" id="formSubmit" type="button">
+          <span id="submitLabel">Envoyer le message</span>
+          <span class="submit-arrow" id="submitArrow">→</span>
+        </button>
+        <div id="formSuccess">✓ Message envoyé — je vous réponds sous 24h.</div>
+        <div id="formError">Une erreur s'est produite. Réessayez ou contactez-moi directement.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">SACRÉ<span>CLAP</span> FILM</div>
+    <div class="footer-copy">© 2026 Sacréclap Film — Tous droits réservés</div>
+    <div class="footer-socials">
+      <a href="#">Instagram</a>
+      <a href="#">Vimeo</a>
+      <a href="#">YouTube</a>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+    let rx=0,ry=0,cx=0,cy=0;
+    document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+    (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+
+    // Reveal
+    const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    // Burger
+    const burger=document.getElementById('burger'),nav=document.getElementById('navOverlay');
+    burger.addEventListener('click',()=>{burger.classList.toggle('open');nav.classList.toggle('open');document.body.style.overflow=nav.classList.contains('open')?'hidden':'';});
+    document.querySelectorAll('.nav-overlay-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');nav.classList.remove('open');document.body.style.overflow='';}));
+
+    // Accordion
+    document.querySelectorAll('.accordion-trigger').forEach(t=>{
+      t.addEventListener('click',()=>{
+        const item=t.closest('.accordion-item'),was=item.classList.contains('active');
+        document.querySelectorAll('.accordion-item').forEach(i=>i.classList.remove('active'));
+        if(!was)item.classList.add('active');
+      });
+    });
+
+    // EmailJS
+    emailjs.init('p8QTlNsbB88DgFKqx');
+    document.getElementById('formSubmit').addEventListener('click',function(){
+      const prenom=document.getElementById('prenom').value.trim();
+      const nom=document.getElementById('nom').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const projet=document.getElementById('projet').value;
+      const date_tournage=document.getElementById('date_tournage').value.trim();
+      const budget=document.getElementById('budget').value;
+      const message=document.getElementById('message').value.trim();
+      if(!prenom||!nom||!email||!projet){
+        const err=document.getElementById('formError');
+        err.style.display='block';err.textContent='Merci de remplir les champs obligatoires (prénom, nom, email, type de projet).';return;
+      }
+      const btn=document.getElementById('formSubmit'),lbl=document.getElementById('submitLabel'),arr=document.getElementById('submitArrow');
+      btn.disabled=true;lbl.textContent='Envoi en cours...';arr.textContent='⟳';
+      const params={prenom,nom,email,projet,date_tournage:date_tournage||'Non précisée',budget:budget||'Non précisé',message:message||'Aucune description.'};
+      emailjs.send('service_xxxxxxx','template_keaz1y3',params)
+        .then(()=>emailjs.send('service_xxxxxxx','template_uj6k5rh',params))
+        .then(()=>{document.getElementById('formSuccess').style.display='block';document.getElementById('formError').style.display='none';document.getElementById('contactForm').reset();lbl.textContent='Message envoyé';arr.textContent='✓';})
+        .catch(err=>{console.error(err);document.getElementById('formError').style.display='block';document.getElementById('formError').textContent="Une erreur s'est produite. Réessayez ou contactez-moi directement.";btn.disabled=false;lbl.textContent='Envoyer le message';arr.textContent='→';});
+    });
+  </script>
+
+</body>
+</html>
