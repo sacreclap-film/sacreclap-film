@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sacréclap Film — Opérateur Caméra & Monteur · Val d'Oise</title>
-  <meta name="description" content="Sacréclap Film — Captation narrative, montage et making-of et making-of au service des productions. GH5 Mark II, DaVinci Resolve Studio. Basé dans le Val d'Oise, disponible partout en France."/>
+  <meta name="description" content="Sacréclap Film — Captation narrative, montage et making-of au service des productions. GH5 Mark II, DaVinci Resolve Studio. Basé dans le Val d'Oise, disponible partout en France."/>
   <meta name="author" content="Sacréclap Film"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.sacreclap-film.fr/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Sacréclap Film — Opérateur Caméra & Monteur"/>
-  <meta property="og:description" content="Captation narrative, montage et making-of et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
+  <meta property="og:description" content="Captation narrative, montage et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
   <meta property="og:url" content="https://www.sacreclap-film.fr/"/>
   <meta property="og:site_name" content="Sacréclap Film"/>
   <meta property="og:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
@@ -19,7 +20,7 @@
   <meta property="og:locale" content="fr_FR"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Sacréclap Film — Opérateur Caméra & Monteur"/>
-  <meta name="twitter:description" content="Captation narrative, montage et making-of et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
+  <meta name="twitter:description" content="Captation narrative, montage et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
   <meta name="twitter:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5f2ec'/><circle cx='16' cy='16' r='14' fill='none' stroke='%23e07820' stroke-width='2'/><text x='5' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%231a1610'>S</text><text x='16' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%23e07820'>C</text></svg>"/>
   <meta name="theme-color" content="#f5f2ec"/>
@@ -54,6 +55,8 @@
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: var(--ink-faint); text-decoration: none; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; transition: color .3s; }
     .nav-links a:hover { color: var(--ink); }
+    .nav-links a.mariage-link { color: var(--orange); }
+    .nav-links a.mariage-link:hover { color: var(--orange-dark); }
     .nav-cta { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; background: var(--ink); color: var(--cream); padding: .6rem 1.4rem; text-decoration: none; transition: background .3s; }
     .nav-cta:hover { background: var(--orange); }
 
@@ -73,6 +76,7 @@
     .nav-overlay-links li:nth-child(2) a { transition-delay: .1s; }
     .nav-overlay-links li:nth-child(3) a { transition-delay: .15s; }
     .nav-overlay-links li:nth-child(4) a { transition-delay: .2s; }
+    .nav-overlay-links li:nth-child(5) a { transition-delay: .25s; }
     .nav-overlay-links a:hover { color: var(--orange); }
     .nav-overlay-footer { margin-top: 3rem; font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-faint); opacity: 0; transition: opacity .4s ease .3s; }
     .nav-overlay.open .nav-overlay-footer { opacity: 1; }
@@ -119,15 +123,19 @@
     .marquee-inner span.dot { color: var(--orange); font-size: .45rem; vertical-align: middle; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    /* MARIAGE BAND */
+    .mariage-band { background: rgba(224,120,32,.06); border-top: 1px solid rgba(224,120,32,.15); border-bottom: 1px solid rgba(224,120,32,.15); padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+    .mariage-band-text { display: flex; align-items: center; gap: 1rem; }
+    .mariage-band-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: blink 2s infinite; flex-shrink: 0; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+    .mariage-band-label { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
+    .mariage-band-sub { font-size: .78rem; color: var(--ink-light); font-weight: 300; }
+    .mariage-band-cta { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); text-decoration: none; display: flex; align-items: center; gap: .5rem; transition: gap .3s; white-space: nowrap; }
+    .mariage-band-cta:hover { gap: .9rem; }
+
     /* SECTION LABEL */
     .section-label { font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: .8rem; margin-bottom: 1.2rem; }
     .section-label::before { content: ''; width: 16px; height: 1px; background: var(--orange); }
-
-    /* PORTRAIT ABOUT */
-    .about-portrait-wrap { position: relative; margin-bottom: 1.8rem; }
-    .about-portrait { width: 100%; max-width: 220px; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; filter: grayscale(100%); transition: filter .4s; }
-    .about-portrait:hover { filter: grayscale(0%); }
-    .about-portrait-caption { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); margin-top: .6rem; }
 
     /* ABOUT */
     .about { display: grid; grid-template-columns: 1fr 1px 1.6fr; border-bottom: 1px solid var(--border); }
@@ -137,6 +145,10 @@
     .about-title { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4.2rem); line-height: .95; letter-spacing: .02em; }
     .about-title em { font-family: var(--font-italic); font-style: italic; font-size: .68em; color: var(--ink-faint); display: block; margin-top: .2rem; -webkit-text-stroke: 0; }
     .about-body { font-size: .95rem; line-height: 1.9; color: var(--ink-light); font-weight: 300; }
+    .about-portrait-wrap { position: relative; margin-bottom: 1.8rem; }
+    .about-portrait { width: 100%; max-width: 220px; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; filter: grayscale(100%); transition: filter .4s; }
+    .about-portrait:hover { filter: grayscale(0%); }
+    .about-portrait-caption { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); margin-top: .6rem; }
     .equip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: .5px solid var(--border-strong); margin-top: 1.5rem; }
     .equip-cat { padding: 1rem 1.2rem; border-right: .5px solid var(--border-strong); border-bottom: .5px solid var(--border-strong); transition: background .3s; }
     .equip-cat:hover { background: rgba(224,120,32,.04); }
@@ -167,7 +179,7 @@
     .accordion-icon { width: 28px; height: 28px; border: .5px solid var(--border-strong); border-radius: 50%; flex-shrink: 0; position: relative; transition: border-color .3s, transform .4s; }
     .accordion-icon::before, .accordion-icon::after { content: ''; position: absolute; background: var(--ink); transition: background .3s; }
     .accordion-icon::before { width: 10px; height: 1px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .accordion-icon::after  { width: 1px; height: 10px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .accordion-icon::after { width: 1px; height: 10px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
     .accordion-item.active .accordion-icon { border-color: var(--orange); transform: rotate(45deg); }
     .accordion-item.active .accordion-icon::before, .accordion-item.active .accordion-icon::after { background: var(--orange); }
     .accordion-body { max-height: 0; overflow: hidden; transition: max-height .55s cubic-bezier(.4,0,.2,1); }
@@ -220,11 +232,6 @@
     .portfolio-item { position: relative; overflow: hidden; cursor: pointer; height: 160px; }
     .portfolio-bg { width: 100%; height: 100%; transition: transform .6s; }
     .portfolio-item:hover .portfolio-bg { transform: scale(1.05); }
-    .p-bg-1 { background: linear-gradient(135deg, #2a1f1a, #3d2820); }
-    .p-bg-2 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
-    .p-bg-3 { background: linear-gradient(135deg, #1c1c1c, #2d2d2d); }
-    .p-bg-4 { background: linear-gradient(135deg, #1a2020, #1e2e2e); }
-    .p-bg-5 { background: linear-gradient(135deg, #20181a, #2e1820); }
     .portfolio-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem 1.2rem; background: linear-gradient(transparent, rgba(0,0,0,.82)); transform: translateY(6px); opacity: 0; transition: all .4s; }
     .portfolio-item:hover .portfolio-info { transform: translateY(0); opacity: 1; }
     .portfolio-info-title { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .05em; color: #f0ebe3; }
@@ -233,20 +240,6 @@
     .portfolio-item:hover .portfolio-play { opacity: 1; transform: translate(-50%,-50%) scale(1); }
     .portfolio-play-tri { width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 12px solid white; margin-left: 2px; }
     .portfolio-label { position: absolute; top: .9rem; left: 1.1rem; font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.55); background: rgba(0,0,0,.45); padding: .25rem .6rem; }
-    .portfolio-item--soon { background: var(--cream); display: flex; align-items: center; justify-content: center; border: .5px dashed rgba(0,0,0,.1); }
-    .portfolio-soon-text { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-faint); opacity: .5; }
-    .portfolio-item--video { position: relative; overflow: hidden; cursor: pointer; }
-    .portfolio-video-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-    .portfolio-video-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; background: rgba(10,10,10,.45); transition: background .3s; }
-    .portfolio-item--video:hover .portfolio-video-overlay { background: rgba(10,10,10,.22); }
-    .portfolio-video-overlay.playing { background: transparent; }
-    .portfolio-video-overlay.playing:hover { background: rgba(10,10,10,.15); }
-    .portfolio-video-play-btn { width: 46px; height: 46px; border: 1.5px solid rgba(240,235,227,.7); border-radius: 50%; background: transparent; display: flex; align-items: center; justify-content: center; cursor: none; transition: background .3s, border-color .3s, transform .2s, opacity .3s; }
-    .portfolio-video-overlay.playing .portfolio-video-play-btn { opacity: 0; }
-    .portfolio-video-overlay.playing:hover .portfolio-video-play-btn { opacity: 1; }
-    .portfolio-item--video:hover .portfolio-video-play-btn { background: var(--orange); border-color: var(--orange); transform: scale(1.1); }
-    .portfolio-play-tri-lg { width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 14px solid #f0ebe3; margin-left: 3px; }
-    .portfolio-item--video .portfolio-info, .portfolio-item--video .portfolio-label { z-index: 4; }
 
     /* TESTIMONIAL */
     .testimonial { padding: 4rem 3rem; background: var(--ink); color: #f0ebe3; display: flex; align-items: center; gap: 4rem; position: relative; overflow: hidden; }
@@ -285,7 +278,6 @@
     .footer-socials { display: flex; gap: 1.8rem; }
     .footer-socials a { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; transition: color .3s; }
     .footer-socials a:hover { color: var(--orange); }
-
     .hero-thumb-link { display:block; width:100%; height:100%; position:relative; }
     .hero-thumb-link:hover .hero-video-overlay { background: rgba(26,20,16,.2); }
     .hero-thumb-play { width:64px; height:64px; border:1.5px solid rgba(240,235,227,.7); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background .3s, border-color .3s, transform .2s; }
@@ -305,6 +297,7 @@
       .hero-right { display: none; }
       .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; }
       .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .mariage-band { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.5rem; }
       .about { grid-template-columns: 1fr; }
       .vdivider { display: none; }
       .about-left, .about-right { padding: 3rem 1.5rem; }
@@ -338,11 +331,12 @@
   <div class="cursor-ring" id="cursorRing"></div>
 
   <nav>
-    <a href="#" class="nav-logo">SACRÉ<span>CLAP</span></a>
+    <a href="index.html" class="nav-logo">SACRÉ<span>CLAP</span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Travaux</a></li>
       <li><a href="#processus">Processus</a></li>
+      <li><a href="mariages.html" class="mariage-link">Mariages</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Démarrer un projet</a>
@@ -358,6 +352,7 @@
       <li><a href="#services" class="nav-overlay-link">Services</a></li>
       <li><a href="#portfolio" class="nav-overlay-link">Travaux</a></li>
       <li><a href="#processus" class="nav-overlay-link">Processus</a></li>
+      <li><a href="mariages.html" class="nav-overlay-link">Mariages</a></li>
       <li><a href="#contact" class="nav-overlay-link">Contact</a></li>
     </ul>
     <div class="nav-overlay-footer">Sacréclap Film · Val d'Oise</div>
@@ -389,18 +384,9 @@
     <div class="hero-right">
       <div class="hero-video-wrap">
         <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" class="hero-thumb-link">
-          <img
-            src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg"
-            alt="Paradis Fleuri — Gîte du Vexin"
-            class="hero-video"
-            style="object-fit:cover;"
-            loading="lazy"
-            onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'"
-          />
+          <img src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg" alt="Paradis Fleuri — Gîte du Vexin" class="hero-video" style="object-fit:cover;" loading="lazy" onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'"/>
           <div class="hero-video-overlay" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
-            <div class="hero-thumb-play">
-              <div class="hero-thumb-tri"></div>
-            </div>
+            <div class="hero-thumb-play"><div class="hero-thumb-tri"></div></div>
             <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,227,.65);">Voir le spot</div>
           </div>
         </a>
@@ -421,6 +407,18 @@
     <div class="marquee-inner">
       <span>Captation</span><span class="dot">◆</span><span>Montage</span><span class="dot">◆</span><span>Making-of</span><span class="dot">◆</span><span>Court-métrage</span><span class="dot">◆</span><span>Interview documentaire</span><span class="dot">◆</span><span>Sacréclap Film</span><span class="dot">◆</span><span>Captation</span><span class="dot">◆</span><span>Montage</span><span class="dot">◆</span><span>Making-of</span><span class="dot">◆</span><span>Court-métrage</span><span class="dot">◆</span><span>Interview documentaire</span><span class="dot">◆</span><span>Sacréclap Film</span><span class="dot">◆</span>
     </div>
+  </div>
+
+  <!-- MARIAGE BAND -->
+  <div class="mariage-band">
+    <div class="mariage-band-text">
+      <div class="mariage-band-dot"></div>
+      <div>
+        <div class="mariage-band-label">Films de mariage · Tarif de lancement</div>
+        <div class="mariage-band-sub">Offre valable pour les 5 premiers mariages — à partir de 1 690 €</div>
+      </div>
+    </div>
+    <a href="mariages.html" class="mariage-band-cta">Découvrir les formules →</a>
   </div>
 
   <!-- ABOUT -->
@@ -503,20 +501,11 @@
         <div class="accordion-body"><div class="accordion-body-inner">
           <div class="accordion-body-split">
             <div>
-              <p class="accordion-desc">Un souvenir cinématographique, esthétique et émotionnel — conçu pour refléter avec sensibilité et précision la singularité de votre journée. Pas un simple montage de clips : un film documentaire personnel, pensé dès la pré-production avec un rendez-vous créatif, une analyse du déroulé et une préparation technique sur-mesure.</p>
-              <p class="accordion-desc" style="margin-top:.8rem;">Le jour J, je capte avec discrétion et exigence jusqu'à 10 heures de tournage : préparatifs, cérémonie, moments clés, décors, ambiances — en 4K, stabilisation, optiques dédiées et micro-enregistreurs.</p>
-
-              <div style="margin-top:1.2rem;border-top:.5px solid var(--border-strong);padding-top:1.2rem;">
-                <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.8rem;">Livrables inclus</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem .5rem;">
-                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>Film principal <span style="color:var(--ink-faint);font-size:.75rem;">8 à 12 min</span></div>
-                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>Teaser <span style="color:var(--ink-faint);font-size:.75rem;">30 sec – 1 min</span></div>
-                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>Pack Réseaux <span style="color:var(--ink-faint);font-size:.75rem;">2 vidéos verticales 4/3, 30–45 sec</span></div>
-                  <div style="font-size:.82rem;color:var(--ink-mid);display:flex;gap:.6rem;align-items:baseline;"><span style="color:var(--orange);font-size:.7rem;">→</span>2 cycles de modifications inclus</div>
-                </div>
+              <p class="accordion-desc">Un souvenir cinématographique, esthétique et émotionnel — conçu pour refléter avec sensibilité et précision la singularité de votre journée. Deux formules disponibles, tarif de lancement pour les 5 premiers mariages.</p>
+              <div style="margin-top:1.2rem;">
+                <a href="mariages.html" class="btn-primary" style="display:inline-block;">Voir les formules mariage →</a>
               </div>
-
-              <div class="service-tags" style="margin-top:1.2rem;"><span class="tag">Film de mariage</span><span class="tag">Teaser</span><span class="tag">Pack réseaux</span><span class="tag">4K</span><span class="tag">Journée complète</span></div>
+              <div class="service-tags" style="margin-top:1.2rem;"><span class="tag">Film de mariage</span><span class="tag">Teaser</span><span class="tag">4K</span><span class="tag">Journée complète</span></div>
             </div>
             <div>
               <div class="wedding-reel-label">Extrait — réalisation</div>
@@ -585,10 +574,7 @@
           <img src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg" alt="Paradis Fleuri — Gîte du Vexin" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;" onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'" loading="lazy"/>
           <span class="portfolio-label">Réalisation & Montage</span>
           <div class="portfolio-play"><div class="portfolio-play-tri"></div></div>
-          <div class="portfolio-info">
-            <div class="portfolio-info-title">PARADIS FLEURI</div>
-            <div class="portfolio-info-type">Spot publicitaire · Gîte du Vexin · 2025</div>
-          </div>
+          <div class="portfolio-info"><div class="portfolio-info-title">PARADIS FLEURI</div><div class="portfolio-info-type">Spot publicitaire · Gîte du Vexin · 2025</div></div>
         </a>
       </div>
       <div class="portfolio-item">
@@ -596,10 +582,7 @@
           <img src="https://img.youtube.com/vi/V3qE1Ge5v34/maxresdefault.jpg" alt="17H35 — Nikon Film Festival 2026" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;" onerror="this.src='https://img.youtube.com/vi/V3qE1Ge5v34/hqdefault.jpg'" loading="lazy"/>
           <span class="portfolio-label">Chef opérateur & montage</span>
           <div class="portfolio-play"><div class="portfolio-play-tri"></div></div>
-          <div class="portfolio-info">
-            <div class="portfolio-info-title">17H35</div>
-            <div class="portfolio-info-type">Manon Da Costa Mallet · Nikon Film Festival 2026 · La Beauté</div>
-          </div>
+          <div class="portfolio-info"><div class="portfolio-info-title">17H35</div><div class="portfolio-info-type">Manon Da Costa Mallet · Nikon Film Festival 2026 · La Beauté</div></div>
         </a>
       </div>
     </div>
@@ -695,22 +678,18 @@
   </footer>
 
   <script>
-    // Cursor
-    const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+    const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
     let rx=0,ry=0,cx=0,cy=0;
     document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
     (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
 
-    // Reveal
     const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.1});
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-    // Burger
     const burger=document.getElementById('burger'),nav=document.getElementById('navOverlay');
     burger.addEventListener('click',()=>{burger.classList.toggle('open');nav.classList.toggle('open');document.body.style.overflow=nav.classList.contains('open')?'hidden':'';});
     document.querySelectorAll('.nav-overlay-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');nav.classList.remove('open');document.body.style.overflow='';}));
 
-    // Accordion
     document.querySelectorAll('.accordion-trigger').forEach(t=>{
       t.addEventListener('click',()=>{
         const item=t.closest('.accordion-item'),was=item.classList.contains('active');
@@ -719,7 +698,6 @@
       });
     });
 
-    // EmailJS
     emailjs.init('p8QTlNsbB88DgFKqx');
     document.getElementById('formSubmit').addEventListener('click',function(){
       const prenom=document.getElementById('prenom').value.trim();
@@ -742,6 +720,5 @@
         .catch(err=>{console.error(err);document.getElementById('formError').style.display='block';document.getElementById('formError').textContent="Une erreur s'est produite. Réessayez ou contactez-moi directement.";btn.disabled=false;lbl.textContent='Envoyer le message';arr.textContent='→';});
     });
   </script>
-
 </body>
 </html>
