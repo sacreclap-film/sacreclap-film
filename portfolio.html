@@ -224,30 +224,30 @@
       <p class="hero-sub">Captation, montage, spot et court-métrage — chaque projet est une collaboration singulière avec un univers à raconter.</p>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Projets</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Projets</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4K</div><div class="hero-stat-label">Format principal</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Types de projets</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Types de projets</div></div>
       <div class="hero-stat"><div class="hero-stat-num">95</div><div class="hero-stat-label">Val d'Oise</div></div>
     </div>
   </section>
 
   <!-- FILTERS -->
   <div class="filters-bar" id="filtersBar">
-    <button class="filter-btn active" data-filter="all">Tout <span class="filter-count">5</span></button>
-    <button class="filter-btn" data-filter="captation">Captation <span class="filter-count">3</span></button>
-    <button class="filter-btn" data-filter="montage">Montage <span class="filter-count">5</span></button>
-    <button class="filter-btn" data-filter="spot">Spot publicitaire <span class="filter-count">1</span></button>
+    <button class="filter-btn active" data-filter="all">Tout <span class="filter-count">10</span></button>
+    <button class="filter-btn" data-filter="captation">Captation <span class="filter-count">4</span></button>
+    <button class="filter-btn" data-filter="montage">Montage <span class="filter-count">8</span></button>
+    <button class="filter-btn" data-filter="spot">Spot publicitaire <span class="filter-count">2</span></button>
     <button class="filter-btn" data-filter="court-metrage">Court-métrage <span class="filter-count">1</span></button>
     <button class="filter-btn" data-filter="evenement">Événement / Concert <span class="filter-count">3</span></button>
   </div>
 
   <!-- GRID -->
   <section class="portfolio-section">
-    <p class="portfolio-count" id="portfolioCount"><span id="visibleCount">5</span> projets affichés</p>
+    <p class="portfolio-count" id="portfolioCount"><span id="visibleCount">10</span> projets affichés</p>
     <div class="portfolio-grid" id="portfolioGrid">
 
-      <!-- NOEUD-NOUS — featured -->
-      <div class="portfolio-card featured reveal" data-cats="captation montage evenement">
+      <!-- NOEUD-NOUS -->
+      <div class="portfolio-card featured reveal" data-cats="captation" data-featured-for="all captation">
         <a href="https://www.youtube.com/watch?v=UtmcoWIJStQ" target="_blank" rel="noopener" class="portfolio-card-thumb">
           <img src="https://img.youtube.com/vi/UtmcoWIJStQ/maxresdefault.jpg" alt="Noeud-nous" loading="lazy" onerror="this.src='https://img.youtube.com/vi/UtmcoWIJStQ/hqdefault.jpg'"/>
           <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
@@ -277,7 +277,7 @@
       </div>
 
       <!-- L'ÉLOGE DU SILENCE -->
-      <div class="portfolio-card reveal" data-cats="captation montage evenement">
+      <div class="portfolio-card reveal" data-cats="captation montage evenement" data-featured-for="evenement montage">
         <a href="https://youtu.be/qgU9aBI32uI" target="_blank" rel="noopener" class="portfolio-card-thumb">
           <img src="https://img.youtube.com/vi/qgU9aBI32uI/maxresdefault.jpg" alt="L'Éloge du Silence" loading="lazy" onerror="this.src='https://img.youtube.com/vi/qgU9aBI32uI/hqdefault.jpg'"/>
           <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
@@ -327,7 +327,7 @@
       </div>
 
       <!-- PARADIS FLEURI -->
-      <div class="portfolio-card reveal" data-cats="spot montage">
+      <div class="portfolio-card reveal" data-cats="spot montage" data-featured-for="spot">
         <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" class="portfolio-card-thumb">
           <img src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg" alt="Paradis Fleuri — Gîte du Vexin" loading="lazy" onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'"/>
           <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
@@ -354,7 +354,7 @@
       </div>
 
       <!-- 17H35 -->
-      <div class="portfolio-card reveal" data-cats="court-metrage montage">
+      <div class="portfolio-card reveal" data-cats="court-metrage montage" data-featured-for="court-metrage">
         <a href="https://www.youtube.com/watch?v=V3qE1Ge5v34" target="_blank" rel="noopener" class="portfolio-card-thumb">
           <img src="https://img.youtube.com/vi/V3qE1Ge5v34/maxresdefault.jpg" alt="17H35 — Nikon Film Festival 2026" loading="lazy" onerror="this.src='https://img.youtube.com/vi/V3qE1Ge5v34/hqdefault.jpg'"/>
           <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
@@ -380,10 +380,138 @@
         </div>
       </div>
 
+      <!-- LAPONIE — ROYAL CANIN -->
+      <div class="portfolio-card reveal" data-cats="montage spot">
+        <a href="https://www.youtube.com/watch?v=12Itz4v5A4c" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/12Itz4v5A4c/hqdefault.jpg" alt="J'ai fait du Chien de Traîneau en Laponie — Royal Canin" loading="lazy"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Montage & Étalonnage</div>
+          <div class="card-year">2025</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Montage · Étalonnage · Spot de marque</div>
+          <div class="card-title">LAPONIE 🐕</div>
+          <div class="card-client">Royal Canin × Seven et Tom — Vidéo promotionnelle</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">Novembre 2025</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Client</span><span class="card-meta-val">Royal Canin — chaîne Seven et Tom</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Format</span><span class="card-meta-val">Vidéo YouTube · Contenu de marque</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Brand content</span>
+            <span class="card-tag">Montage</span>
+            <span class="card-tag">Étalonnage</span>
+            <span class="card-tag">DaVinci Resolve</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=12Itz4v5A4c" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- SEVEN ET TOM — LE DUO UNIQUE -->
+      <div class="portfolio-card reveal" data-cats="montage">
+        <a href="https://www.youtube.com/watch?v=s3DM1i5Tddo" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/s3DM1i5Tddo/maxresdefault.jpg" alt="Seven et Tom : Le Duo Unique" loading="lazy" onerror="this.src='https://img.youtube.com/vi/s3DM1i5Tddo/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Montage & Étalonnage</div>
+          <div class="card-year">2024</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Montage · Étalonnage · YouTube</div>
+          <div class="card-title">LE DUO UNIQUE</div>
+          <div class="card-client">Seven et Tom — Créateur de contenu</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">Septembre 2024</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Chaîne</span><span class="card-meta-val">Seven et Tom</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Contexte</span><span class="card-meta-val">Tom & Seven, son chien guide</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">YouTube</span>
+            <span class="card-tag">Montage</span>
+            <span class="card-tag">Étalonnage</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=s3DM1i5Tddo" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- SEVEN EST AVEUGLE -->
+      <div class="portfolio-card reveal" data-cats="montage">
+        <a href="https://www.youtube.com/watch?v=Mw52qzCW650" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/Mw52qzCW650/maxresdefault.jpg" alt="Seven est aveugle ?" loading="lazy" onerror="this.src='https://img.youtube.com/vi/Mw52qzCW650/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Montage & Étalonnage</div>
+          <div class="card-year">2024</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Montage · Étalonnage · YouTube</div>
+          <div class="card-title">SEVEN EST AVEUGLE ?</div>
+          <div class="card-client">Seven et Tom — Créateur de contenu</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">Juillet 2024</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Chaîne</span><span class="card-meta-val">Seven et Tom</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">YouTube</span>
+            <span class="card-tag">Montage</span>
+            <span class="card-tag">Étalonnage</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=Mw52qzCW650" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- UNE PERSONNE MAL VOYANTE -->
+      <div class="portfolio-card reveal" data-cats="montage">
+        <a href="https://www.youtube.com/watch?v=a0HU5qk39ok" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/a0HU5qk39ok/maxresdefault.jpg" alt="Une Personne Mal Voyante Réalisera l'Impossible" loading="lazy" onerror="this.src='https://img.youtube.com/vi/a0HU5qk39ok/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Montage & Étalonnage</div>
+          <div class="card-year">2024</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Montage · Étalonnage · YouTube</div>
+          <div class="card-title">L'IMPOSSIBLE</div>
+          <div class="card-client">Seven et Tom — Créateur de contenu</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">Octobre 2024</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Chaîne</span><span class="card-meta-val">Seven et Tom</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">YouTube</span>
+            <span class="card-tag">Montage</span>
+            <span class="card-tag">Étalonnage</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=a0HU5qk39ok" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- LE DISCOURS DU GUÉRISSEUR -->
+      <div class="portfolio-card reveal" data-cats="captation evenement" data-featured-for="captation evenement">
+        <a href="https://www.youtube.com/watch?v=r06yscn0UC8" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/r06yscn0UC8/maxresdefault.jpg" alt="Le Discours du Guérisseur — Compagnie l'Êttre-Louve" loading="lazy" onerror="this.src='https://img.youtube.com/vi/r06yscn0UC8/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Captation</div>
+          <div class="card-year">2026</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Captation · Performance · Événement</div>
+          <div class="card-title">LE DISCOURS DU GUÉRISSEUR</div>
+          <div class="card-client">Compagnie l'Êttre-Louve — Performance artistique</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">18 février 2026</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Lieu</span><span class="card-meta-val">The American University of Paris</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Contexte</span><span class="card-meta-val">Exposition « À corps rituel » — Wilfried Nakeu</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Performance</span>
+            <span class="card-tag">Captation</span>
+            <span class="card-tag">GH5 Mark II</span>
+            <span class="card-tag">Art contemporain</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=r06yscn0UC8" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
     </div>
   </section>
-
-  <!-- CTA BANDE -->
   <div class="cta-band">
     <div class="cta-band-text">UN PROJET<br>EN TÊTE ?<em>Parlons-en.</em></div>
     <a href="index.html#contact" class="btn-primary">Démarrer un projet →</a>
@@ -425,23 +553,48 @@
     // FILTERS
     const cards=document.querySelectorAll('.portfolio-card');
     const countEl=document.getElementById('visibleCount');
+
+    function applyFilter(filter){
+      // Reset featured
+      cards.forEach(card=>{
+        card.classList.remove('featured');
+        card.style.gridColumn='';
+      });
+      // Show/hide cards
+      let visible=0;
+      cards.forEach(card=>{
+        const cats=card.dataset.cats||'';
+        const show=filter==='all'||cats.split(' ').includes(filter);
+        if(show){card.classList.remove('hidden');visible++;}
+        else{card.classList.add('hidden');}
+      });
+      countEl.textContent=visible;
+      // Apply featured to the right card
+      let featuredCard=null;
+      cards.forEach(card=>{
+        if(card.classList.contains('hidden'))return;
+        const featuredFor=card.dataset.featuredFor||'';
+        if(featuredFor.split(' ').includes(filter)&&!featuredCard){
+          featuredCard=card;
+        }
+      });
+      // Fallback: first visible card
+      if(!featuredCard){
+        cards.forEach(card=>{if(!card.classList.contains('hidden')&&!featuredCard)featuredCard=card;});
+      }
+      if(featuredCard){
+        featuredCard.classList.add('featured');
+        featuredCard.style.gridColumn='1 / -1';
+      }
+    }
+
+    applyFilter('all');
+
     document.querySelectorAll('.filter-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
-        const filter=btn.dataset.filter;
-        let visible=0;
-        cards.forEach(card=>{
-          const cats=card.dataset.cats;
-          const show=filter==='all'||cats.includes(filter);
-          if(show){card.classList.remove('hidden');visible++;}
-          else{card.classList.add('hidden');}
-        });
-        countEl.textContent=visible;
-        // featured uniquement si pas hidden
-        const featured=document.querySelector('.portfolio-card.featured');
-        if(featured&&!featured.classList.contains('hidden')){featured.style.gridColumn='1 / -1';}
-        else if(featured){featured.style.gridColumn='';}
+        applyFilter(btn.dataset.filter);
       });
     });
 
