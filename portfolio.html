@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Sacréclap Film · Val d'Oise</title>
+  <meta name="description" content="Portfolio de Sacréclap Film — Captation, montage, spot publicitaire, court-métrage et événement. Val d'Oise & Île-de-France."/>
+  <meta name="author" content="Sacréclap Film"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.sacreclap-film.fr/portfolio"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5f2ec'/><circle cx='16' cy='16' r='14' fill='none' stroke='%23e07820' stroke-width='2'/><text x='5' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%231a1610'>S</text><text x='16' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%23e07820'>C</text></svg>"/>
+  <meta name="theme-color" content="#f5f2ec"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream: #f5f2ec; --cream-dark: #f0ede6; --ink: #1a1610;
+      --ink-mid: #4a4438; --ink-light: #6a6058; --ink-faint: #9a9080;
+      --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.13);
+      --orange: #e07820; --orange-dark: #b85f10; --dark: #1a1410;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-italic: 'Playfair Display', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); cursor: none; overflow-x: hidden; }
+
+    /* CURSOR */
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(224,120,32,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .3s, height .3s, opacity .3s; }
+    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; }
+    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: .3; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(245,242,236,.93); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .08em; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--ink-faint); text-decoration: none; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--orange); }
+    .nav-links a.mariage-link { color: var(--orange); }
+    .nav-links a.mariage-link:hover { color: var(--orange-dark); }
+    .nav-cta { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; background: var(--ink); color: var(--cream); padding: .6rem 1.4rem; text-decoration: none; transition: background .3s; }
+    .nav-cta:hover { background: var(--orange); }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 4px; z-index: 300; }
+    .burger-line { width: 24px; height: 1.5px; background: var(--ink); transition: transform .35s, opacity .35s, width .35s; transform-origin: center; }
+    .burger.open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.open .burger-line:nth-child(2) { opacity: 0; width: 0; }
+    .burger.open .burger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-overlay { position: fixed; inset: 0; background: var(--cream); z-index: 150; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 4rem 2.5rem; opacity: 0; pointer-events: none; transition: opacity .4s; }
+    .nav-overlay.open { opacity: 1; pointer-events: all; }
+    .nav-overlay-links { list-style: none; display: flex; flex-direction: column; gap: .5rem; width: 100%; }
+    .nav-overlay-links li { overflow: hidden; }
+    .nav-overlay-links a { font-family: var(--font-display); font-size: clamp(3rem, 12vw, 5rem); letter-spacing: .03em; color: var(--ink); text-decoration: none; display: block; line-height: 1.1; transform: translateY(100%); transition: transform .45s ease, color .3s; }
+    .nav-overlay.open .nav-overlay-links a { transform: translateY(0); }
+    .nav-overlay-links li:nth-child(1) a { transition-delay: .05s; }
+    .nav-overlay-links li:nth-child(2) a { transition-delay: .1s; }
+    .nav-overlay-links li:nth-child(3) a { transition-delay: .15s; }
+    .nav-overlay-links li:nth-child(4) a { transition-delay: .2s; }
+    .nav-overlay-links li:nth-child(5) a { transition-delay: .25s; }
+    .nav-overlay-links a:hover { color: var(--orange); }
+    .nav-overlay-footer { margin-top: 3rem; font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-faint); opacity: 0; transition: opacity .4s ease .3s; }
+    .nav-overlay.open .nav-overlay-footer { opacity: 1; }
+
+    /* SECTION LABEL */
+    .section-label { font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: .8rem; margin-bottom: 1.2rem; }
+    .section-label::before { content: ''; width: 16px; height: 1px; background: var(--orange); }
+
+    /* HERO */
+    .portfolio-hero { padding-top: 4.5rem; border-bottom: 1px solid var(--border); background: var(--cream-dark); }
+    .portfolio-hero-inner { padding: 3.5rem 3rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; border-bottom: 1px solid var(--border); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(5rem, 9vw, 10rem); line-height: .85; letter-spacing: -.01em; }
+    .hero-title .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+    .hero-sub { font-family: var(--font-italic); font-style: italic; font-size: 1.05rem; line-height: 1.75; color: var(--ink-light); max-width: 380px; align-self: end; }
+    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); }
+    .hero-stat { padding: 1.2rem 3rem; border-right: 1px solid var(--border); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--orange); line-height: 1; }
+    .hero-stat-label { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin-top: .25rem; }
+
+    /* FILTERS */
+    .filters-bar { position: sticky; top: 57px; z-index: 100; background: rgba(245,242,236,.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 3rem; gap: 0; overflow-x: auto; }
+    .filter-btn { background: none; border: none; cursor: none; padding: 1.1rem 1.6rem; font-family: var(--font-body); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-faint); transition: color .3s; white-space: nowrap; position: relative; }
+    .filter-btn::after { content: ''; position: absolute; bottom: 0; left: 1.6rem; right: 1.6rem; height: 2px; background: var(--orange); transform: scaleX(0); transition: transform .3s; }
+    .filter-btn:hover { color: var(--ink); }
+    .filter-btn.active { color: var(--orange); }
+    .filter-btn.active::after { transform: scaleX(1); }
+    .filter-count { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; background: var(--orange); color: var(--cream); font-size: .5rem; border-radius: 50%; margin-left: .4rem; font-weight: 500; transition: opacity .3s; }
+    .filter-btn:not(.active) .filter-count { background: var(--border-strong); color: var(--ink-faint); }
+
+    /* GRID */
+    .portfolio-section { padding: 3rem; }
+    .portfolio-count { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2rem; }
+    .portfolio-count span { color: var(--orange); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-strong); }
+
+    /* CARD */
+    .portfolio-card { background: var(--cream); position: relative; overflow: hidden; display: flex; flex-direction: column; transition: opacity .4s, transform .4s; }
+    .portfolio-card.hidden { display: none; }
+    .portfolio-card-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--dark); }
+    .portfolio-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.25,.46,.45,.94); }
+    .portfolio-card:hover .portfolio-card-thumb img { transform: scale(1.04); }
+    .portfolio-card-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .35s; }
+    .portfolio-card:hover .portfolio-card-overlay { opacity: 1; }
+    .play-btn { width: 60px; height: 60px; border: 1.5px solid rgba(240,235,227,.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .3s, border-color .3s, transform .2s; }
+    .portfolio-card:hover .play-btn { background: var(--orange); border-color: var(--orange); transform: scale(1.08); }
+    .play-tri { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 16px solid #f0ebe3; margin-left: 4px; }
+    .card-cat-badge { position: absolute; top: .9rem; left: .9rem; font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.75); background: rgba(0,0,0,.5); padding: .25rem .65rem; backdrop-filter: blur(4px); }
+    .card-year { position: absolute; top: .9rem; right: .9rem; font-family: var(--font-display); font-size: .85rem; color: rgba(240,235,227,.4); }
+    .portfolio-card-body { padding: 1.5rem 1.8rem 2rem; display: flex; flex-direction: column; gap: .6rem; flex: 1; border-top: .5px solid var(--border-strong); }
+    .card-role { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
+    .card-title { font-family: var(--font-display); font-size: clamp(1.4rem, 2vw, 2rem); letter-spacing: .04em; color: var(--ink); line-height: 1; }
+    .card-client { font-family: var(--font-italic); font-style: italic; font-size: .88rem; color: var(--ink-light); line-height: 1.5; }
+    .card-meta { display: flex; flex-direction: column; gap: .3rem; margin-top: .4rem; padding-top: .9rem; border-top: .5px solid var(--border); }
+    .card-meta-row { display: flex; gap: .6rem; font-size: .68rem; }
+    .card-meta-key { color: var(--ink-faint); min-width: 50px; }
+    .card-meta-val { color: var(--ink-mid); font-weight: 400; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+    .card-tag { font-size: .54rem; letter-spacing: .12em; text-transform: uppercase; padding: .2rem .55rem; border: .5px solid rgba(224,120,32,.35); color: var(--orange); }
+    .card-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: auto; padding-top: 1.2rem; font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; transition: color .3s, gap .3s; }
+    .card-link:hover { color: var(--orange); gap: .7rem; }
+
+    /* FEATURED CARD (première, pleine largeur) */
+    .portfolio-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.6fr 1fr; }
+    .portfolio-card.featured .portfolio-card-thumb { aspect-ratio: auto; min-height: 340px; }
+    .portfolio-card.featured .card-title { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+    .portfolio-card.featured .portfolio-card-body { padding: 2.5rem 2.5rem 2.5rem; justify-content: space-between; }
+
+    /* EMPTY STATE */
+    .empty-state { grid-column: 1 / -1; padding: 5rem 2rem; text-align: center; }
+    .empty-state-icon { font-family: var(--font-display); font-size: 5rem; color: rgba(0,0,0,.06); line-height: 1; margin-bottom: 1rem; }
+    .empty-state-text { font-size: .85rem; color: var(--ink-faint); }
+
+    /* CTA BANDE */
+    .cta-band { background: var(--ink); display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 3rem; gap: 2rem; }
+    .cta-band-text { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.5rem); color: #f0ebe3; line-height: .95; }
+    .cta-band-text em { font-family: var(--font-italic); font-style: italic; font-size: .5em; color: rgba(240,235,227,.4); display: block; margin-top: .3rem; -webkit-text-stroke: 0; }
+    .btn-primary { display: inline-block; background: var(--orange); color: var(--cream); padding: .9rem 2.2rem; text-decoration: none; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; transition: background .3s, transform .3s; white-space: nowrap; }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { padding: 2.5rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: .08em; color: var(--ink); text-decoration: none; }
+    .footer-logo span { color: var(--orange); }
+    .footer-copy { font-size: .65rem; letter-spacing: .1em; color: var(--ink-faint); text-transform: uppercase; }
+    .footer-socials { display: flex; gap: 1.4rem; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-socials a { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; transition: color .3s; }
+    .footer-socials a:hover { color: var(--orange); }
+
+    /* CTA FLOTTANT */
+    #floatingCta { position: fixed; bottom: 2rem; right: 2rem; z-index: 500; display: flex; align-items: center; gap: .7rem; background: var(--ink); color: var(--cream); padding: .75rem 1.3rem; text-decoration: none; font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; box-shadow: 0 4px 24px rgba(0,0,0,.18); opacity: 0; transform: translateY(12px); transition: opacity .4s, transform .4s, background .3s; pointer-events: none; }
+    #floatingCta:hover { background: var(--orange); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .burger { display: flex; }
+      .portfolio-hero-inner { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.5rem 2rem; }
+      .hero-title { font-size: clamp(4rem, 15vw, 7rem); }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat { padding: 1rem 1.5rem; }
+      .filters-bar { padding: 0 1rem; top: 53px; }
+      .portfolio-section { padding: 2rem 1.5rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-card.featured { grid-template-columns: 1fr; }
+      .portfolio-card.featured .portfolio-card-thumb { min-height: 220px; }
+      .cta-band { flex-direction: column; align-items: flex-start; padding: 2rem 1.5rem; gap: 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+      .footer-socials { justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SACRÉ<span>CLAP</span> FILM</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="portfolio.html" class="active">Travaux</a></li>
+      <li><a href="index.html#processus">Processus</a></li>
+      <li><a href="mariages.html" class="mariage-link">Mariages</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Démarrer un projet</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-overlay-links">
+      <li><a href="index.html#services" class="nav-overlay-link">Services</a></li>
+      <li><a href="portfolio.html" class="nav-overlay-link">Travaux</a></li>
+      <li><a href="index.html#processus" class="nav-overlay-link">Processus</a></li>
+      <li><a href="mariages.html" class="nav-overlay-link">Mariages</a></li>
+      <li><a href="index.html#contact" class="nav-overlay-link">Contact</a></li>
+    </ul>
+    <div class="nav-overlay-footer">Sacréclap Film · Val d'Oise</div>
+  </div>
+
+  <!-- HERO -->
+  <section class="portfolio-hero">
+    <div class="portfolio-hero-inner reveal">
+      <div>
+        <p class="section-label">Réalisations</p>
+        <h1 class="hero-title">MES<br><span class="outline">TRAVAUX</span></h1>
+      </div>
+      <p class="hero-sub">Captation, montage, spot et court-métrage — chaque projet est une collaboration singulière avec un univers à raconter.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Projets</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4K</div><div class="hero-stat-label">Format principal</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Types de projets</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">95</div><div class="hero-stat-label">Val d'Oise</div></div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filters-bar" id="filtersBar">
+    <button class="filter-btn active" data-filter="all">Tout <span class="filter-count">5</span></button>
+    <button class="filter-btn" data-filter="captation">Captation <span class="filter-count">3</span></button>
+    <button class="filter-btn" data-filter="montage">Montage <span class="filter-count">5</span></button>
+    <button class="filter-btn" data-filter="spot">Spot publicitaire <span class="filter-count">1</span></button>
+    <button class="filter-btn" data-filter="court-metrage">Court-métrage <span class="filter-count">1</span></button>
+    <button class="filter-btn" data-filter="evenement">Événement / Concert <span class="filter-count">3</span></button>
+  </div>
+
+  <!-- GRID -->
+  <section class="portfolio-section">
+    <p class="portfolio-count" id="portfolioCount"><span id="visibleCount">5</span> projets affichés</p>
+    <div class="portfolio-grid" id="portfolioGrid">
+
+      <!-- NOEUD-NOUS — featured -->
+      <div class="portfolio-card featured reveal" data-cats="captation montage evenement">
+        <a href="https://www.youtube.com/watch?v=UtmcoWIJStQ" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/UtmcoWIJStQ/maxresdefault.jpg" alt="Noeud-nous" loading="lazy" onerror="this.src='https://img.youtube.com/vi/UtmcoWIJStQ/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Captation & Montage</div>
+          <div class="card-year">2025</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div>
+            <div class="card-role">Captation · Montage · Événement</div>
+            <div class="card-title">NOEUD-NOUS</div>
+            <div class="card-client">Compagnie l'Êttre-Louve accompagnée de Taïga Tribe</div>
+            <div class="card-meta">
+              <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">08 février 2025</span></div>
+              <div class="card-meta-row"><span class="card-meta-key">Lieu</span><span class="card-meta-val">MJC Boris Vian, Pontault-Combault</span></div>
+              <div class="card-meta-row"><span class="card-meta-key">Client</span><span class="card-meta-val">La Boîte de Concerts</span></div>
+              <div class="card-meta-row"><span class="card-meta-key">Format</span><span class="card-meta-val">Captation scène multi-angle + montage</span></div>
+            </div>
+            <div class="card-tags">
+              <span class="card-tag">GH5 Mark II</span>
+              <span class="card-tag">Multi-angle</span>
+              <span class="card-tag">DaVinci Resolve</span>
+              <span class="card-tag">Son live</span>
+            </div>
+          </div>
+          <a href="https://www.youtube.com/watch?v=UtmcoWIJStQ" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- L'ÉLOGE DU SILENCE -->
+      <div class="portfolio-card reveal" data-cats="captation montage evenement">
+        <a href="https://youtu.be/qgU9aBI32uI" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/qgU9aBI32uI/maxresdefault.jpg" alt="L'Éloge du Silence" loading="lazy" onerror="this.src='https://img.youtube.com/vi/qgU9aBI32uI/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Réalisation & Montage</div>
+          <div class="card-year">2025</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Captation · Montage · Concert</div>
+          <div class="card-title">L'ÉLOGE DU SILENCE</div>
+          <div class="card-client">Marc Béhin & Liubov — Concert franco-ukrainien</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">Novembre 2025</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Format</span><span class="card-meta-val">Captation concert + montage narratif</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Concert</span>
+            <span class="card-tag">Étalonnage</span>
+            <span class="card-tag">Lumière naturelle</span>
+          </div>
+          <a href="https://youtu.be/qgU9aBI32uI" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- LES BRUISSEMENTS DU VIVANT -->
+      <div class="portfolio-card reveal" data-cats="captation montage evenement">
+        <a href="https://www.youtube.com/watch?v=ybCipCtC9eI" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/ybCipCtC9eI/maxresdefault.jpg" alt="Les Bruissements du Vivant" loading="lazy" onerror="this.src='https://img.youtube.com/vi/ybCipCtC9eI/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Captation & Montage</div>
+          <div class="card-year">2025</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Captation · Montage · Danse</div>
+          <div class="card-title">LES BRUISSEMENTS DU VIVANT</div>
+          <div class="card-client">Compagnie l'Êttre-Louve — Danse & Écologie</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">2025</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Format</span><span class="card-meta-val">Captation danse + post-production</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Danse</span>
+            <span class="card-tag">Performance</span>
+            <span class="card-tag">DaVinci Resolve</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=ybCipCtC9eI" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- PARADIS FLEURI -->
+      <div class="portfolio-card reveal" data-cats="spot montage">
+        <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/XodCfjTTI5k/maxresdefault.jpg" alt="Paradis Fleuri — Gîte du Vexin" loading="lazy" onerror="this.src='https://img.youtube.com/vi/XodCfjTTI5k/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Réalisation & Montage</div>
+          <div class="card-year">2025</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Réalisation · Montage · Spot publicitaire</div>
+          <div class="card-title">PARADIS FLEURI</div>
+          <div class="card-client">Gîte du Vexin — Spot publicitaire</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Date</span><span class="card-meta-val">2025</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Format</span><span class="card-meta-val">Spot 60 sec · 4K</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Client</span><span class="card-meta-val">Gîte du Vexin, Val d'Oise</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Spot pub</span>
+            <span class="card-tag">4K</span>
+            <span class="card-tag">DJI RS3</span>
+            <span class="card-tag">Étalonnage</span>
+          </div>
+          <a href="https://youtu.be/XodCfjTTI5k" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+      <!-- 17H35 -->
+      <div class="portfolio-card reveal" data-cats="court-metrage montage">
+        <a href="https://www.youtube.com/watch?v=V3qE1Ge5v34" target="_blank" rel="noopener" class="portfolio-card-thumb">
+          <img src="https://img.youtube.com/vi/V3qE1Ge5v34/maxresdefault.jpg" alt="17H35 — Nikon Film Festival 2026" loading="lazy" onerror="this.src='https://img.youtube.com/vi/V3qE1Ge5v34/hqdefault.jpg'"/>
+          <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
+          <div class="card-cat-badge">Chef opérateur & Montage</div>
+          <div class="card-year">2026</div>
+        </a>
+        <div class="portfolio-card-body">
+          <div class="card-role">Chef opérateur · Montage · Étalonnage</div>
+          <div class="card-title">17H35</div>
+          <div class="card-client">Manon Da Costa Mallet — Nikon Film Festival 2026</div>
+          <div class="card-meta">
+            <div class="card-meta-row"><span class="card-meta-key">Année</span><span class="card-meta-val">2026</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Festival</span><span class="card-meta-val">Nikon Film Festival · Thème : La Beauté</span></div>
+            <div class="card-meta-row"><span class="card-meta-key">Rôle</span><span class="card-meta-val">Chef opérateur + montage + étalonnage</span></div>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Court-métrage</span>
+            <span class="card-tag">Festival</span>
+            <span class="card-tag">Chef opérateur</span>
+            <span class="card-tag">DaVinci Resolve</span>
+          </div>
+          <a href="https://www.youtube.com/watch?v=V3qE1Ge5v34" target="_blank" rel="noopener" class="card-link">Voir sur YouTube →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA BANDE -->
+  <div class="cta-band">
+    <div class="cta-band-text">UN PROJET<br>EN TÊTE ?<em>Parlons-en.</em></div>
+    <a href="index.html#contact" class="btn-primary">Démarrer un projet →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="index.html" class="footer-logo">SACRÉ<span>CLAP</span> FILM</a>
+    <div class="footer-copy">© 2026 Sacréclap Film — Tous droits réservés</div>
+    <div class="footer-socials">
+      <a href="https://wa.me/33679374391" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/sun.is.blue/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@Sacr%C3%A9ClapFilm" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </footer>
+
+  <!-- CTA FLOTTANT -->
+  <a href="https://wa.me/33679374391" target="_blank" rel="noopener" id="floatingCta" onmouseover="this.style.background='var(--orange)'" onmouseout="this.style.background='var(--ink)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Me contacter
+  </a>
+
+  <script>
+    // CURSOR
+    const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+    let rx=0,ry=0,cx=0,cy=0;
+    document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+    (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+
+    // REVEAL
+    const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    // BURGER
+    const burger=document.getElementById('burger'),nav=document.getElementById('navOverlay');
+    burger.addEventListener('click',()=>{burger.classList.toggle('open');nav.classList.toggle('open');document.body.style.overflow=nav.classList.contains('open')?'hidden':'';});
+    document.querySelectorAll('.nav-overlay-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');nav.classList.remove('open');document.body.style.overflow='';}));
+
+    // FILTERS
+    const cards=document.querySelectorAll('.portfolio-card');
+    const countEl=document.getElementById('visibleCount');
+    document.querySelectorAll('.filter-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter=btn.dataset.filter;
+        let visible=0;
+        cards.forEach(card=>{
+          const cats=card.dataset.cats;
+          const show=filter==='all'||cats.includes(filter);
+          if(show){card.classList.remove('hidden');visible++;}
+          else{card.classList.add('hidden');}
+        });
+        countEl.textContent=visible;
+        // featured uniquement si pas hidden
+        const featured=document.querySelector('.portfolio-card.featured');
+        if(featured&&!featured.classList.contains('hidden')){featured.style.gridColumn='1 / -1';}
+        else if(featured){featured.style.gridColumn='';}
+      });
+    });
+
+    // CTA FLOTTANT
+    const cta=document.getElementById('floatingCta');
+    const ctaBand=document.querySelector('.cta-band');
+    let ctaBandVisible=false;
+    const ctaBandObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ctaBandVisible=e.isIntersecting;updateCta();});
+    },{threshold:0});
+    ctaBandObs.observe(ctaBand);
+    function updateCta(){
+      if(window.scrollY>400&&!ctaBandVisible){cta.style.opacity='1';cta.style.transform='translateY(0)';cta.style.pointerEvents='all';}
+      else{cta.style.opacity='0';cta.style.transform='translateY(12px)';cta.style.pointerEvents='none';}
+    }
+    window.addEventListener('scroll',updateCta);
+  </script>
+</body>
+</html>

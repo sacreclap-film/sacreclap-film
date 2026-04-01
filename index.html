@@ -334,7 +334,7 @@
     <a href="index.html" class="nav-logo">SACRÉ<span>CLAP</span> FILM</a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Travaux</a></li>
+      <li><a href="portfolio.html">Travaux</a></li>
       <li><a href="#processus">Processus</a></li>
       <li><a href="mariages.html" class="mariage-link">Mariages</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -350,7 +350,7 @@
   <div class="nav-overlay" id="navOverlay">
     <ul class="nav-overlay-links">
       <li><a href="#services" class="nav-overlay-link">Services</a></li>
-      <li><a href="#portfolio" class="nav-overlay-link">Travaux</a></li>
+      <li><a href="portfolio.html" class="nav-overlay-link">Travaux</a></li>
       <li><a href="#processus" class="nav-overlay-link">Processus</a></li>
       <li><a href="mariages.html" class="nav-overlay-link">Mariages</a></li>
       <li><a href="#contact" class="nav-overlay-link">Contact</a></li>
@@ -371,7 +371,7 @@
         <p class="hero-desc">Opérateur-monteur disponible pour renforcer vos équipes ou prendre en charge vos projets de A à Z — fiction, documentaire, spot, making-of.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn-primary">Démarrer un projet</a>
-          <a href="#portfolio" class="btn-ghost">Voir les travaux</a>
+          <a href="portfolio.html" class="btn-ghost">Voir les travaux</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -530,7 +530,7 @@
   <section class="portfolio" id="portfolio">
     <div class="portfolio-header reveal">
       <h2 class="portfolio-title">QUELQUES<br>TRAVAUX</h2>
-      <a href="https://www.youtube.com/@sacreclap" target="_blank" rel="noopener" class="btn-ghost">Voir la chaîne</a>
+      <a href="portfolio.html" class="btn-ghost">Voir tous les travaux</a>
     </div>
     <div class="portfolio-featured reveal">
       <div class="portfolio-embed-wrap">
@@ -719,10 +719,17 @@
     });
 
     const cta=document.getElementById('floatingCta');
-    window.addEventListener('scroll',()=>{
-      if(window.scrollY>400){cta.style.opacity='1';cta.style.transform='translateY(0)';cta.style.pointerEvents='all';}
+    const contactSection=document.querySelector('.contact');
+    let contactVisible=false;
+    const contactObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ contactVisible=e.isIntersecting; updateCta(); });
+    },{threshold:0});
+    contactObs.observe(contactSection);
+    function updateCta(){
+      if(window.scrollY>400 && !contactVisible){cta.style.opacity='1';cta.style.transform='translateY(0)';cta.style.pointerEvents='all';}
       else{cta.style.opacity='0';cta.style.transform='translateY(12px)';cta.style.pointerEvents='none';}
-    });
+    }
+    window.addEventListener('scroll', updateCta);
 
     emailjs.init('p8QTlNsbB88DgFKqx');
     document.getElementById('formSubmit').addEventListener('click',function(){
