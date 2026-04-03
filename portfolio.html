@@ -40,11 +40,23 @@
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--font-body); cursor: none; overflow-x: hidden; }
 
-    /* CURSOR */
-    .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
-    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(224,120,32,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .3s, height .3s, opacity .3s; }
-    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; }
-    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: .3; }
+    /* CURSOR — pointer devices only */
+    @media (pointer: fine) {
+      body { cursor: none; }
+      .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
+      .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(224,120,32,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .3s, height .3s, opacity .3s; }
+      body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; }
+      body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: .3; }
+    }
+    @media (pointer: coarse) {
+      .cursor, .cursor-ring { display: none; }
+    }
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .portfolio-card-thumb img { transition: none; }
+    }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(245,242,236,.93); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -246,6 +258,7 @@
 
   <!-- FILTERS -->
   <div class="filters-bar" id="filtersBar">
+    <button class="filter-btn" data-filter="captation">Captation <span class="filter-count">4</span></button>
     <button class="filter-btn" data-filter="evenement">Événement / Concert <span class="filter-count">4</span></button>
     <button class="filter-btn" data-filter="spot">Spot publicitaire <span class="filter-count">3</span></button>
     <button class="filter-btn" data-filter="montage">Montage <span class="filter-count">8</span></button>
@@ -549,8 +562,10 @@
     // CURSOR
     const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
     let rx=0,ry=0,cx=0,cy=0;
-    document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
-    (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+    if(window.matchMedia('(pointer: fine)').matches){
+      document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+      (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+    }
 
     // REVEAL
     const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.08});

@@ -32,11 +32,23 @@
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--font-body); cursor: none; overflow-x: hidden; }
 
-    /* CURSOR */
-    .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
-    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(224,120,32,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .3s, height .3s, opacity .3s; }
-    body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; }
-    body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: .3; }
+    /* CURSOR — pointer devices only */
+    @media (pointer: fine) {
+      body { cursor: none; }
+      .cursor { position: fixed; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .3s, height .3s; }
+      .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(224,120,32,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .3s, height .3s, opacity .3s; }
+      body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 18px; height: 18px; }
+      body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: .3; }
+    }
+    @media (pointer: coarse) {
+      .cursor, .cursor-ring { display: none; }
+    }
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      .marquee-inner { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: rgba(245,242,236,.93); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
@@ -570,25 +582,29 @@
     </div>
     <div class="contact-form-wrap reveal">
       <div class="contact-form">
-        <div class="form-row">
-          <div class="form-field"><label>Prénom</label><input type="text" id="prenom" placeholder="Marie"/></div>
-          <div class="form-field"><label>Nom</label><input type="text" id="nom" placeholder="Dupont"/></div>
+        <!-- Honeypot anti-spam (invisible) -->
+        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+          <input type="text" name="website" id="hpot" tabindex="-1" autocomplete="off"/>
         </div>
-        <div class="form-field"><label>Email</label><input type="email" id="email" placeholder="marie@email.fr"/></div>
         <div class="form-row">
-          <div class="form-field"><label>Date du mariage</label><input type="text" id="date" placeholder="Ex : 14 juin 2026"/></div>
-          <div class="form-field"><label>Lieu</label><input type="text" id="lieu" placeholder="Domaine, ville..."/></div>
+          <div class="form-field"><label for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" placeholder="Marie" autocomplete="given-name" required minlength="2" maxlength="60"/></div>
+          <div class="form-field"><label for="nom">Nom</label><input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" maxlength="60"/></div>
+        </div>
+        <div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="marie@email.fr" autocomplete="email" required/></div>
+        <div class="form-row">
+          <div class="form-field"><label for="date">Date du mariage</label><input type="text" id="date" name="date" placeholder="Ex : 14 juin 2026"/></div>
+          <div class="form-field"><label for="lieu">Lieu</label><input type="text" id="lieu" name="lieu" placeholder="Domaine, ville..."/></div>
         </div>
         <div class="form-field">
-          <label>Formule envisagée</label>
-          <select id="formule">
+          <label for="formule">Formule envisagée</label>
+          <select id="formule" name="formule">
             <option value="">Sélectionner...</option>
             <option>L'Essentielle — 1 690 €</option>
             <option>Le Cinéma — 1 990 €</option>
             <option>Je ne sais pas encore</option>
           </select>
         </div>
-        <div class="form-field"><label>Votre message</label><textarea rows="4" id="message" placeholder="Lieu, ambiance souhaitée, suppléments envisagés..."></textarea></div>
+        <div class="form-field"><label for="message">Votre message</label><textarea rows="4" id="message" name="message" placeholder="Lieu, ambiance souhaitée, suppléments envisagés..."></textarea></div>
         <button class="form-submit" id="formSubmit" type="button">
           <span id="submitLabel">Envoyer ma demande</span>
           <span id="submitArrow">→</span>
@@ -619,8 +635,10 @@
   <script>
     const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
     let rx=0,ry=0,cx=0,cy=0;
-    document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
-    (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+    if(window.matchMedia('(pointer: fine)').matches){
+      document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+      (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+    }
 
     const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.1});
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
@@ -644,6 +662,13 @@
 
     emailjs.init('p8QTlNsbB88DgFKqx');
     document.getElementById('formSubmit').addEventListener('click',function(){
+      // Honeypot check
+      if(document.getElementById('hpot').value !== '') return;
+      // Rate-limit: 1 envoi par minute
+      const lastSent = localStorage.getItem('sc_last_submit_mariage');
+      if(lastSent && Date.now() - Number(lastSent) < 60000){
+        alert('Veuillez patienter 1 minute entre deux envois.');return;
+      }
       const prenom=document.getElementById('prenom').value.trim();
       const nom=document.getElementById('nom').value.trim();
       const email=document.getElementById('email').value.trim();
@@ -657,7 +682,7 @@
       const params={prenom,nom,email,projet:'Film de mariage — '+formule,date_tournage:date||'Non précisée',budget:formule||'Non précisé',message:`Lieu : ${lieu||'Non précisé'}\n\n${message||'Aucune description.'}`};
       emailjs.send('service_wjbuwv4','template_keaz1y3',params)
         .then(()=>emailjs.send('service_wjbuwv4','template_uj6k5rh',params))
-        .then(()=>{document.getElementById('formSuccess').style.display='block';btn.disabled=false;lbl.textContent='Message envoyé';arr.textContent='✓';})
+        .then(()=>{localStorage.setItem('sc_last_submit_mariage',Date.now());document.getElementById('formSuccess').style.display='block';btn.disabled=false;lbl.textContent='Message envoyé';arr.textContent='✓';})
         .catch(()=>{btn.disabled=false;lbl.textContent='Envoyer ma demande';arr.textContent='→';});
     });
   </script>
