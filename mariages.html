@@ -652,8 +652,8 @@
       const btn=document.getElementById('formSubmit'),lbl=document.getElementById('submitLabel'),arr=document.getElementById('submitArrow');
       btn.disabled=true;lbl.textContent='Envoi en cours...';arr.textContent='⟳';
       const params={prenom,nom,email,projet:'Film de mariage — '+formule,date_tournage:date||'Non précisée',budget:formule||'Non précisé',message:`Lieu : ${lieu||'Non précisé'}\n\n${message||'Aucune description.'}`};
-      emailjs.send('service_xxxxxxx','template_keaz1y3',params)
-        .then(()=>emailjs.send('service_xxxxxxx','template_uj6k5rh',params))
+      emailjs.send('service_wjbuwv4','template_keaz1y3',params)
+        .then(()=>emailjs.send('service_wjbuwv4','template_uj6k5rh',params))
         .then(()=>{document.getElementById('formSuccess').style.display='block';btn.disabled=false;lbl.textContent='Message envoyé';arr.textContent='✓';})
         .catch(()=>{btn.disabled=false;lbl.textContent='Envoyer ma demande';arr.textContent='→';});
     });
