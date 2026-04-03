@@ -1,3 +1,6 @@
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -6,4 +9,5 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' cdn.jsdelivr.net api.emailjs.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; frame-src youtube.com www.youtube.com; img-src 'self' img.youtube.com i.ytimg.com data: https:; connect-src api.emailjs.com; object-src 'none'; base-uri 'self'"
+    # EmailJS retiré de connect-src — les appels passent désormais par la Netlify Function
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; frame-src youtube.com www.youtube.com; img-src 'self' img.youtube.com i.ytimg.com data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'"

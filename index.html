@@ -27,7 +27,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -758,11 +757,10 @@
     }
     window.addEventListener('scroll', updateCta);
 
-    emailjs.init('p8QTlNsbB88DgFKqx');
-    document.getElementById('formSubmit').addEventListener('click',function(){
-      // Honeypot check
+    document.getElementById('formSubmit').addEventListener('click', async function(){
+      // Honeypot check (double protection côté client)
       if(document.getElementById('hpot').value !== '') return;
-      // Rate-limit: 1 envoi par minute
+      // Rate-limit client : 1 envoi par minute
       const lastSent = localStorage.getItem('sc_last_submit');
       if(lastSent && Date.now() - Number(lastSent) < 60000){
         const err=document.getElementById('formError');
@@ -781,11 +779,35 @@
       }
       const btn=document.getElementById('formSubmit'),lbl=document.getElementById('submitLabel'),arr=document.getElementById('submitArrow');
       btn.disabled=true;lbl.textContent='Envoi en cours...';arr.textContent='⟳';
-      const params={prenom,nom,email,projet,date_tournage:date_tournage||'Non précisée',budget:budget||'Non précisé',message:message||'Aucune description.'};
-      emailjs.send('service_wjbuwv4','template_keaz1y3',params)
-        .then(()=>emailjs.send('service_wjbuwv4','template_uj6k5rh',params))
-        .then(()=>{localStorage.setItem('sc_last_submit',Date.now());document.getElementById('formSuccess').style.display='block';document.getElementById('formError').style.display='none';document.getElementById('contactForm').reset();lbl.textContent='Message envoyé';arr.textContent='✓';})
-        .catch(err=>{console.error(err);document.getElementById('formError').style.display='block';document.getElementById('formError').textContent="Une erreur s'est produite. Réessayez ou contactez-moi directement.";btn.disabled=false;lbl.textContent='Envoyer le message';arr.textContent='→';});
+      try {
+        const res = await fetch('/.netlify/functions/contact', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({
+            website: document.getElementById('hpot').value, // honeypot
+            form_type: 'contact',
+            prenom, nom, email, projet,
+            date_tournage: date_tournage||'Non précisée',
+            budget: budget||'Non précisé',
+            message: message||'Aucune description.'
+          })
+        });
+        const data = await res.json();
+        if(res.ok && data.ok){
+          localStorage.setItem('sc_last_submit', Date.now());
+          document.getElementById('formSuccess').style.display='block';
+          document.getElementById('formError').style.display='none';
+          document.getElementById('contactForm').reset();
+          lbl.textContent='Message envoyé';arr.textContent='✓';
+        } else {
+          throw new Error(data.error || 'Erreur inconnue');
+        }
+      } catch(e){
+        console.error(e);
+        document.getElementById('formError').style.display='block';
+        document.getElementById('formError').textContent=e.message||"Une erreur s'est produite. Réessayez ou contactez-moi directement.";
+        btn.disabled=false;lbl.textContent='Envoyer le message';arr.textContent='→';
+      }
     });
   </script>
 </body>
