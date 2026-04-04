@@ -39,7 +39,7 @@
       --font-italic: 'Playfair Display', serif;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); cursor: none; overflow-x: hidden; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); overflow-x: hidden; }
 
     /* CURSOR — pointer devices only */
     @media (pointer: fine) {
@@ -72,7 +72,7 @@
     .nav-cta:hover { background: var(--orange); }
 
     /* BURGER */
-    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 4px; z-index: 300; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 300; }
     .burger-line { width: 24px; height: 1.5px; background: var(--ink); transition: transform .35s, opacity .35s, width .35s; transform-origin: center; }
     .burger.open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .burger.open .burger-line:nth-child(2) { opacity: 0; width: 0; }
@@ -179,7 +179,7 @@
     /* ACCORDION */
     .accordion { border-top: .5px solid var(--border-strong); }
     .accordion-item { border-bottom: .5px solid var(--border-strong); overflow: hidden; }
-    .accordion-trigger { width: 100%; background: none; border: none; padding: 1.6rem 3rem; display: flex; align-items: center; gap: 1.8rem; cursor: none; text-align: left; transition: background .3s; }
+    .accordion-trigger { width: 100%; background: none; border: none; padding: 1.6rem 3rem; display: flex; align-items: center; gap: 1.8rem; cursor: pointer; text-align: left; transition: background .3s; }
     .accordion-trigger:hover { background: rgba(0,0,0,.02); }
     .accordion-item.active .accordion-trigger { background: rgba(224,120,32,.05); }
     .accordion-num { font-family: var(--font-display); font-size: 1.3rem; color: var(--orange); min-width: 2.2rem; line-height: 1; opacity: .4; transition: opacity .3s; }
@@ -275,7 +275,7 @@
     .form-field label { display: block; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); padding: .9rem 1.1rem 0; }
     .form-field input, .form-field select, .form-field textarea { width: 100%; background: transparent; border: none; outline: none; color: var(--ink); font-family: var(--font-body); font-size: .88rem; padding: .3rem 1.1rem .9rem; resize: none; }
     .form-field select option { background: var(--cream); }
-    .form-submit { margin-top: 1px; background: var(--ink); color: var(--cream); border: none; padding: 1.2rem 1.8rem; font-family: var(--font-body); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; cursor: none; transition: background .3s; display: flex; justify-content: space-between; align-items: center; }
+    .form-submit { margin-top: 1px; background: var(--ink); color: var(--cream); border: none; padding: 1.2rem 1.8rem; font-family: var(--font-body); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: background .3s; display: flex; justify-content: space-between; align-items: center; }
     .form-submit:hover { background: var(--orange); }
     .submit-arrow { font-size: 1.1rem; }
     #formSuccess { display:none; margin-top:.8rem; padding:.9rem 1.1rem; background:rgba(224,120,32,.08); border-left:3px solid var(--orange); font-size:.8rem; color:var(--ink); }
@@ -707,7 +707,7 @@
       const id=el.dataset.ytid;
       el.style.cursor='default';
       el.onclick=null;
-      el.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:none;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="L'Éloge du Silence"></iframe>`;
+      el.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:none;" sandbox="allow-scripts allow-same-origin allow-presentation" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="L'Éloge du Silence"></iframe>`;
     }
 
     const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');

@@ -30,7 +30,7 @@
       --font-italic: 'Playfair Display', serif;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); cursor: none; overflow-x: hidden; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); overflow-x: hidden; }
 
     /* CURSOR — pointer devices only */
     @media (pointer: fine) {
@@ -60,7 +60,7 @@
     .nav-links a.active { color: var(--orange); }
     .nav-cta { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; background: var(--ink); color: var(--cream); padding: .6rem 1.4rem; text-decoration: none; transition: background .3s; }
     .nav-cta:hover { background: var(--orange); }
-    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 4px; z-index: 300; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 300; }
     .burger-line { width: 24px; height: 1.5px; background: var(--ink); transition: transform .35s, opacity .35s, width .35s; transform-origin: center; }
     .burger.open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .burger.open .burger-line:nth-child(2) { opacity: 0; width: 0; }
@@ -211,7 +211,7 @@
     .form-field label { display: block; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); padding: .9rem 1.1rem 0; }
     .form-field input, .form-field select, .form-field textarea { width: 100%; background: transparent; border: none; outline: none; color: var(--ink); font-family: var(--font-body); font-size: .88rem; padding: .3rem 1.1rem .9rem; resize: none; }
     .form-field select option { background: var(--cream); }
-    .form-submit { margin-top: 1px; background: var(--ink); color: var(--cream); border: none; padding: 1.2rem 1.8rem; font-family: var(--font-body); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; cursor: none; transition: background .3s; display: flex; justify-content: space-between; align-items: center; }
+    .form-submit { margin-top: 1px; background: var(--ink); color: var(--cream); border: none; padding: 1.2rem 1.8rem; font-family: var(--font-body); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: background .3s; display: flex; justify-content: space-between; align-items: center; }
     .form-submit:hover { background: var(--orange); }
     #formSuccess { display:none; margin-top:.8rem; padding:.9rem 1.1rem; background:rgba(224,120,32,.08); border-left:3px solid var(--orange); font-size:.8rem; color:var(--ink); }
 
@@ -592,8 +592,8 @@
           <div class="form-field"><label for="nom">Votre nom</label><input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" maxlength="60"/></div>
         </div>
         <div class="form-row">
-          <div class="form-field"><label for="prenom2">Prénom de votre conjoint·e</label><input type="text" id="prenom2" name="prenom2" placeholder="Thomas" maxlength="60"/></div>
-          <div class="form-field"><label for="nom2">Nom de votre conjoint·e</label><input type="text" id="nom2" name="nom2" placeholder="Martin" maxlength="60"/></div>
+          <div class="form-field"><label for="prenom2">Prénom de votre conjoint·e</label><input type="text" id="prenom2" name="prenom2" placeholder="Thomas" autocomplete="given-name" maxlength="60"/></div>
+          <div class="form-field"><label for="nom2">Nom de votre conjoint·e</label><input type="text" id="nom2" name="nom2" placeholder="Martin" autocomplete="family-name" maxlength="60"/></div>
         </div>
         <div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="marie@email.fr" autocomplete="email" required/></div>
         <div class="form-row">
