@@ -139,12 +139,10 @@ exports.handler = async (event) => {
   // Pour le formulaire mariage, enrichir le message avec le lieu
   if (form_type === 'mariage' && body.lieu) {
     const conjoint = [clean(body.prenom2), clean(body.nom2)].filter(Boolean).join(' ') || 'Non précisé';
-    const supplements = clean(body.supplements) || 'Aucun';
     params.message = [
       `Conjoint·e : ${conjoint}`,
       `Lieu : ${clean(body.lieu)}`,
-      `Suppléments souhaités :\n${supplements}`,
-      `\n${params.message}`,
+      `\n${clean(body.message) || 'Aucune description.'}`,
     ].join('\n');
     params.projet = `Film de mariage — ${clean(body.formule) || 'Formule non précisée'}`;
     params.date_tournage = clean(body.date) || 'Non précisée';
