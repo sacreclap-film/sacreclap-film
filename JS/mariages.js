@@ -45,29 +45,29 @@ document.querySelectorAll('.nav-overlay-link').forEach(l => {
 
 // ─── CTA flottant WhatsApp ────────────────────────────────────────────────────
 const cta = document.getElementById('floatingCta');
-const contactSection = document.getElementById('contact-mariage');
+const contactSection = document.querySelector('.contact-cta');
 let contactVisible = false;
 
-const contactObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { contactVisible = e.isIntersecting; updateCta(); });
-}, { threshold: 0 });
-contactObs.observe(contactSection);
+if (cta && contactSection) {
+  const contactObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { contactVisible = e.isIntersecting; updateCta(); });
+  }, { threshold: 0 });
+  contactObs.observe(contactSection);
 
-function updateCta() {
-  if (window.scrollY > 400 && !contactVisible) {
-    cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; cta.style.pointerEvents = 'all';
-  } else {
-    cta.style.opacity = '0'; cta.style.transform = 'translateY(12px)'; cta.style.pointerEvents = 'none';
+  function updateCta() {
+    if (window.scrollY > 400 && !contactVisible) {
+      cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; cta.style.pointerEvents = 'all';
+    } else {
+      cta.style.opacity = '0'; cta.style.transform = 'translateY(12px)'; cta.style.pointerEvents = 'none';
+    }
   }
+  window.addEventListener('scroll', updateCta);
 }
-window.addEventListener('scroll', updateCta);
 
 // ─── Formulaire mariage ───────────────────────────────────────────────────────
 document.getElementById('formSubmit').addEventListener('click', async function () {
-  // Honeypot
   if (document.getElementById('hpot').value !== '') return;
 
-  // Rate-limit client : 1 envoi par minute
   const lastSent = localStorage.getItem('sc_last_submit_mariage');
   if (lastSent && Date.now() - Number(lastSent) < 60000) {
     const err = document.getElementById('formError');
@@ -76,17 +76,15 @@ document.getElementById('formSubmit').addEventListener('click', async function (
     return;
   }
 
-  const prenom = document.getElementById('prenom').value.trim();
-  const nom = document.getElementById('nom').value.trim();
-  const prenom2 = document.getElementById('prenom2').value.trim();
-  const nom2 = document.getElementById('nom2').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const date = document.getElementById('date').value.trim();
-  const lieu = document.getElementById('lieu').value.trim();
-  const formule = document.getElementById('formule').value;
-  const message = document.getElementById('message').value.trim();
+  const prenom  = document.getElementById('prenom').value.trim();
+  const email   = document.getElementById('email').value.trim();
 
-  if (!prenom || !email) return;
+  if (!prenom || !email) {
+    const err = document.getElementById('formError');
+    err.style.display = 'block';
+    err.textContent = 'Merci de renseigner au minimum votre prénom et votre email.';
+    return;
+  }
 
   const btn = document.getElementById('formSubmit');
   const lbl = document.getElementById('submitLabel');
@@ -98,11 +96,17 @@ document.getElementById('formSubmit').addEventListener('click', async function (
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        website: document.getElementById('hpot').value,
+        website:  document.getElementById('hpot').value,
         form_type: 'mariage',
-        prenom, nom, prenom2, nom2, email,
-        date, lieu, formule,
-        message: message || 'Aucune description.'
+        prenom,
+        nom:      document.getElementById('nom').value.trim(),
+        prenom2:  document.getElementById('prenom2').value.trim(),
+        nom2:     document.getElementById('nom2').value.trim(),
+        email,
+        date:     document.getElementById('date').value.trim(),
+        lieu:     document.getElementById('lieu').value.trim(),
+        formule:  document.getElementById('formule').value,
+        message:  document.getElementById('message').value.trim(),
       })
     });
     const data = await res.json();
@@ -110,7 +114,8 @@ document.getElementById('formSubmit').addEventListener('click', async function (
       localStorage.setItem('sc_last_submit_mariage', Date.now());
       document.getElementById('formSuccess').style.display = 'block';
       document.getElementById('formError').style.display = 'none';
-      btn.disabled = false; lbl.textContent = 'Message envoyé'; arr.textContent = '✓';
+      document.querySelector('.contact-form').reset();
+      lbl.textContent = 'Demande envoyée'; arr.textContent = '✓';
     } else {
       throw new Error(data.error || 'Erreur inconnue');
     }
@@ -118,7 +123,7 @@ document.getElementById('formSubmit').addEventListener('click', async function (
     console.error(e);
     const err = document.getElementById('formError');
     err.style.display = 'block';
-    err.textContent = e.message || "Une erreur s'est produite. Contactez-moi par WhatsApp.";
+    err.textContent = e.message || "Une erreur s'est produite. Réessayez ou contactez-moi directement.";
     btn.disabled = false; lbl.textContent = 'Envoyer ma demande'; arr.textContent = '→';
   }
 });
