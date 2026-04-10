@@ -65,7 +65,7 @@ function applyFilter(filter) {
   });
   countEl.textContent = visible;
 
-  // Carte featured : priorité à data-featured-for, sinon première visible
+  // Carte featured : celle qui a data-featured-for correspondant au filtre actif
   let featuredCard = null;
   cards.forEach(card => {
     if (card.classList.contains('hidden')) return;
@@ -74,11 +74,14 @@ function applyFilter(filter) {
       featuredCard = card;
     }
   });
+
+  // Fallback : première carte visible
   if (!featuredCard) {
     cards.forEach(card => {
       if (!card.classList.contains('hidden') && !featuredCard) featuredCard = card;
     });
   }
+
   if (featuredCard) {
     featuredCard.classList.add('featured');
     featuredCard.style.gridColumn = '1 / -1';
@@ -86,6 +89,7 @@ function applyFilter(filter) {
   }
 }
 
+// Filtre initial
 applyFilter('evenement');
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -106,16 +110,18 @@ const cta = document.getElementById('floatingCta');
 const ctaBand = document.querySelector('.cta-band');
 let ctaBandVisible = false;
 
-const ctaBandObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { ctaBandVisible = e.isIntersecting; updateCta(); });
-}, { threshold: 0 });
-ctaBandObs.observe(ctaBand);
+if (cta && ctaBand) {
+  const ctaBandObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { ctaBandVisible = e.isIntersecting; updateCta(); });
+  }, { threshold: 0 });
+  ctaBandObs.observe(ctaBand);
 
-function updateCta() {
-  if (window.scrollY > 400 && !ctaBandVisible) {
-    cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; cta.style.pointerEvents = 'all';
-  } else {
-    cta.style.opacity = '0'; cta.style.transform = 'translateY(12px)'; cta.style.pointerEvents = 'none';
+  function updateCta() {
+    if (window.scrollY > 400 && !ctaBandVisible) {
+      cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; cta.style.pointerEvents = 'all';
+    } else {
+      cta.style.opacity = '0'; cta.style.transform = 'translateY(12px)'; cta.style.pointerEvents = 'none';
+    }
   }
+  window.addEventListener('scroll', updateCta);
 }
-window.addEventListener('scroll', updateCta);
