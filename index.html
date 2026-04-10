@@ -114,7 +114,7 @@
     .stat-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--orange); line-height: 1; }
     .stat-label { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-top: .3rem; }
     .hero-right { display: flex; flex-direction: column; }
-    .hero-video-wrap { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .hero-video-wrap { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 260px; }
     .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero-video-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.3); pointer-events: none; }
     .hero-video-label { position: absolute; top: 1.2rem; left: 1.5rem; font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(240,235,227,.5); background: rgba(0,0,0,.4); padding: .3rem .7rem; z-index: 2; }
@@ -295,6 +295,12 @@
     .hero-thumb-link:hover .hero-thumb-play { background:var(--orange); border-color:var(--orange); transform:scale(1.08); }
     .hero-thumb-tri { width:0; height:0; border-top:11px solid transparent; border-bottom:11px solid transparent; border-left:19px solid #f0ebe3; margin-left:5px; }
 
+    /* TESTIMONIAL NAV DOTS */
+    .testimonial-nav { background: var(--ink); padding: .5rem 3rem 1.2rem; display: flex; gap: .6rem; justify-content: center; }
+    .testimonial-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,242,236,.2); border: none; cursor: pointer; transition: background .3s, transform .3s; padding: 0; flex-shrink: 0; }
+    .testimonial-dot.active { background: var(--orange); transform: scale(1.3); }
+    .testimonial-dot:hover:not(.active) { background: rgba(245,242,236,.45); }
+
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -304,14 +310,18 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links, .nav-cta { display: none; }
       .burger { display: flex; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { display: block; height: 55vw; min-height: 220px; max-height: 420px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; overflow: hidden; }
+      .hero-right { display: block; overflow: hidden; height: 55vw; min-height: 200px; max-height: 380px; }
+      .hero-video-wrap { min-height: 0 !important; height: 100%; }
       .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; }
       .hero-stats { grid-template-columns: repeat(2,1fr); }
-      .mariage-band { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.5rem; }
+      .mariage-band { flex-direction: column; align-items: flex-start; gap: .8rem; padding: 1.2rem 1.5rem; }
+      .mariage-band-sub { font-size: .75rem; }
       .about { grid-template-columns: 1fr; }
       .vdivider { display: none; }
       .about-left, .about-right { padding: 3rem 1.5rem; }
+      .about-portrait-wrap { display: flex; flex-direction: column; align-items: center; }
+      .about-portrait-caption { text-align: center; }
       .equip-grid { grid-template-columns: repeat(2,1fr); }
       .equip-cat:nth-child(3n) { border-right: .5px solid var(--border-strong); }
       .equip-cat:nth-child(2n) { border-right: none; }
@@ -379,7 +389,7 @@
           <span class="outline">L'ESSENTIEL</span>
           <span class="accent">avec précision</span>
         </h1>
-        <p class="hero-desc">Opérateur-monteur disponible pour renforcer vos équipes ou prendre en charge vos projets de A à Z — fiction, documentaire, spot, making-of.</p>
+        <p class="hero-desc">Opérateur-monteur disponible pour renforcer vos équipes ou prendre en charge vos projets de A à Z : fiction, documentaire, spot, making-of.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn-primary">Démarrer un projet</a>
           <a href="portfolio.html" class="btn-ghost">Voir la filmographie</a>
@@ -495,13 +505,13 @@
       <div class="accordion-item">
         <button class="accordion-trigger">
           <span class="accordion-num">03</span>
-          <span class="accordion-title">MAKING-OF & COULISSES</span>
-          <span class="accordion-tags-inline"><span class="tag">Tournage fiction</span><span class="tag">Clip</span></span>
+          <span class="accordion-title">DOCUMENTAIRE, INTERVIEWS & CORPORATE</span>
+          <span class="accordion-tags-inline"><span class="tag">After movie</span><span class="tag">Interview</span><span class="tag">Entreprise</span></span>
           <span class="accordion-icon"></span>
         </button>
         <div class="accordion-body"><div class="accordion-body-inner">
-          <p class="accordion-desc">Présence discrète sur vos tournages pour capturer les coulisses dans leur authenticité. Un regard extérieur qui documente votre processus créatif sans jamais en interrompre le cours.</p>
-          <div class="service-tags"><span class="tag">Tournage fiction</span><span class="tag">Clip</span><span class="tag">Événement pro</span></div>
+          <p class="accordion-desc">Captation d'interviews, after movies d'événements et vidéos d'entreprise. Je travaille avec les équipes communication et les agences qui ont besoin d'un regard documentaire, structuré et efficace, pour valoriser leurs projets et leurs équipes.</p>
+          <div class="service-tags"><span class="tag">After movie</span><span class="tag">Interview</span><span class="tag">Vidéo d'entreprise</span><span class="tag">Événement corporate</span></div>
         </div></div>
       </div>
       <div class="accordion-item">
@@ -512,24 +522,11 @@
           <span class="accordion-icon"></span>
         </button>
         <div class="accordion-body"><div class="accordion-body-inner">
-          <div class="accordion-body-split">
-            <div>
-              <p class="accordion-desc">Un souvenir cinématographique, esthétique et émotionnel — conçu pour refléter avec sensibilité et précision la singularité de votre journée. Deux formules disponibles, tarif de lancement pour les 5 premiers mariages.</p>
-              <div style="margin-top:1.2rem;">
-                <a href="mariages.html" class="btn-primary" style="display:inline-block;">Voir les formules mariage →</a>
-              </div>
-              <div class="service-tags" style="margin-top:1.2rem;"><span class="tag">Film de mariage</span><span class="tag">Teaser</span><span class="tag">4K</span><span class="tag">Journée complète</span></div>
-            </div>
-            <div>
-              <div class="wedding-reel-label">Extrait — réalisation</div>
-              <div class="wedding-video-wrap" id="mariageYtFacade" data-ytid="qgU9aBI32uI" style="cursor:pointer;" onclick="loadMariageYT()" role="button" aria-label="Lire l'extrait L'Éloge du Silence">
-                <img src="https://img.youtube.com/vi/qgU9aBI32uI/maxresdefault.jpg" alt="L'Éloge du Silence — Sacréclap Film" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.src='https://img.youtube.com/vi/qgU9aBI32uI/hqdefault.jpg'"/>
-                <div style="position:absolute;inset:0;background:rgba(26,20,16,.35);display:flex;align-items:center;justify-content:center;">
-                  <div style="width:48px;height:48px;border:1.5px solid rgba(240,235,227,.8);border-radius:50%;display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid #f0ebe3;margin-left:3px;"></div></div>
-                </div>
-              </div>
-            </div>
+          <p class="accordion-desc">Un souvenir cinématographique, esthétique et émotionnel, conçu pour refléter avec sensibilité et précision la singularité de votre journée. Deux formules disponibles, tarif de lancement pour les 5 premiers mariages.</p>
+          <div style="margin-top:1.2rem;">
+            <a href="mariages.html" class="btn-primary" style="display:inline-block;">Voir les formules mariage →</a>
           </div>
+          <div class="service-tags" style="margin-top:1.2rem;"><span class="tag">Film de mariage</span><span class="tag">Teaser</span><span class="tag">4K</span><span class="tag">Journée complète</span></div>
         </div></div>
       </div>
     </div>
@@ -610,20 +607,21 @@
 
   <!-- TESTIMONIAL -->
   <div class="testimonial">
-    <blockquote class="testimonial-quote">"Ponctuel, à l'écoute, sensible et rigoureux. C'est un plaisir de travailler avec lui, car il est passionné !"</blockquote>
+    <blockquote class="testimonial-quote" id="testimonialQuote">"Ponctuel, à l'écoute, sensible et rigoureux. C'est un plaisir de travailler avec lui, car il est passionné !"</blockquote>
     <div class="testimonial-author">
-      <div class="author-name">LOUISE SOULIÉ</div>
-      <div class="author-role">Compagnie l'Êttre-Louve · Captation de performance</div>
+      <div class="author-name" id="testimonialName">LOUISE SOULIÉ</div>
+      <div class="author-role" id="testimonialRole">Compagnie l'Êttre-Louve · Captation de performance</div>
       <div class="author-line"></div>
     </div>
   </div>
+  <div class="testimonial-nav" id="testimonialDots"></div>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-info reveal">
       <p class="section-label">Travaillons ensemble</p>
       <h2 class="contact-title">PARLONS<span class="outline">PROJET</span></h2>
-      <p class="contact-sub">Vous avez un tournage à venir, des rushes à monter ou un making-of à capturer ? Décrivez-moi votre projet, je vous réponds sous 24h.</p>
+      <p class="contact-sub">Vous avez un tournage à venir, des rushes à monter, un documentaire ou un after movie à réaliser ? Décrivez-moi votre projet, je vous réponds sous 24h.</p>
       <div style="display:flex;align-items:center;gap:.7rem;padding:.8rem 1.1rem;background:rgba(224,120,32,.07);border:1px solid rgba(224,120,32,.2);width:fit-content;">
         <div style="width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite;flex-shrink:0;"></div>
         <span style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);">Disponible à partir de mai 2026</span>
@@ -649,12 +647,10 @@
           <select id="projet" name="projet" required>
             <option value="">Sélectionner...</option>
             <option>Captation (tournage)</option>
-            <option>Montage court-métrage</option>
-            <option>Montage YouTube / contenu</option>
+            <option>After movie / Interview / Vidéo d'entreprise</option>
             <option>Making-of de tournage</option>
-            <option>Interview / documentaire</option>
+            <option>Documentaire & Interview</option>
             <option>Film de mariage</option>
-            <option>Post-production uniquement</option>
             <option>Autre</option>
           </select>
         </div>
@@ -677,7 +673,7 @@
           <span id="submitLabel">Envoyer le message</span>
           <span class="submit-arrow" id="submitArrow">→</span>
         </button>
-        <div id="formSuccess">✓ Message envoyé — je vous réponds sous 24h.</div>
+        <div id="formSuccess">✓ Message envoyé. Je vous réponds sous 24h.</div>
         <div id="formError">Une erreur s'est produite. Réessayez ou contactez-moi directement.</div>
       </div>
     </div>
@@ -686,7 +682,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">SACRÉ<span>CLAP</span> FILM</div>
-    <div class="footer-copy">© 2026 Sacréclap Film — Tous droits réservés</div>
+    <div class="footer-copy">© 2026 Sacréclap Film — <a href="mentions-legales.html" style="color:inherit;text-decoration:none;transition:color .3s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='inherit'">Mentions légales</a></div>
     <div class="footer-socials">
       <a href="https://wa.me/33679374391" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.instagram.com/sun.is.blue/" target="_blank" rel="noopener">Instagram</a>
@@ -700,104 +696,6 @@
     Me contacter
   </a>
 
-  <script>
-    // YouTube facade (accordion mariage)
-    function loadMariageYT(){
-      const el=document.getElementById('mariageYtFacade');
-      const id=el.dataset.ytid;
-      el.style.cursor='default';
-      el.onclick=null;
-      el.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:none;" sandbox="allow-scripts allow-same-origin allow-presentation" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="L'Éloge du Silence"></iframe>`;
-    }
-
-    const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-    let rx=0,ry=0,cx=0,cy=0;
-    // N'activer le curseur custom que sur pointer:fine
-    if(window.matchMedia('(pointer: fine)').matches){
-      document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
-      (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-    }
-
-    const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.1});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-    const burger=document.getElementById('burger'),nav=document.getElementById('navOverlay');
-    burger.addEventListener('click',()=>{burger.classList.toggle('open');nav.classList.toggle('open');document.body.style.overflow=nav.classList.contains('open')?'hidden':'';});
-    document.querySelectorAll('.nav-overlay-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');nav.classList.remove('open');document.body.style.overflow='';}));
-
-    document.querySelectorAll('.accordion-trigger').forEach(t=>{
-      t.addEventListener('click',()=>{
-        const item=t.closest('.accordion-item'),was=item.classList.contains('active');
-        document.querySelectorAll('.accordion-item').forEach(i=>i.classList.remove('active'));
-        if(!was)item.classList.add('active');
-      });
-    });
-
-    const cta=document.getElementById('floatingCta');
-    const contactSection=document.querySelector('.contact');
-    let contactVisible=false;
-    const contactObs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ contactVisible=e.isIntersecting; updateCta(); });
-    },{threshold:0});
-    contactObs.observe(contactSection);
-    function updateCta(){
-      if(window.scrollY>400 && !contactVisible){cta.style.opacity='1';cta.style.transform='translateY(0)';cta.style.pointerEvents='all';}
-      else{cta.style.opacity='0';cta.style.transform='translateY(12px)';cta.style.pointerEvents='none';}
-    }
-    window.addEventListener('scroll', updateCta);
-
-    document.getElementById('formSubmit').addEventListener('click', async function(){
-      // Honeypot check (double protection côté client)
-      if(document.getElementById('hpot').value !== '') return;
-      // Rate-limit client : 1 envoi par minute
-      const lastSent = localStorage.getItem('sc_last_submit');
-      if(lastSent && Date.now() - Number(lastSent) < 60000){
-        const err=document.getElementById('formError');
-        err.style.display='block';err.textContent='Veuillez patienter 1 minute entre deux envois.';return;
-      }
-      const prenom=document.getElementById('prenom').value.trim();
-      const nom=document.getElementById('nom').value.trim();
-      const email=document.getElementById('email').value.trim();
-      const projet=document.getElementById('projet').value;
-      const date_tournage=document.getElementById('date_tournage').value.trim();
-      const budget=document.getElementById('budget').value;
-      const message=document.getElementById('message').value.trim();
-      if(!prenom||!nom||!email||!projet){
-        const err=document.getElementById('formError');
-        err.style.display='block';err.textContent='Merci de remplir les champs obligatoires (prénom, nom, email, type de projet).';return;
-      }
-      const btn=document.getElementById('formSubmit'),lbl=document.getElementById('submitLabel'),arr=document.getElementById('submitArrow');
-      btn.disabled=true;lbl.textContent='Envoi en cours...';arr.textContent='⟳';
-      try {
-        const res = await fetch('/.netlify/functions/contact', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({
-            website: document.getElementById('hpot').value, // honeypot
-            form_type: 'contact',
-            prenom, nom, email, projet,
-            date_tournage: date_tournage||'Non précisée',
-            budget: budget||'Non précisé',
-            message: message||'Aucune description.'
-          })
-        });
-        const data = await res.json();
-        if(res.ok && data.ok){
-          localStorage.setItem('sc_last_submit', Date.now());
-          document.getElementById('formSuccess').style.display='block';
-          document.getElementById('formError').style.display='none';
-          document.getElementById('contactForm').reset();
-          lbl.textContent='Message envoyé';arr.textContent='✓';
-        } else {
-          throw new Error(data.error || 'Erreur inconnue');
-        }
-      } catch(e){
-        console.error(e);
-        document.getElementById('formError').style.display='block';
-        document.getElementById('formError').textContent=e.message||"Une erreur s'est produite. Réessayez ou contactez-moi directement.";
-        btn.disabled=false;lbl.textContent='Envoyer le message';arr.textContent='→';
-      }
-    });
-  </script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

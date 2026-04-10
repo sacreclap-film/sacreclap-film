@@ -100,7 +100,7 @@
     .launch-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: blink 2s infinite; flex-shrink: 0; }
     @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
     .hero-right { display: flex; flex-direction: column; }
-    .hero-visual { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .hero-visual { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 260px; }
     .hero-visual-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6; }
     .hero-visual-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.35); }
     .hero-visual-content { position: relative; z-index: 2; text-align: center; padding: 2rem; }
@@ -233,8 +233,10 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links, .nav-cta { display: none; }
       .burger { display: flex; }
-      .hero-mariage { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { display: block; height: 55vw; min-height: 220px; max-height: 420px; }
+      .hero-mariage { grid-template-columns: 1fr; min-height: auto; overflow: hidden; }
+      /* hero-right sans contrainte globale : la vidéo est contrainte, les stats 10h/14h/95 s'affichent dessous */
+      .hero-right { display: block; overflow: hidden; }
+      .hero-visual { height: 55vw; min-height: 0 !important; max-height: 380px; flex: none; }
       .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; }
       .formules-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2.5rem 1.5rem 2rem; }
       .formules-sub { text-align: left; }
@@ -244,7 +246,10 @@
       .supplements { padding: 2.5rem 1.5rem; }
       .supp-grid { grid-template-columns: 1fr 1fr; }
       .processus { padding: 2.5rem 1.5rem; }
-      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+      .step { padding: 1.5rem 0 0; border-top: 1px solid var(--border); }
+      .step-num { font-size: 2.5rem; margin-bottom: .5rem; }
       .testimonial { flex-direction: column; padding: 2.5rem 1.5rem; gap: 2rem; }
       .testimonial-author { text-align: left; }
       .author-line { margin: 1rem auto 0 0; }
@@ -255,7 +260,6 @@
     }
     @media (max-width: 560px) {
       .supp-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
@@ -303,7 +307,7 @@
           <span class="outline">EN FILM</span>
           <span class="accent">une mémoire à vie</span>
         </h1>
-        <p class="hero-desc">Pas un simple montage de clips — un film pensé comme un récit. De la cérémonie au coucher de soleil, je capte avec discrétion ce qui fait la singularité de votre journée.</p>
+        <p class="hero-desc">Pas un simple montage de clips, un film pensé comme un récit. De la cérémonie au coucher de soleil, je capte avec discrétion ce qui fait la singularité de votre journée.</p>
         <div class="hero-cta">
           <a href="#formules" class="btn-primary">Voir les formules</a>
           <a href="#contact-mariage" class="btn-ghost">Réserver une date</a>
@@ -321,9 +325,8 @@
     </div>
     <div class="hero-right">
       <div class="hero-visual">
-        <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;">
+        <video autoplay muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;">
           <source src="Trailer_2_V3_Mariage_Pat_Val.mp4" type="video/mp4"/>
-          <source src="Trailer_2_V3_Mariage_Pat_Val.mov" type="video/quicktime"/>
         </video>
         <div class="hero-visual-overlay"></div>
         <div class="hero-visual-content">
@@ -352,10 +355,10 @@
       @media (max-width: 900px) {
         #approche { grid-template-columns: 1fr !important; }
         #approche > div:nth-child(2) { display: none; }
-        #approche > div:first-child { padding-bottom: 2rem !important; }
+        #approche > div:first-child { padding: 2.5rem 1.5rem 1.5rem !important; }
+        #approche > div:first-child h2 { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; }
         #approche > div:last-child {
           padding: 1.5rem 1.5rem 3rem !important;
-          text-align: center;
           border-left: none !important;
           margin: 0 !important;
         }
@@ -369,7 +372,7 @@
     </div>
     <div style="background:var(--border);"></div>
     <div style="padding:4rem 3rem;display:flex;flex-direction:column;gap:1.4rem;justify-content:center;">
-      <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;border-left:2px solid var(--orange);padding-left:1.4rem;">Votre histoire s'est tissée pas à pas, comme une toile de gestes tendres, de regards complices et de rêves partagés. Aujourd'hui, un nouveau chapitre s'ouvre — et je suis là, témoin discret, pour en capturer la lumière et en révéler la magie.</p>
+      <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;border-left:2px solid var(--orange);padding-left:1.4rem;">Votre histoire s'est tissée pas à pas, comme une toile de gestes tendres, de regards complices et de rêves partagés. Aujourd'hui, un nouveau chapitre s'ouvre, et je suis là, témoin discret, pour en capturer la lumière et en révéler la magie.</p>
       <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;padding-left:1.4rem;">Mon regard s'attarde sur l'essentiel : un frémissement, une main serrée un peu plus fort, le reflet d'un sourire avant qu'il ne s'échappe. Je cherche la beauté dans ce qui naît naturellement, sans artifice — la poésie dans un souffle, la vérité dans ce qui ne se joue qu'une seule fois.</p>
       <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;padding-left:1.4rem;">Mon approche mêle douceur et intuition, émotion et lumière. Chaque image devient une empreinte délicate, un souvenir vivant qui traversera les années — un fragment de votre amour figé dans le temps, mais toujours vibrant.</p>
     </div>
@@ -547,32 +550,32 @@
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-title">Rendez-vous créatif</div>
-        <p class="step-desc">On échange sur votre journée, vos envies, le lieu, le programme. Je prépare la captation en lien avec vos prestataires et le déroulé prévu — pour être au bon endroit au bon moment.</p>
+        <p class="step-desc">On échange sur votre journée, vos envies, le lieu, le programme. Je prépare la captation en lien avec vos prestataires et le déroulé prévu, pour être au bon endroit au bon moment.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-title">Le jour J</div>
-        <p class="step-desc">Présence discrète et attentive, toutes formules en 4K. Je capte les moments forts et les détails imperceptibles — lumières, regards, sons d'ambiance — sans jamais interrompre le fil de votre journée.</p>
+        <p class="step-desc">Présence discrète et attentive, toutes formules en 4K. Je capte les moments forts et les détails imperceptibles : lumières, regards, sons d'ambiance, sans jamais interrompre le fil de votre journée.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-title">Montage & étalonnage</div>
-        <p class="step-desc">Construction narrative sous DaVinci Resolve Studio, étalonnage colorimétrique et habillage sonore musical. Je construis le film par itérations, en lien avec vos retours à chaque étape.</p>
+        <p class="step-desc">Je construis votre film par itérations, en sublimant chaque journée par un assemblage de détails mêlant technique et sensibilité. Le montage est l'une des étapes les plus importantes : c'est là qu'on voit les images prendre vie, que l'attention portée à chaque détail crée le fil conducteur d'un souvenir inoubliable.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
         <div class="step-title">Livraison</div>
-        <p class="step-desc">Teaser livré en 3 à 5 semaines. Film final sous 7 à 10 semaines. Fichiers haute définition transmis par lien de téléchargement privé et sécurisé — directement dans vos mains.</p>
+        <p class="step-desc">Teaser livré en 3 à 5 semaines. Film final sous 7 à 10 semaines selon la demande de la saison. Fichiers haute définition transmis par lien de téléchargement privé et sécurisé, directement dans vos mains.</p>
       </div>
     </div>
   </section>
 
   <!-- TÉMOIGNAGE -->
   <div class="testimonial">
-    <blockquote class="testimonial-quote">"Ponctuel, à l'écoute, sensible et rigoureux. C'est un plaisir de travailler avec lui, car il est passionné !"</blockquote>
+    <blockquote class="testimonial-quote">"Maxence a couvert l'intégralité de notre mariage. Il a su filmer tous les événements marquants de cette journée jusqu'au moindre petit détail drôle. Le montage est impeccable, les musiques d'accompagnement respectées selon nos choix. La vidéo nous apporte une vision différente de notre mariage que nous n'aurions pas pu avoir autrement. C'est fabuleux. Très à l'écoute, très professionnel. Nous recommandons !"</blockquote>
     <div class="testimonial-author">
-      <div class="author-name">LOUISE SOULIÉ</div>
-      <div class="author-role">Compagnie l'Êttre-Louve</div>
+      <div class="author-name">PATRICK & VALÉRIE D.</div>
+      <div class="author-role">Mariage · Septembre 2025</div>
       <div class="author-line"></div>
     </div>
   </div>
@@ -582,7 +585,7 @@
     <div class="contact-info reveal">
       <p class="section-label">Réservons votre date</p>
       <h2 class="contact-title">PARLONS<span class="outline">MARIAGE</span></h2>
-      <p class="contact-sub">Une date en tête ? Décrivez-moi votre projet — lieu, formule envisagée, ambiance souhaitée. Je vous réponds sous 24h.</p>
+      <p class="contact-sub">Une date en tête ? Décrivez-moi votre projet : lieu, formule envisagée, ambiance souhaitée. Je vous réponds sous 24h.</p>
       <div style="display:flex;align-items:center;gap:.7rem;padding:.8rem 1.1rem;background:rgba(224,120,32,.07);border:1px solid rgba(224,120,32,.2);width:fit-content;">
         <div style="width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite;flex-shrink:0;"></div>
         <span style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);">Disponible à partir de mai 2026</span>
@@ -630,7 +633,8 @@
           <span id="submitLabel">Envoyer ma demande</span>
           <span id="submitArrow">→</span>
         </button>
-        <div id="formSuccess">✓ Message envoyé — je vous réponds sous 24h.</div>
+        <div id="formError" style="display:none;margin-top:.8rem;padding:.9rem 1.1rem;background:rgba(0,0,0,.04);border-left:3px solid rgba(0,0,0,0.13);font-size:.8rem;color:#6a6058;"></div>
+        <div id="formSuccess">✓ Message envoyé. Je vous réponds sous 24h.</div>
       </div>
     </div>
   </section>
@@ -638,7 +642,7 @@
   <!-- FOOTER -->
   <footer>
     <a href="index.html" class="footer-logo">SACRÉ<span>CLAP</span> FILM</a>
-    <div class="footer-copy">© 2026 Sacréclap Film — Tous droits réservés</div>
+    <div class="footer-copy">© 2026 Sacréclap Film — <a href="mentions-legales.html" style="color:inherit;text-decoration:none;transition:color .3s;" onmouseover="this.style.color='var(--orange)'" onmouseout="this.style.color='inherit'">Mentions légales</a></div>
     <div class="footer-socials">
       <a href="https://wa.me/33679374391" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.instagram.com/sun.is.blue/" target="_blank" rel="noopener">Instagram</a>
@@ -652,81 +656,6 @@
     Me contacter
   </a>
 
-  <script>
-    const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-    let rx=0,ry=0,cx=0,cy=0;
-    if(window.matchMedia('(pointer: fine)').matches){
-      document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
-      (function loop(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-    }
-
-    const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:.1});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-    const burger=document.getElementById('burger'),nav=document.getElementById('navOverlay');
-    burger.addEventListener('click',()=>{burger.classList.toggle('open');nav.classList.toggle('open');document.body.style.overflow=nav.classList.contains('open')?'hidden':'';});
-    document.querySelectorAll('.nav-overlay-link').forEach(l=>l.addEventListener('click',()=>{burger.classList.remove('open');nav.classList.remove('open');document.body.style.overflow='';}));
-
-    const cta=document.getElementById('floatingCta');
-    const contactSection=document.getElementById('contact-mariage');
-    let contactVisible=false;
-    const contactObs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{ contactVisible=e.isIntersecting; updateCta(); });
-    },{threshold:0});
-    contactObs.observe(contactSection);
-    function updateCta(){
-      if(window.scrollY>400 && !contactVisible){cta.style.opacity='1';cta.style.transform='translateY(0)';cta.style.pointerEvents='all';}
-      else{cta.style.opacity='0';cta.style.transform='translateY(12px)';cta.style.pointerEvents='none';}
-    }
-    window.addEventListener('scroll', updateCta);
-
-    document.getElementById('formSubmit').addEventListener('click', async function(){
-      // Honeypot check
-      if(document.getElementById('hpot').value !== '') return;
-      // Rate-limit client : 1 envoi par minute
-      const lastSent = localStorage.getItem('sc_last_submit_mariage');
-      if(lastSent && Date.now() - Number(lastSent) < 60000){
-        alert('Veuillez patienter 1 minute entre deux envois.');return;
-      }
-      const prenom=document.getElementById('prenom').value.trim();
-      const nom=document.getElementById('nom').value.trim();
-      const prenom2=document.getElementById('prenom2').value.trim();
-      const nom2=document.getElementById('nom2').value.trim();
-      const email=document.getElementById('email').value.trim();
-      const date=document.getElementById('date').value.trim();
-      const lieu=document.getElementById('lieu').value.trim();
-      const formule=document.getElementById('formule').value;
-      const message=document.getElementById('message').value.trim();
-      if(!prenom||!email){return;}
-      const btn=document.getElementById('formSubmit'),lbl=document.getElementById('submitLabel'),arr=document.getElementById('submitArrow');
-      btn.disabled=true;lbl.textContent='Envoi en cours...';arr.textContent='⟳';
-
-      try {
-        const res = await fetch('/.netlify/functions/contact', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({
-            website: document.getElementById('hpot').value,
-            form_type: 'mariage',
-            prenom, nom, prenom2, nom2, email,
-            date, lieu, formule,
-            message: message||'Aucune description.'
-          })
-        });
-        const data = await res.json();
-        if(res.ok && data.ok){
-          localStorage.setItem('sc_last_submit_mariage', Date.now());
-          document.getElementById('formSuccess').style.display='block';
-          btn.disabled=false;lbl.textContent='Message envoyé';arr.textContent='✓';
-        } else {
-          throw new Error(data.error || 'Erreur inconnue');
-        }
-      } catch(e){
-        console.error(e);
-        btn.disabled=false;lbl.textContent='Envoyer ma demande';arr.textContent='→';
-        alert(e.message || "Une erreur s'est produite. Contactez-moi par WhatsApp.");
-      }
-    });
-  </script>
+  <script src="js/mariages.js" defer></script>
 </body>
 </html>
