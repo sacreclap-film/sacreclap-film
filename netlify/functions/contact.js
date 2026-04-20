@@ -69,7 +69,9 @@ exports.handler = async (event) => {
 
   // Vérification de l'origine
   const origin = event.headers['origin'] || event.headers['referer'] || '';
-  if (!origin.includes('sacreclap-film.fr') && process.env.NODE_ENV !== 'development') {
+  const allowedOrigins = ['sacreclap-film.fr', 'sacreclap-film.netlify.app'];
+  const isAllowed = allowedOrigins.some(o => origin.includes(o));
+  if (!isAllowed && process.env.NODE_ENV !== 'development') {
     return {
       statusCode: 403,
       headers: CORS_HEADERS,

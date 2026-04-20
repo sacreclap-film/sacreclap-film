@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Film de Mariage — Sacréclap Film · Val d'Oise</title>
-  <meta name="description" content="Film de mariage cinématographique dans le Val d'Oise et en Île-de-France. Deux formules sur-mesure, tarif de lancement. Sacréclap Film."/>
+  <title>Vidéaste Mariage Île-de-France | Films Cinématographiques – Sacréclap Film</title>
+  <meta name="description" content="Films de mariage sur mesure en Val-d'Oise et partout en France. Style cinématographique, rendu en 4K. Disponible à partir de mai 2026 – Sacréclap Film."/>
   <meta name="author" content="Sacréclap Film"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.sacreclap-film.fr/mariages"/>
@@ -13,11 +13,13 @@
   <meta property="og:description" content="Film de mariage cinématographique. Deux formules, tarif de lancement — Val d'Oise & IDF."/>
   <meta property="og:url" content="https://www.sacreclap-film.fr/mariages"/>
   <meta property="og:site_name" content="Sacréclap Film"/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5f2ec'/><circle cx='16' cy='16' r='14' fill='none' stroke='%23e07820' stroke-width='2'/><text x='5' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%231a1610'>S</text><text x='16' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%23e07820'>C</text></svg>"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png"/>
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -26,11 +28,11 @@
       --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.13);
       --orange: #e07820; --orange-dark: #b85f10; --dark: #1a1410;
       --font-display: 'Bebas Neue', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
       --font-italic: 'Playfair Display', serif;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); overflow-x: hidden; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--font-body); overflow-x: hidden; font-size: 16px; -webkit-font-smoothing: antialiased; }
 
     /* CURSOR — pointer devices only */
     @media (pointer: fine) {
@@ -88,7 +90,7 @@
     .hero-title { font-family: var(--font-display); font-size: clamp(4rem, 7vw, 8rem); line-height: .88; letter-spacing: -.01em; }
     .hero-title .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
     .hero-title .accent { font-family: var(--font-italic); font-style: italic; font-size: .38em; color: var(--orange); display: block; margin-top: .5rem; letter-spacing: .04em; -webkit-text-stroke: 0; text-transform: none; }
-    .hero-desc { font-size: .95rem; line-height: 1.9; color: var(--ink-light); font-weight: 300; max-width: 380px; margin-top: 2rem; }
+    .hero-desc { font-size: 1.05rem; line-height: 2; color: var(--ink-mid); font-weight: 400; max-width: 400px; margin-top: 2rem; }
     .hero-cta { display: flex; gap: 1.2rem; align-items: center; margin-top: 2.5rem; }
     .btn-primary { display: inline-block; background: var(--ink); color: var(--cream); padding: .9rem 2.2rem; text-decoration: none; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; transition: background .3s, transform .3s; }
     .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
@@ -100,9 +102,9 @@
     .launch-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: blink 2s infinite; flex-shrink: 0; }
     @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
     .hero-right { display: flex; flex-direction: column; }
-    .hero-visual { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 260px; }
+    .hero-visual { flex: 1; background: var(--dark); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 360px; }
     .hero-visual-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6; }
-    .hero-visual-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.35); }
+    .hero-visual-overlay { position: absolute; inset: 0; background: rgba(26,20,16,.15); }
     .hero-visual-content { position: relative; z-index: 2; text-align: center; padding: 2rem; }
     .hero-visual-quote { font-family: var(--font-italic); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.6rem); color: rgba(245,242,236,.85); line-height: 1.6; max-width: 380px; }
     .hero-visual-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(245,242,236,.4); margin-top: 1.2rem; }
@@ -125,10 +127,12 @@
 
     /* FORMULES */
     .formules { border-bottom: 1px solid var(--border); }
-    .formules-header { padding: 3.5rem 3rem 2.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; }
+    .formules-header { padding: 3.5rem 3rem 2.5rem; border-bottom: 1px solid var(--border); text-align: center; display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+    .formules-header .section-label { justify-content: center; }
+    .formules-header .section-label::before { display: none; }
     .formules-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5.5rem); line-height: .9; }
     .formules-title .ghost { color: transparent; -webkit-text-stroke: 1.5px var(--ink); display: block; }
-    .formules-sub { max-width: 280px; font-family: var(--font-italic); font-style: italic; font-size: 1rem; line-height: 1.65; color: var(--ink-mid); text-align: right; }
+    .formules-sub { max-width: 480px; font-family: var(--font-italic); font-style: italic; font-size: 1rem; line-height: 1.65; color: var(--ink-mid); text-align: center; }
     .formules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     .formule-card { padding: 3rem; border-right: 1px solid var(--border); position: relative; transition: background .3s; }
     .formule-card:last-child { border-right: none; }
@@ -167,26 +171,32 @@
 
     /* SUPPLÉMENTS */
     .supplements { padding: 3.5rem 3rem; border-bottom: 1px solid var(--border); background: var(--cream-dark); }
-    .supplements-header { margin-bottom: 2.5rem; }
+    .supplements-header { margin-bottom: 2.5rem; text-align: center; }
+    .supplements-header .section-label { justify-content: center; }
+    .supplements-header .section-label::before { display: none; }
     .supplements-title { font-family: var(--font-display); font-size: clamp(2rem, 3vw, 3rem); line-height: .9; }
-    .supp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-strong); }
-    .supp-item { background: var(--cream); padding: 1.5rem; transition: background .3s; }
+    .supp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-strong); }
+    .supp-item { background: var(--cream); padding: 2rem; transition: background .3s; }
     .supp-item:hover { background: rgba(224,120,32,.04); }
-    .supp-name { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .04em; color: var(--ink); margin-bottom: .4rem; }
-    .supp-detail { font-size: .75rem; color: var(--ink-faint); line-height: 1.5; margin-bottom: 1rem; font-weight: 300; }
-    .supp-price { font-family: var(--font-display); font-size: 1.8rem; color: var(--orange); letter-spacing: -.01em; }
+    .supp-name { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .04em; color: var(--ink); margin-bottom: .6rem; }
+    .supp-detail { font-size: .95rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 1.2rem; font-weight: 400; }
+    .supp-price { font-family: var(--font-display); font-size: 2.2rem; color: var(--orange); letter-spacing: -.01em; }
     .supp-basis { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-top: .2rem; }
 
     /* PROCESSUS */
     .processus { padding: 3.5rem 3rem; border-bottom: 1px solid var(--border); background: var(--cream); }
-    .processus-header { margin-bottom: 3rem; }
+    .processus-header { margin-bottom: 3rem; text-align: center; }
     .processus-title { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4.5rem); line-height: .9; }
-    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 1.8rem; left: 0; right: 0; height: 1px; background: linear-gradient(to right, var(--orange), rgba(224,120,32,.12)); }
-    .step { padding: 4rem 2rem 1.5rem 0; }
-    .step-num { font-family: var(--font-display); font-size: 4rem; color: var(--orange); line-height: 1; margin-bottom: 1rem; }
-    .step-title { font-size: .82rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; margin-bottom: .6rem; color: var(--ink); }
-    .step-desc { font-size: .85rem; line-height: 1.8; color: var(--ink-light); font-weight: 300; }
+    .processus-header .section-label { justify-content: center; }
+    .processus-header .section-label::before { display: none; }
+    .process-steps { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; }
+    .step { padding: 2.5rem 3rem 2.5rem 0; border-bottom: 1px solid var(--border); }
+    .step:nth-child(odd) { border-right: 1px solid var(--border); }
+    .step:nth-child(even) { padding-left: 3rem; padding-right: 0; }
+    .step:nth-child(3), .step:nth-child(4) { border-bottom: none; }
+    .step-num { font-family: var(--font-display); font-size: 3.5rem; color: var(--orange); line-height: 1; margin-bottom: .8rem; }
+    .step-title { font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; margin-bottom: .8rem; color: var(--ink); }
+    .step-desc { font-size: 1rem; line-height: 1.9; color: var(--ink-mid); font-weight: 400; }
 
     /* TÉMOIGNAGE */
     .testimonial { padding: 4rem 3rem; background: var(--ink); color: #f0ebe3; display: flex; align-items: center; gap: 4rem; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.06); }
@@ -202,14 +212,14 @@
     .contact-info { padding: 4rem 3rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
     .contact-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5.5rem); line-height: .88; }
     .contact-title .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
-    .contact-sub { font-size: .92rem; line-height: 1.8; color: var(--ink-light); font-weight: 300; }
+    .contact-sub { font-size: 1rem; line-height: 1.9; color: var(--ink-mid); font-weight: 400; }
     .contact-form-wrap { padding: 3rem; }
     .contact-form { display: flex; flex-direction: column; gap: 0; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
     .form-field { background: rgba(0,0,0,.025); border: .5px solid var(--border-strong); margin-bottom: 1px; transition: background .3s; }
     .form-field:focus-within { background: rgba(224,120,32,.04); border-color: rgba(224,120,32,.4); }
     .form-field label { display: block; font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); padding: .9rem 1.1rem 0; }
-    .form-field input, .form-field select, .form-field textarea { width: 100%; background: transparent; border: none; outline: none; color: var(--ink); font-family: var(--font-body); font-size: .88rem; padding: .3rem 1.1rem .9rem; resize: none; }
+    .form-field input, .form-field select, .form-field textarea { width: 100%; background: transparent; border: none; outline: none; color: var(--ink); font-family: var(--font-body); font-size: 1rem; padding: .3rem 1.1rem .9rem; resize: none; }
     .form-field select option { background: var(--cream); }
     .form-submit { margin-top: 1px; background: var(--ink); color: var(--cream); border: none; padding: 1.2rem 1.8rem; font-family: var(--font-body); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: background .3s; display: flex; justify-content: space-between; align-items: center; }
     .form-submit:hover { background: var(--orange); }
@@ -239,7 +249,7 @@
       .hero-visual { height: 55vw; min-height: 0 !important; max-height: 380px; flex: none; }
       .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; }
       .formules-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2.5rem 1.5rem 2rem; }
-      .formules-sub { text-align: left; }
+      .formules-sub { text-align: center; }
       .formules-grid { grid-template-columns: 1fr; }
       .formule-card { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
       .formule-card:last-child { border-bottom: none; }
@@ -247,8 +257,9 @@
       .supp-grid { grid-template-columns: 1fr 1fr; }
       .processus { padding: 2.5rem 1.5rem; }
       .process-steps { grid-template-columns: 1fr; }
-      .process-steps::before { display: none; }
-      .step { padding: 1.5rem 0 0; border-top: 1px solid var(--border); }
+      .step { padding: 1.5rem 0; border-right: none !important; border-bottom: 1px solid var(--border); }
+      .step:nth-child(even) { padding-left: 0; }
+      .step:last-child { border-bottom: none; }
       .step-num { font-size: 2.5rem; margin-bottom: .5rem; }
       .testimonial { flex-direction: column; padding: 2.5rem 1.5rem; gap: 2rem; }
       .testimonial-author { text-align: left; }
@@ -258,8 +269,24 @@
       .contact-form-wrap { padding: 2rem 1.5rem; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
     }
-    @media (max-width: 560px) {
-      .supp-grid { grid-template-columns: 1fr; }
+    @media (max-width: 480px) {
+      .supp-grid { grid-template-columns: 1fr !important; }
+      .form-field input, .form-field select, .form-field textarea { font-size: 16px !important; }
+    }
+    /* Calendrier date mariage */
+    #dateCal { display:none; position:absolute; z-index:1000; background:var(--cream); border:.5px solid var(--border-strong); box-shadow:0 8px 32px rgba(0,0,0,.14); width:280px; font-family:var(--font-body); }
+    #dateCal .cal-header { display:flex; justify-content:space-between; align-items:center; padding:.8rem 1rem; border-bottom:.5px solid var(--border); }
+    #dateCal .cal-nav { background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--orange); padding:.2rem .6rem; line-height:1; }
+    #dateCal .cal-title { font-family:var(--font-display); font-size:1rem; letter-spacing:.08em; color:var(--ink); }
+    #dateCal .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:.5rem .4rem 0; }
+    #dateCal .cal-dow { text-align:center; font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); padding:.4rem 0; }
+    #dateCal .cal-day { text-align:center; padding:.45rem .2rem; font-size:.82rem; cursor:pointer; color:var(--ink-mid); border-radius:2px; transition:background .15s; }
+    #dateCal .cal-day:hover { background:rgba(224,120,32,.12); }
+    #dateCal .cal-day.selected { background:var(--orange); color:var(--cream); font-weight:500; }
+    #dateCal .cal-day.past { color:var(--ink-faint); cursor:default; pointer-events:none; }
+    #dateCal .cal-empty { width:100%; }
+    .date-field-wrap { position:relative; }
+      .supp-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
@@ -325,7 +352,7 @@
     </div>
     <div class="hero-right">
       <div class="hero-visual">
-        <video autoplay muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;">
+        <video autoplay muted loop playsinline preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;">
           <source src="Trailer_2_V3_Mariage_Pat_Val.mp4" type="video/mp4"/>
         </video>
         <div class="hero-visual-overlay"></div>
@@ -350,37 +377,50 @@
   </div>
 
   <!-- APPROCHE -->
-  <section id="approche" style="display:grid;grid-template-columns:1fr 1px 1fr;border-bottom:1px solid var(--border);background:var(--cream);">
+  <section id="approche" style="border-bottom:1px solid var(--border);background:var(--cream);">
     <style>
+      .approche-header { text-align:center; padding:4rem 3rem 2.5rem; border-bottom:1px solid var(--border); }
+      .approche-header .section-label { justify-content:center; }
+      .approche-header .section-label::before { display:none; }
+      .approche-header h2 { font-family:var(--font-display); font-size:clamp(2.5rem,4vw,4.5rem); line-height:.92; letter-spacing:.02em; margin:.6rem 0; }
+      .approche-header .approche-tagline { font-family:var(--font-italic); font-style:italic; font-size:1.1rem; line-height:1.7; color:var(--ink-light); margin-top:.8rem; }
+      .approche-body { display:flex; justify-content:center; padding:3rem; }
+      .approche-col { display:flex; flex-direction:column; gap:1.6rem; }
+      .approche-col--single { max-width:760px; width:100%; }
+      .approche-divider { display:none; }
+      .approche-col p { font-size:1.05rem; line-height:1.95; color:var(--ink); font-weight:400; }
+      .approche-col p.highlight { border-left:3px solid var(--orange); padding-left:1.4rem; font-weight:500; color:var(--ink); }
+      .approche-col p:not(.highlight) { }
+      .approche-cta { display:inline-flex; align-items:center; gap:.5rem; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--orange); text-decoration:none; transition:gap .3s; }
+      .approche-cta:hover { gap:.9rem; }
       @media (max-width: 900px) {
-        #approche { grid-template-columns: 1fr !important; }
-        #approche > div:nth-child(2) { display: none; }
-        #approche > div:first-child { padding: 2.5rem 1.5rem 1.5rem !important; }
-        #approche > div:first-child h2 { font-size: clamp(1.8rem, 7vw, 2.6rem) !important; }
-        #approche > div:last-child {
-          padding: 1.5rem 1.5rem 3rem !important;
-          border-left: none !important;
-          margin: 0 !important;
-        }
-        #approche > div:last-child p { padding-left: 0 !important; border-left: none !important; }
+        .approche-header { padding:2.5rem 1.5rem; }
+        .approche-body { padding:1.5rem; }
+
+
+        .approche-col--single { max-width:100%; }
+
       }
-    </style>    <div style="padding:4rem 3rem;display:flex;flex-direction:column;gap:1.8rem;">
+    </style>
+    <div class="approche-header reveal">
       <p class="section-label">Mon approche</p>
-      <h2 style="font-family:var(--font-display);font-size:clamp(2.2rem,3.5vw,3.8rem);line-height:.92;letter-spacing:.02em;">TÉMOIN<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--ink);">DISCRET</span></h2>
-      <p style="font-family:var(--font-italic);font-style:italic;font-size:1.05rem;line-height:1.8;color:var(--ink-light);">Récits d'âme. Instants éternels.<br>L'émotion, comme un fil invisible,<br>reliant le présent à la mémoire.</p>
-      <a href="#contact-mariage" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);text-decoration:none;margin-top:.5rem;transition:gap .3s;" onmouseover="this.style.gap='.9rem'" onmouseout="this.style.gap='.5rem'">Réserver votre date →</a>
+      <h2>TÉMOIN<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--ink);">DISCRET</span></h2>
+      <p class="approche-tagline">Récits d'âme. Instants éternels.<br>L'émotion, comme un fil invisible, reliant le présent à la mémoire.</p>
     </div>
-    <div style="background:var(--border);"></div>
-    <div style="padding:4rem 3rem;display:flex;flex-direction:column;gap:1.4rem;justify-content:center;">
-      <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;border-left:2px solid var(--orange);padding-left:1.4rem;">Le jour de votre mariage, vous ne devriez penser à rien d'autre qu'à vivre. Mon travail, c'est de m'organiser en amont pour que vous n'ayez pas à vous soucier de moi. Je connais le programme, je suis en contact avec vos autres prestataires, et j'arrive préparé. Comme ça, la journée se déroule dans la sérénité, et les moments les plus beaux arrivent naturellement.</p>
-      <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;padding-left:1.4rem;">Ce que je préfère capturer, ce ne sont pas les poses. Ce sont les éclats de rire qui partent d'un seul coup, les larmes qui s'échappent pendant les vœux, l'accolade avec un ami qu'on n'avait pas vu depuis des années. Ces instants non scriptés, spontanés et vrais, c'est là que se cache la beauté d'une journée comme celle-là.</p>
-      <p style="font-size:.92rem;line-height:2;color:var(--ink-light);font-weight:300;padding-left:1.4rem;">Je reste proche de vous et de vos proches tout au long de la journée, avec une bonne humeur que j'essaie de faire contagieuse. Parce qu'un film de mariage réussi, c'est d'abord le reflet d'une belle journée vécue ensemble, entourés des gens qu'on aime.</p>
+    <div class="approche-body">
+      <div class="approche-col approche-col--single">
+        <p class="highlight">Le jour de votre mariage, vous ne devriez penser à rien d'autre qu'à vivre. Mon travail, c'est de m'organiser en amont pour que vous n'ayez pas à vous soucier de moi. Je connais le programme, je suis en contact avec vos autres prestataires, et j'arrive préparé. Comme ça, la journée se déroule dans la sérénité, et les moments les plus beaux arrivent naturellement.</p>
+        <p>Ce que je préfère capturer, ce ne sont pas les poses. Ce sont les éclats de rire qui partent d'un seul coup, les larmes qui s'échappent pendant les vœux, l'accolade avec un ami qu'on n'avait pas vu depuis des années. Ces instants non scriptés, spontanés et vrais, c'est là que se cache la beauté d'une journée comme celle-là.</p>
+        <p>Je reste proche de vous et de vos proches tout au long de la journée, avec une bonne humeur que j'essaie de faire contagieuse. Parce qu'un film de mariage réussi, c'est d'abord le reflet d'une belle journée vécue ensemble, entourés des gens qu'on aime.</p>
+        <a href="#contact-mariage" class="approche-cta">Réserver votre date →</a>
+      </div>
     </div>
   </section>
 
   <!-- FORMULES -->
   <section class="formules" id="formules">
     <div class="formules-header reveal">
+      <p class="section-label" style="justify-content:center;margin-bottom:0;--lbl-before:none;">Formules</p>
       <h2 class="formules-title">DEUX<br><span class="ghost">FORMULES</span></h2>
       <p class="formules-sub">Chaque mariage est unique. Choisissez la formule qui correspond à votre journée.</p>
     </div>
@@ -392,8 +432,8 @@
         <div class="formule-label">Formule 01</div>
         <div class="formule-name">L'ESSENTIELLE</div>
         <div class="formule-price-block">
-          <div class="formule-price">1 690<span style="font-size:.4em;color:var(--ink-faint);">€</span></div>
-          <div class="formule-price-launch">Tarif de lancement · valeur 1 890 €</div>
+          <div class="formule-price">1 890<span style="font-size:.4em;color:var(--ink-faint);">€</span></div>
+          <div class="formule-price-launch">Tarif de lancement · valeur 2 100 €</div>
           <div class="formule-price-format"><span class="pill pill-4k">4K</span> &nbsp;·&nbsp; 10 h de présence</div>
         </div>
 
@@ -423,6 +463,7 @@
             <div class="spec-row"><span class="spec-key">Teaser</span><span class="spec-val">60 – 90 sec</span></div>
             <div class="spec-row"><span class="spec-key">Livraison teaser</span><span class="spec-val">3 – 5 semaines</span></div>
             <div class="spec-row"><span class="spec-key">Livraison film</span><span class="spec-val">7 – 10 semaines</span></div>
+            <div class="spec-row"><span class="spec-key">Boîte & clé USB</span><span class="spec-val">Personnalisée Sacréclap Film</span></div>
           </div>
         </div>
 
@@ -447,8 +488,8 @@
         <div class="formule-label">Formule 02</div>
         <div class="formule-name">LE CINÉMA</div>
         <div class="formule-price-block">
-          <div class="formule-price">1 990<span style="font-size:.4em;color:var(--ink-faint);">€</span></div>
-          <div class="formule-price-launch">Tarif de lancement · valeur 2 205 €</div>
+          <div class="formule-price">2 390<span style="font-size:.4em;color:var(--ink-faint);">€</span></div>
+          <div class="formule-price-launch">Tarif de lancement · valeur 2 650 €</div>
           <div class="formule-price-format"><span class="pill pill-4k">4K</span> &nbsp;·&nbsp; 14 h de présence</div>
         </div>
 
@@ -476,6 +517,7 @@
             <div class="spec-row"><span class="spec-key">Teaser</span><span class="spec-val">90 sec</span></div>
             <div class="spec-row"><span class="spec-key">Livraison teaser</span><span class="spec-val">3 – 5 semaines</span></div>
             <div class="spec-row"><span class="spec-key">Livraison film</span><span class="spec-val">7 – 10 semaines</span></div>
+            <div class="spec-row"><span class="spec-key">Boîte & clé USB</span><span class="spec-val">Personnalisée Sacréclap Film</span></div>
           </div>
         </div>
 
@@ -502,24 +544,6 @@
     </div>
     <div class="supp-grid reveal">
       <div class="supp-item">
-        <div class="supp-name">COURT FORMAT RÉSEAUX</div>
-        <div class="supp-detail">Reels 30–60 sec optimisé Instagram & TikTok<br>2 h tournage + 4 h montage</div>
-        <div class="supp-price">270 €</div>
-        <div class="supp-basis">6 h × 45 €/h</div>
-      </div>
-      <div class="supp-item">
-        <div class="supp-name">INTERVIEWS AMIS & PROCHES</div>
-        <div class="supp-detail">Captation + intégration au montage<br>3 h tournage + 5 h montage</div>
-        <div class="supp-price">360 €</div>
-        <div class="supp-basis">8 h × 45 €/h</div>
-      </div>
-      <div class="supp-item">
-        <div class="supp-name">INTERVIEWS DES MARIÉS</div>
-        <div class="supp-detail">Portrait intime, récit à la première personne<br>2 h tournage + 3 h montage</div>
-        <div class="supp-price">225 €</div>
-        <div class="supp-basis">5 h × 45 €/h</div>
-      </div>
-      <div class="supp-item">
         <div class="supp-name">SÉQUENCE PRÉ-MARIAGE</div>
         <div class="supp-detail">Format documentaire avant le grand jour<br>Demi-journée tournage + 6 h montage</div>
         <div class="supp-price">450 €</div>
@@ -530,6 +554,12 @@
         <div class="supp-detail">Séquence filmée sur les lieux de votre histoire<br>Demi-journée tournage + 6 h montage</div>
         <div class="supp-price">450 € + km</div>
         <div class="supp-basis">10 h × 45 €/h · frais kilométriques réels</div>
+      </div>
+      <div class="supp-item">
+        <div class="supp-name">DRONE</div>
+        <div class="supp-detail">Prises de vue aériennes le jour J · DJI Mini 5 Pro<br>Vérification espace aérien, coordination avec le lieu,<br>1h30 de vol + intégration au montage</div>
+        <div class="supp-price">250 €</div>
+        <div class="supp-basis">Sous réserve d'autorisation de vol sur le lieu</div>
       </div>
       <div class="supp-item">
         <div class="supp-name">HEURE SUPPLÉMENTAIRE</div>
@@ -550,22 +580,22 @@
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-title">Rendez-vous créatif</div>
-        <p class="step-desc">On échange sur votre journée, vos envies, le lieu, le programme. Je prépare la captation en lien avec vos prestataires et le déroulé prévu, pour être au bon endroit au bon moment.</p>
+        <p class="step-desc">Avant le jour J, on prend le temps de se parler vraiment. Je veux comprendre votre histoire, l'ambiance que vous imaginez, le déroulé prévu, les moments qui comptent le plus pour vous. On parle du lieu, des prestataires, du programme, pour que je sois au bon endroit, au bon moment, sans jamais avoir à vous le demander le jour même.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-title">Le jour J</div>
-        <p class="step-desc">Présence discrète et attentive, toutes formules en 4K. Je capte les moments forts et les détails imperceptibles : lumières, regards, sons d'ambiance, sans jamais interrompre le fil de votre journée.</p>
+        <p class="step-desc">J'arrive en avance, je repère la lumière, je m'installe dans le décor avant que la journée commence. Ensuite je disparais, ou presque. Présence discrète, regard attentif : je capte les moments forts et ceux que personne d'autre ne verra. Les regards qui fuient, les mains qui se cherchent, les rires qui éclatent entre deux discours. Toujours en 4K, avec le DJI Mini 5 Pro disponible en supplément pour les séquences aériennes.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-title">Montage & étalonnage</div>
-        <p class="step-desc">Je construis votre film par itérations, en sublimant chaque journée par un assemblage de détails mêlant technique et sensibilité. Le montage est l'une des étapes les plus importantes : c'est là qu'on voit les images prendre vie, que l'attention portée à chaque détail crée le fil conducteur d'un souvenir inoubliable.</p>
+        <p class="step-desc">Je construis votre film plan par plan, en cherchant le rythme juste, celui qui laisse respirer l'émotion sans la diluer. Chaque coupe est pensée pour rythmer l'émotion, chaque transition pour préserver la continuité du ressenti. L'étalonnage vient ensuite poser une signature visuelle unique : des teintes chaleureuses, des ombres profondes, une lumière qui épouse l'atmosphère de votre journée et lui confère un caractère qui lui ressemble.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
         <div class="step-title">Livraison</div>
-        <p class="step-desc">Teaser livré en 3 à 5 semaines. Film final sous 7 à 10 semaines selon la demande de la saison. Fichiers haute définition transmis par lien de téléchargement privé et sécurisé, directement dans vos mains.</p>
+        <p class="step-desc">Le teaser vous est livré en 3 à 5 semaines, une première fenêtre sur votre journée, à partager si vous le souhaitez. Le film complet suit dans les 7 à 10 semaines, transmis par lien privé en haute définition. Et parce qu'un souvenir mérite un écrin à sa mesure, vous recevrez également une boîte personnalisée Sacréclap Film contenant votre film sur clé USB, pour le poser sur une étagère, l'offrir, ou le retrouver dans vingt ans.</p>
       </div>
     </div>
   </section>
@@ -606,7 +636,7 @@
         <!-- Mariés -->
         <div class="form-row">
           <div class="form-field"><label for="prenom">Votre prénom</label><input type="text" id="prenom" name="prenom" placeholder="Marie" autocomplete="given-name" required minlength="2" maxlength="60"/></div>
-          <div class="form-field"><label for="nom">Votre nom</label><input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" maxlength="60"/></div>
+          <div class="form-field"><label for="nom">Votre nom</label><input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" required minlength="2" maxlength="60"/></div>
         </div>
         <div class="form-row">
           <div class="form-field"><label for="prenom2">Prénom de votre conjoint·e</label><input type="text" id="prenom2" name="prenom2" placeholder="Thomas" autocomplete="given-name" maxlength="60"/></div>
@@ -614,15 +644,19 @@
         </div>
         <div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="marie@email.fr" autocomplete="email" required/></div>
         <div class="form-row">
-          <div class="form-field"><label for="date">Date du mariage</label><input type="text" id="date" name="date" placeholder="Ex : 14 juin 2026"/></div>
-          <div class="form-field"><label for="lieu">Lieu</label><input type="text" id="lieu" name="lieu" placeholder="Domaine, ville..."/></div>
+        <div class="form-field date-field-wrap">
+          <label for="date">Date du mariage</label>
+          <input type="text" id="date" name="date" placeholder="Ex : 14 juin 2026" autocomplete="off" readonly required style="cursor:pointer;"/>
+          <div id="dateCal"></div>
+        </div>
+          <div class="form-field"><label for="lieu">Lieu</label><input type="text" id="lieu" name="lieu" placeholder="Domaine, ville..." required minlength="2"/></div>
         </div>
         <div class="form-field">
           <label for="formule">Formule envisagée</label>
           <select id="formule" name="formule">
             <option value="">Sélectionner...</option>
-            <option>L'Essentielle — 1 690 €</option>
-            <option>Le Cinéma — 1 990 €</option>
+            <option id="formule-essentielle-option">L'Essentielle — 1 890 €</option>
+            <option>Le Cinéma — 2 390 €</option>
             <option>Je ne sais pas encore</option>
           </select>
         </div>
@@ -656,6 +690,7 @@
     Me contacter
   </a>
 
+  <script src="js/prices.js" defer></script>
   <script src="js/mariages.js" defer></script>
 </body>
 </html>

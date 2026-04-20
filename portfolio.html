@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Filmographie — Sacréclap Film · Val d'Oise</title>
-  <meta name="description" content="Portfolio de Sacréclap Film — Captation, montage, spot publicitaire, court-métrage et événement. Val d'Oise & Île-de-France."/>
+  <title>Portfolio – Films & Réalisations | Sacréclap Film</title>
+  <meta name="description" content="Découvrez les films corporate, documentaires, mariages et courts-métrages réalisés par Sacréclap Film, vidéaste freelance en Île-de-France."/>
   <meta name="author" content="Sacréclap Film"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.sacreclap-film.fr/portfolio"/>
@@ -21,11 +21,13 @@
   <meta name="twitter:title" content="Filmographie — Sacréclap Film"/>
   <meta name="twitter:description" content="Captation, montage, spot publicitaire et court-métrage. Val d'Oise & Île-de-France."/>
   <meta name="twitter:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23f5f2ec'/><circle cx='16' cy='16' r='14' fill='none' stroke='%23e07820' stroke-width='2'/><text x='5' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%231a1610'>S</text><text x='16' y='22' font-family='serif' font-size='16' font-weight='bold' fill='%23e07820'>C</text></svg>"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png"/>
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -34,7 +36,7 @@
       --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.13);
       --orange: #e07820; --orange-dark: #b85f10; --dark: #1a1410;
       --font-display: 'Bebas Neue', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
       --font-italic: 'Playfair Display', serif;
     }
     html { scroll-behavior: smooth; }
@@ -70,7 +72,7 @@
     .nav-links a.mariage-link:hover { color: var(--orange-dark); }
     .nav-cta { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; background: var(--ink); color: var(--cream); padding: .6rem 1.4rem; text-decoration: none; transition: background .3s; }
     .nav-cta:hover { background: var(--orange); }
-    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: 4px; z-index: 300; }
+    .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 300; }
     .burger-line { width: 24px; height: 1.5px; background: var(--ink); transition: transform .35s, opacity .35s, width .35s; transform-origin: center; }
     .burger.open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .burger.open .burger-line:nth-child(2) { opacity: 0; width: 0; }
@@ -99,7 +101,7 @@
     .portfolio-hero-inner { padding: 3.5rem 3rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; border-bottom: 1px solid var(--border); }
     .hero-title { font-family: var(--font-display); font-size: clamp(5rem, 9vw, 10rem); line-height: .85; letter-spacing: -.01em; }
     .hero-title .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
-    .hero-sub { font-family: var(--font-italic); font-style: italic; font-size: 1.05rem; line-height: 1.75; color: var(--ink-light); max-width: 380px; align-self: end; }
+    .hero-sub { font-family: var(--font-italic); font-style: italic; font-size: 1.05rem; line-height: 1.75; color: var(--ink-mid); max-width: 380px; align-self: end; }
     .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); }
     .hero-stat { padding: 1.2rem 3rem; border-right: 1px solid var(--border); }
     .hero-stat:last-child { border-right: none; }
@@ -134,11 +136,11 @@
     .portfolio-card:hover .play-btn { background: var(--orange); border-color: var(--orange); transform: scale(1.08); }
     .play-tri { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 16px solid #f0ebe3; margin-left: 4px; }
     .card-cat-badge { position: absolute; top: .9rem; left: .9rem; font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.75); background: rgba(0,0,0,.5); padding: .25rem .65rem; backdrop-filter: blur(4px); }
-    .card-year { position: absolute; top: .9rem; right: .9rem; font-family: var(--font-display); font-size: .85rem; color: rgba(240,235,227,.4); }
+    .card-year { position: absolute; top: .9rem; right: .9rem; font-family: var(--font-display); font-size: .95rem; color: rgba(240,235,227,.4); }
     .portfolio-card-body { padding: 1.5rem 1.8rem 2rem; display: flex; flex-direction: column; gap: .6rem; flex: 1; border-top: .5px solid var(--border-strong); }
     .card-role { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
     .card-title { font-family: var(--font-display); font-size: clamp(1.4rem, 2vw, 2rem); letter-spacing: .04em; color: var(--ink); line-height: 1; }
-    .card-client { font-family: var(--font-italic); font-style: italic; font-size: .88rem; color: var(--ink-light); line-height: 1.5; }
+    .card-client { font-family: var(--font-italic); font-style: italic; font-size: 1rem; color: var(--ink-mid); line-height: 1.5; }
     .card-meta { display: flex; flex-direction: column; gap: .3rem; margin-top: .4rem; padding-top: .9rem; border-top: .5px solid var(--border); }
     .card-meta-row { display: flex; gap: .6rem; font-size: .68rem; }
     .card-meta-key { color: var(--ink-faint); min-width: 50px; }
@@ -157,7 +159,7 @@
     /* EMPTY STATE */
     .empty-state { grid-column: 1 / -1; padding: 5rem 2rem; text-align: center; }
     .empty-state-icon { font-family: var(--font-display); font-size: 5rem; color: rgba(0,0,0,.06); line-height: 1; margin-bottom: 1rem; }
-    .empty-state-text { font-size: .85rem; color: var(--ink-faint); }
+    .empty-state-text { font-size: .95rem; color: var(--ink-faint); }
 
     /* CTA BANDE */
     .cta-band { background: var(--ink); display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 3rem; gap: 2rem; }
@@ -352,7 +354,7 @@
       <!-- PARADIS FLEURI -->
       <div class="portfolio-card reveal" data-cats="spot montage" data-featured-for="spot">
         <a href="https://youtu.be/cvduVP9KteI" target="_blank" rel="noopener" class="portfolio-card-thumb">
-          <img src="Miniature_Paradis_Fleuri.png" alt="Paradis Fleuri — Gîte du Vexin" loading="lazy" />
+          <picture><source srcset="Miniature_Paradis_Fleuri.webp" type="image/webp"/><img src="Miniature_Paradis_Fleuri.jpg" alt="Paradis Fleuri — Gîte du Vexin" loading="lazy"/></picture>
           <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
           <div class="card-cat-badge">Réalisation & Montage</div>
           <div class="card-year">2025</div>
@@ -406,7 +408,7 @@
       <!-- LAPONIE — ROYAL CANIN (featured montage) -->
       <div class="portfolio-card reveal" data-cats="montage spot" data-featured-for="montage">
         <a href="https://www.youtube.com/watch?v=12Itz4v5A4c" target="_blank" rel="noopener" class="portfolio-card-thumb" style="aspect-ratio:16/9;background:#111;">
-          <img src="Miniature_Laponie.png" alt="J'ai fait du Chien de Traîneau en Laponie — Royal Canin" loading="lazy" />
+          <picture><source srcset="Miniature_Laponie.webp" type="image/webp"/><img src="Miniature_Laponie.jpg" alt="J'ai fait du Chien de Traîneau en Laponie — Royal Canin" loading="lazy"/></picture>
           <div class="portfolio-card-overlay"><div class="play-btn"><div class="play-tri"></div></div></div>
           <div class="card-cat-badge">Montage & Étalonnage</div>
           <div class="card-year">2025</div>

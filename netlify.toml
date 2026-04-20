@@ -1,6 +1,7 @@
 [functions]
   directory = "netlify/functions"
 
+# ─── En-têtes de sécurité (inchangés) ────────────────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
@@ -9,4 +10,42 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; frame-src youtube.com www.youtube.com; img-src 'self' img.youtube.com i.ytimg.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; frame-src youtube.com www.youtube.com; img-src 'self' img.youtube.com i.ytimg.com data:; connect-src 'self' fonts.googleapis.com fonts.gstatic.com; object-src 'none'; base-uri 'self'"
+
+# ─── Cache JS — revalidation automatique via ETag Netlify ────────────────────
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# ─── Cache long terme — images & fonts (jamais renommées sans changer de nom) ─
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# ─── Cache court terme — HTML (toujours revalidé) ─────────────────────────────
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
