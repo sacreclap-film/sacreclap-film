@@ -11,7 +11,7 @@
 |---|---|---|
 | Netlify | Dashboard site | https://app.netlify.com |
 | GitHub | Repo sacreclap-film | https://github.com |
-| EmailJS | Dashboard | https://dashboard.emailjs.com |
+| Brevo | Dashboard | https://app.brevo.com |
 | CNIL (notification) | Formulaire officiel | https://notifications.cnil.fr |
 
 ---
@@ -31,18 +31,16 @@
 
 ---
 
-## Scénario 2 — Clé EmailJS compromise / exposée publiquement
+## Scénario 2 — Clé Brevo compromise / quota anormal
 
-**Signes :** emails non sollicités depuis tes templates, quota EmailJS épuisé anormalement.
+**Signes :** emails non sollicités, quota Brevo épuisé anormalement, envois depuis des IPs inconnues.
 
 **Actions immédiates (< 30 min) :**
-1. **EmailJS Dashboard** → API Keys → Régénérer la clé publique ET la clé privée
-2. **EmailJS Dashboard** → Services → Vérifier et restreindre les domaines autorisés à `sacreclap-film.fr`
-3. **Netlify Dashboard** → Site → Environment variables → Mettre à jour :
-   - `EMAILJS_PUBLIC_KEY` ← nouvelle valeur
-   - `EMAILJS_PRIVATE_KEY` ← nouvelle valeur
-4. Redéployer le site (Netlify → Deploys → Trigger deploy)
-5. Vérifier que les anciens emails n'ont pas été interceptés
+1. **Brevo Dashboard** → SMTP & API → API Keys → Révoquer la clé compromise et en générer une nouvelle
+2. **Netlify Dashboard** → Site → Environment variables → Mettre à jour `BREVO_API_KEY` avec la nouvelle valeur
+3. Redéployer le site (Netlify → Deploys → Trigger deploy)
+4. **Brevo Dashboard** → Senders & IPs → Vérifier les logs d'envoi et identifier les sources suspectes
+5. Si quota épuisé : Brevo → Mon compte → Limites → Suspendre temporairement les envois transactionnels
 
 ---
 
@@ -106,12 +104,6 @@
 Ces variables doivent être présentes dans Netlify → Site → Environment variables :
 
 ```
-EMAILJS_PUBLIC_KEY
-EMAILJS_PRIVATE_KEY
-EMAILJS_SERVICE_ID
-EMAILJS_TEMPLATE_ADMIN
-EMAILJS_TEMPLATE_CONFIRM
-ALLOWED_ORIGIN
+BREVO_API_KEY       ← clé API Brevo (transactionnel)
+CONTACT_EMAIL       ← adresse de réception (ex: contact@sacreclap-film.fr)
 ```
-
-Valeur de référence pour `ALLOWED_ORIGIN` : `https://www.sacreclap-film.fr`
