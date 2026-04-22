@@ -28,15 +28,26 @@
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <!-- Fonts chargées en non-bloquant via main.js (LCP fix) -->
+  <!-- Preload du poster hero pour accélérer le LCP mobile -->
+  <link rel="preload" href="Miniature_Paradis_Fleuri.jpg" as="image"/>
   <style>
+    /* Fallback Bebas Neue — réduit le CLS au moment du font-swap */
+    @font-face {
+      font-family: 'Bebas Neue Fallback';
+      src: local('Arial');
+      size-adjust: 72%;
+      ascent-override: 110%;
+      descent-override: 20%;
+      line-gap-override: 0%;
+    }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --cream: #f5f2ec; --cream-dark: #f0ede6; --ink: #1a1610;
       --ink-mid: #4a4438; --ink-light: #6a6058; --ink-faint: #9a9080;
       --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.13);
       --orange: #e07820; --orange-dark: #b85f10; --dark: #1a1410;
-      --font-display: 'Bebas Neue', sans-serif;
+      --font-display: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
       --font-body: 'Inter', sans-serif;
       --font-italic: 'Playfair Display', serif;
     }
@@ -206,6 +217,18 @@
     .wedding-video-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--dark); overflow: hidden; }
     .wedding-video { width: 100%; height: 100%; object-fit: cover; display: block; border: none; }
 
+    /* SERVICE CARDS */
+    .services-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: .5px solid var(--border-strong); }
+    .service-card { padding: 2.5rem 2rem; border-right: .5px solid var(--border-strong); display: flex; flex-direction: column; transition: background .3s; }
+    .service-card:last-child { border-right: none; }
+    .service-card:hover { background: rgba(224,120,32,.04); }
+    .service-card-num { font-family: var(--font-display); font-size: 3rem; color: var(--orange); opacity: .3; line-height: 1; margin-bottom: 1.8rem; transition: opacity .3s; }
+    .service-card:hover .service-card-num { opacity: 1; }
+    .service-card-title { font-family: var(--font-display); font-size: clamp(1.25rem, 1.7vw, 1.8rem); letter-spacing: .04em; line-height: 1.05; color: var(--ink); margin-bottom: .4rem; }
+    .service-card-sub { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.2rem; }
+    .service-card-desc { font-size: .88rem; line-height: 1.85; color: var(--ink-mid); font-weight: 400; flex: 1; margin-bottom: 1.4rem; }
+    .service-card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
+
     /* PROCESS */
     .process { padding: 4rem 3rem; border-bottom: 1px solid var(--border); background: var(--cream); }
     .process-header { margin-bottom: 3.5rem; }
@@ -346,6 +369,10 @@
       .accordion-body-inner { padding: .5rem 1.5rem 1.8rem; }
       .accordion-body-split { grid-template-columns: 1fr; }
       .accordion-tags-inline { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .service-card { border-right: none; border-bottom: .5px solid var(--border-strong); }
+      .service-card:nth-child(odd) { border-right: .5px solid var(--border-strong); }
+      .service-card:last-child { border-bottom: none; }
       .process { padding: 3rem 1.5rem; }
       .process-steps { grid-template-columns: 1fr 1fr; }
       .portfolio { padding: 3rem 1.5rem; }
@@ -514,58 +541,65 @@
       <h2 class="services-title">CE QUE<br><span class="ghost">JE FAIS</span></h2>
       <p class="services-sub">Des compétences complémentaires au service d'une même exigence : la qualité de l'image et la force du récit.</p>
     </div>
-    <div class="accordion reveal">
-      <div class="accordion-item active">
-        <button class="accordion-trigger">
-          <span class="accordion-num">01</span>
-          <span class="accordion-title">PRISE DE VUE & TOURNAGE</span>
-          <span class="accordion-tags-inline"><span class="tag">GH5 Mark II</span><span class="tag">Fiction</span><span class="tag">Concert</span></span>
-          <span class="accordion-icon"></span>
-        </button>
-        <div class="accordion-body"><div class="accordion-body-inner">
-          <p class="accordion-desc">Opérateur caméra disponible pour renforcer vos équipes sur tournage fiction, documentaire, festival ou concert. GH5 Mark II riggé selon les besoins du format : moniteur externe pour un contrôle précis de l'exposition, micro canon pour le son direct, filtres ND variable pour la gestion de la lumière, poignées latérales pour le cadrage à mains levées, ou stabilisateur pour les mouvements fluides, un rig polyvalent, prêt à s'adapter à chaque condition de tournage.</p>
-          <div class="service-tags"><span class="tag">Fiction</span><span class="tag">Documentaire</span><span class="tag">Festival / Concert</span><span class="tag">GH5 Mark II</span><span class="tag">Stabilisateur</span><span class="tag">Filtres ND</span><span class="tag">Son direct</span></div>
-        </div></div>
+    <div class="services-grid reveal">
+
+      <!-- 01 TOURNAGE -->
+      <div class="service-card">
+        <div class="service-card-num">01</div>
+        <div class="service-card-title">TOURNAGE</div>
+        <div class="service-card-sub">Opérateur caméra</div>
+        <p class="service-card-desc">Renforcement d'équipe sur plateau ou prise en charge complète d'un tournage. GH5 Mark II riggé selon vos besoins : stabilisateur pour les mouvements fluides, filtres ND pour la lumière naturelle, son direct, moniteur externe. Fiction, documentaire, concert, événement.</p>
+        <div class="service-card-tags">
+          <span class="tag">GH5 Mark II</span>
+          <span class="tag">Fiction</span>
+          <span class="tag">Concert</span>
+          <span class="tag">Stabilisateur</span>
+          <span class="tag">Son direct</span>
+        </div>
       </div>
-      <div class="accordion-item">
-        <button class="accordion-trigger">
-          <span class="accordion-num">02</span>
-          <span class="accordion-title">MONTAGE & POST-PROD</span>
-          <span class="accordion-tags-inline"><span class="tag">Court-métrage</span><span class="tag">YouTube</span><span class="tag">DaVinci</span></span>
-          <span class="accordion-icon"></span>
-        </button>
-        <div class="accordion-body"><div class="accordion-body-inner">
-          <p class="accordion-desc">Montage narratif de courts-métrages, vidéos YouTube et contenus de marque. Étalonnage narratif, sound design, sous-titrage. Je prends en charge vos rushes de A à Z ou interviens à une étape précise.</p>
-          <div class="service-tags"><span class="tag">Court-métrage</span><span class="tag">YouTube</span><span class="tag">Étalonnage</span><span class="tag">Sound design</span></div>
-        </div></div>
+
+      <!-- 02 AFTER MOVIE & ÉVÉNEMENTS -->
+      <div class="service-card">
+        <div class="service-card-num">02</div>
+        <div class="service-card-title">AFTER MOVIE & ÉVÉNEMENTS</div>
+        <div class="service-card-sub">Captation & montage</div>
+        <p class="service-card-desc">Du festival au lancement de produit, je capte l'atmosphère et le mouvement de vos événements pour en faire un film que vos équipes auront envie de partager. Captation multi-angle, montage rythmé, ambiance restituée.</p>
+        <div class="service-card-tags">
+          <span class="tag">Festival</span>
+          <span class="tag">Concert</span>
+          <span class="tag">After movie</span>
+          <span class="tag">Multi-angle</span>
+        </div>
       </div>
-      <div class="accordion-item">
-        <button class="accordion-trigger">
-          <span class="accordion-num">03</span>
-          <span class="accordion-title">DOCUMENTAIRE, INTERVIEWS & CORPORATE</span>
-          <span class="accordion-tags-inline"><span class="tag">After movie</span><span class="tag">Interview</span><span class="tag">Entreprise</span></span>
-          <span class="accordion-icon"></span>
-        </button>
-        <div class="accordion-body"><div class="accordion-body-inner">
-          <p class="accordion-desc">Captation d'interviews, after movies d'événements et vidéos d'entreprise. Je travaille avec les équipes communication et les agences qui ont besoin d'un regard documentaire, structuré et efficace, pour valoriser leurs projets et leurs équipes.</p>
-          <div class="service-tags"><span class="tag">After movie</span><span class="tag">Interview</span><span class="tag">Vidéo d'entreprise</span><span class="tag">Événement corporate</span></div>
-        </div></div>
+
+      <!-- 03 VIDÉO D'ENTREPRISE & SPOT -->
+      <div class="service-card">
+        <div class="service-card-num">03</div>
+        <div class="service-card-title">VIDÉO D'ENTREPRISE, SPOT</div>
+        <div class="service-card-sub">Communication & marque</div>
+        <p class="service-card-desc">Film institutionnel, spot de communication, contenu de marque. Un regard structuré et efficace pour valoriser vos projets, vos équipes et votre identité. Adapté à vos canaux de diffusion : web, réseaux sociaux, broadcast.</p>
+        <div class="service-card-tags">
+          <span class="tag">Spot pub</span>
+          <span class="tag">Brand content</span>
+          <span class="tag">4K</span>
+          <span class="tag">Étalonnage</span>
+        </div>
       </div>
-      <div class="accordion-item">
-        <button class="accordion-trigger">
-          <span class="accordion-num">04</span>
-          <span class="accordion-title">MARIAGE & ÉVÉNEMENTS</span>
-          <span class="accordion-tags-inline"><span class="tag">Film de mariage</span><span class="tag">Long format</span></span>
-          <span class="accordion-icon"></span>
-        </button>
-        <div class="accordion-body"><div class="accordion-body-inner">
-          <p class="accordion-desc">Un souvenir cinématographique, esthétique et émotionnel, conçu pour refléter avec sensibilité et précision la singularité de votre journée. Deux formules disponibles, tarif de lancement pour les 5 premiers mariages.</p>
-          <div style="margin-top:1.2rem;">
-            <a href="mariages.html" class="btn-primary" style="display:inline-block;">Voir les formules mariage →</a>
-          </div>
-          <div class="service-tags" style="margin-top:1.2rem;"><span class="tag">Film de mariage</span><span class="tag">Teaser</span><span class="tag">4K</span><span class="tag">Journée complète</span></div>
-        </div></div>
+
+      <!-- 04 DOCUMENTAIRE & INTERVIEW -->
+      <div class="service-card">
+        <div class="service-card-num">04</div>
+        <div class="service-card-title">DOCUMENTAIRE & INTERVIEW</div>
+        <div class="service-card-sub">Portraits & reportages</div>
+        <p class="service-card-desc">Captation d'interviews, portraits filmés, séries documentaires. Je travaille avec les équipes communication et les créateurs qui cherchent à donner de la profondeur et de la continuité à leurs projets.</p>
+        <div class="service-card-tags">
+          <span class="tag">Interview</span>
+          <span class="tag">Portrait filmé</span>
+          <span class="tag">Documentaire</span>
+          <span class="tag">YouTube</span>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -686,11 +720,11 @@
           <label for="projet">Type de projet</label>
           <select id="projet" name="projet" required>
             <option value="">Sélectionner...</option>
-            <option>Captation (tournage)</option>
-            <option>After movie / Interview / Vidéo d'entreprise</option>
+            <option>Tournage (Opérateur caméra)</option>
+            <option>After movie / Événements</option>
+            <option>Vidéo d'entreprise, Spot communication</option>
             <option>Making-of de tournage</option>
-            <option>Documentaire & Interview</option>
-            <option>Film de mariage</option>
+            <option>Documentaire / Interview</option>
             <option>Autre</option>
           </select>
         </div>
@@ -736,6 +770,7 @@
     Me contacter
   </a>
 
+  <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

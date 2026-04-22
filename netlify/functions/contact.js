@@ -12,6 +12,8 @@ const ALLOWED_ORIGINS = [
   'https://www.sacreclap-film.fr',
   'https://sacreclap-film.fr',
   'https://sacreclap-film.netlify.app',
+  'http://localhost:8888',
+  'http://localhost:3999',
 ];
 
 function getCorsHeaders(requestOrigin) {

@@ -19,15 +19,24 @@
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <!-- Fonts chargées en non-bloquant via js/fonts.js (LCP fix) -->
   <style>
+    /* Fallback Bebas Neue — réduit le CLS au moment du font-swap */
+    @font-face {
+      font-family: 'Bebas Neue Fallback';
+      src: local('Arial');
+      size-adjust: 72%;
+      ascent-override: 110%;
+      descent-override: 20%;
+      line-gap-override: 0%;
+    }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --cream: #f5f2ec; --cream-dark: #f0ede6; --ink: #1a1610;
       --ink-mid: #4a4438; --ink-light: #6a6058; --ink-faint: #9a9080;
       --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.13);
       --orange: #e07820; --orange-dark: #b85f10; --dark: #1a1410;
-      --font-display: 'Bebas Neue', sans-serif;
+      --font-display: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
       --font-body: 'Inter', sans-serif;
       --font-italic: 'Playfair Display', serif;
     }
@@ -695,6 +704,7 @@
     Me contacter
   </a>
 
+  <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
   <script src="js/mariages.js" defer></script>
 </body>
