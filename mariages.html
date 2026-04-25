@@ -19,7 +19,8 @@
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Fonts chargées en non-bloquant via js/fonts.js (LCP fix) -->
+  <!-- Fonts chargées directement pour éviter le flash (FOUT) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap"/>
   <style>
     /* Fallback Bebas Neue — réduit le CLS au moment du font-swap */
     @font-face {
@@ -257,7 +258,8 @@
       .hero-right { display: block; overflow: hidden; }
       .hero-visual { height: 55vw; min-height: 0 !important; max-height: 380px; flex: none; }
       .hero-left { padding: 5rem 1.5rem 3rem; border-right: none; }
-      .formules-header { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2.5rem 1.5rem 2rem; }
+      .formules-header { flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding: 2.5rem 1.5rem 2rem; }
+      .formules-title { text-align: center; }
       .formules-sub { text-align: center; }
       .formules-grid { grid-template-columns: 1fr; }
       .formule-card { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
@@ -367,7 +369,7 @@
     <div class="hero-right">
       <div class="hero-visual">
         <video autoplay muted loop playsinline preload="metadata" poster="poster-mariage-hero.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;">
-          <source src="Trailer_2_V3_Mariage_Pat_Val.mp4" type="video/mp4"/>
+          <source src="https://pub-e0b6e14dbef540d4922427ae40f82f13.r2.dev/Trailer_2_V3_Mariage_Pat_Val.mp4" type="video/mp4"/>
         </video>
         <div class="hero-visual-overlay"></div>
         <div class="hero-visual-content">
@@ -490,7 +492,7 @@
           </div>
         </div>
 
-        <a href="#contact-mariage" class="btn-primary" style="margin-top:1.5rem;">Réserver cette formule</a>
+        <a href="#contact-mariage" class="btn-primary" data-formule="essentielle" style="margin-top:1.5rem;">Réserver cette formule</a>
       </div>
 
       <!-- CINÉMA -->
@@ -544,7 +546,7 @@
           </div>
         </div>
 
-        <a href="#contact-mariage" class="btn-primary" style="margin-top:1.5rem;">Réserver cette formule</a>
+        <a href="#contact-mariage" class="btn-primary" data-formule="cinema" style="margin-top:1.5rem;">Réserver cette formule</a>
       </div>
 
     </div>
@@ -669,8 +671,8 @@
           <label for="formule">Formule envisagée</label>
           <select id="formule" name="formule" autocomplete="off">
             <option value="">Sélectionner...</option>
-            <option id="formule-essentielle-option">L'Essentielle — 1 890 €</option>
-            <option>Le Cinéma — 2 390 €</option>
+            <option id="formule-essentielle-option" value="essentielle">L'Essentielle — 1 890 €</option>
+            <option id="formule-cinema-option" value="cinema">Le Cinéma — 2 390 €</option>
             <option>Je ne sais pas encore</option>
           </select>
         </div>
@@ -704,7 +706,6 @@
     Me contacter
   </a>
 
-  <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
   <script src="js/mariages.js" defer></script>
 </body>

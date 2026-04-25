@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vidéaste Corporate & Événements | Île-de-France – Sacréclap Film</title>
-  <meta name="description" content="Vidéaste freelance en Île-de-France spécialisé en films corporate, captation d'événements et concerts, documentaires et courts-métrages. Devis sur mesure."/>
+  <title>Vidéaste Mariage, Corporate & Événements | Île-de-France – Sacréclap Film</title>
+  <meta name="description" content="Vidéaste freelance en Île-de-France — films de mariage, corporate, captation d'événements et concerts. Tarif de lancement mariages à partir de 1 890 €."/>
   <meta name="author" content="Sacréclap Film"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.sacreclap-film.fr/"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Sacréclap Film — Opérateur Caméra & Monteur"/>
-  <meta property="og:description" content="Captation narrative, montage et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
+  <meta property="og:title" content="Sacréclap Film — Vidéaste Mariage & Opérateur Caméra"/>
+  <meta property="og:description" content="Films de mariage, captation narrative, montage. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
   <meta property="og:url" content="https://www.sacreclap-film.fr/"/>
   <meta property="og:site_name" content="Sacréclap Film"/>
   <meta property="og:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
@@ -19,8 +19,8 @@
   <meta property="og:image:height" content="630"/>
   <meta property="og:locale" content="fr_FR"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Sacréclap Film — Opérateur Caméra & Monteur"/>
-  <meta name="twitter:description" content="Captation narrative, montage et making-of. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
+  <meta name="twitter:title" content="Sacréclap Film — Vidéaste Mariage & Opérateur Caméra"/>
+  <meta name="twitter:description" content="Films de mariage, captation narrative, montage. GH5 Mark II · DaVinci Resolve Studio · Val d'Oise."/>
   <meta name="twitter:image" content="https://www.sacreclap-film.fr/og-image.jpg"/>
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
@@ -28,9 +28,10 @@
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Fonts chargées en non-bloquant via main.js (LCP fix) -->
+  <!-- Fonts chargées directement pour éviter le flash (FOUT) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap"/>
   <!-- Preload du poster hero pour accélérer le LCP mobile -->
-  <link rel="preload" href="Miniature_Paradis_Fleuri.jpg" as="image"/>
+  <link rel="preload" href="poster-showreel-2026.jpg" as="image"/>
   <style>
     /* Fallback Bebas Neue — réduit le CLS au moment du font-swap */
     @font-face {
@@ -278,13 +279,19 @@
     .portfolio-label { position: absolute; top: .9rem; left: 1.1rem; font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.55); background: rgba(0,0,0,.45); padding: .25rem .6rem; }
 
     /* TESTIMONIAL */
-    .testimonial { padding: 4rem 3rem; background: var(--ink); color: #f0ebe3; display: flex; align-items: center; gap: 4rem; position: relative; overflow: hidden; min-height: 260px; }
-    .testimonial::before { content: '"'; position: absolute; font-family: var(--font-display); font-size: 24rem; color: rgba(255,255,255,.04); top: -4rem; left: 1rem; line-height: 1; }
-    .testimonial-quote { font-family: var(--font-italic); font-style: italic; font-size: 1.35rem; line-height: 1.65; color: #f0ebe3; flex: 1; position: relative; z-index: 1; min-height: 100px; display: flex; align-items: center; }
-    .testimonial-author { text-align: right; min-width: 180px; position: relative; z-index: 1; }
-    .author-name { font-family: var(--font-display); font-size: 1.4rem; color: #f0ebe3; letter-spacing: .08em; }
-    .author-role { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(240,235,227,.4); margin-top: .3rem; }
-    .author-line { width: 30px; height: 1px; background: rgba(240,235,227,.22); margin: 1.2rem 0 0 auto; }
+    .testimonial { padding: 3.5rem 3rem; background: var(--ink); color: #f0ebe3; display: grid; grid-template-columns: auto 1fr auto; gap: 2.5rem; align-items: center; position: relative; overflow: hidden; }
+    .testimonial-num { font-family: var(--font-display); font-size: 6rem; color: rgba(240,235,227,.07); line-height: 1; writing-mode: vertical-rl; letter-spacing: -.05em; user-select: none; }
+    .testimonial-body { display: flex; flex-direction: column; gap: .9rem; }
+    .testimonial-mark { font-family: var(--font-display); font-size: 4rem; color: var(--orange); line-height: .7; }
+    .testimonial-quote { font-family: var(--font-italic); font-style: italic; font-size: 1.2rem; line-height: 1.75; color: rgba(240,235,227,.88); transition: opacity .35s ease; }
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; margin-top: .3rem; }
+    .author-line { width: 24px; height: 1px; background: var(--orange); flex-shrink: 0; }
+    .author-name { font-family: var(--font-display); font-size: 1.1rem; color: #f0ebe3; letter-spacing: .08em; transition: opacity .35s ease; }
+    .author-role { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(240,235,227,.35); margin-top: .25rem; transition: opacity .35s ease; }
+    .testimonial-nav-col { display: flex; flex-direction: column; align-items: center; gap: .9rem; }
+    .testimonial-arrows { display: flex; flex-direction: column; gap: .4rem; }
+    .t-arrow { width: 32px; height: 32px; background: none; border: .5px solid rgba(240,235,227,.18); color: rgba(240,235,227,.45); font-size: .85rem; cursor: pointer; transition: border-color .3s, color .3s, background .3s; display: flex; align-items: center; justify-content: center; }
+    .t-arrow:hover { border-color: var(--orange); color: var(--orange); }
 
     /* CONTACT */
     .contact { display: grid; grid-template-columns: 1fr 1.4fr; border-bottom: 1px solid var(--border); }
@@ -333,11 +340,11 @@
     .hero-thumb-link:hover .hero-thumb-play { background:var(--orange); border-color:var(--orange); transform:scale(1.08); }
     .hero-thumb-tri { width:0; height:0; border-top:11px solid transparent; border-bottom:11px solid transparent; border-left:19px solid #f0ebe3; margin-left:5px; }
 
-    /* TESTIMONIAL NAV DOTS */
-    .testimonial-nav { background: var(--ink); padding: .5rem 3rem 1.2rem; display: flex; gap: .6rem; justify-content: center; }
-    .testimonial-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(245,242,236,.2); border: none; cursor: pointer; transition: background .3s, transform .3s; padding: 0; flex-shrink: 0; }
+    /* TESTIMONIAL DOTS */
+    .testimonial-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(245,242,236,.2); border: none; cursor: pointer; transition: background .3s, transform .3s; padding: 0; flex-shrink: 0; display: block; }
     .testimonial-dot.active { background: var(--orange); transform: scale(1.3); }
     .testimonial-dot:hover:not(.active) { background: rgba(245,242,236,.45); }
+    #testimonialDots { display: flex; flex-direction: column; gap: .45rem; }
 
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
@@ -369,18 +376,26 @@
       .accordion-body-inner { padding: .5rem 1.5rem 1.8rem; }
       .accordion-body-split { grid-template-columns: 1fr; }
       .accordion-tags-inline { display: none; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none; border-bottom: .5px solid var(--border-strong); }
-      .service-card:nth-child(odd) { border-right: .5px solid var(--border-strong); }
       .service-card:last-child { border-bottom: none; }
       .process { padding: 3rem 1.5rem; }
-      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+      .step { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+      .step:last-child { border-bottom: none; }
+      .step-num { font-size: 2.8rem; margin-bottom: .6rem; }
+      .step-title { margin-bottom: .7rem; }
+      .step-desc { font-size: .95rem; line-height: 1.9; }
       .portfolio { padding: 3rem 1.5rem; }
       .portfolio-featured { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .testimonial { flex-direction: column; padding: 3rem 1.5rem; gap: 2rem; min-height: 420px; align-items: flex-start; }
-      .testimonial-quote { min-height: 200px; }
-      .testimonial-author { text-align: left; }
+      .testimonial { grid-template-columns: 1fr auto; grid-template-rows: auto auto; gap: 1.2rem; padding: 2rem 1.5rem; }
+      .testimonial-num { writing-mode: horizontal-tb; font-size: 3rem; grid-column: 1; grid-row: 1; }
+      .testimonial-body { grid-column: 1; grid-row: 2; }
+      .testimonial-nav-col { grid-column: 2; grid-row: 1 / 3; justify-content: center; }
+      .testimonial-quote { font-size: .92rem; }
+      .testimonial-mark { font-size: 3rem; }
       .author-line { margin: 1rem auto 0 0; }
       .form-field input, .form-field select, .form-field textarea { font-size: 16px !important; }
       .contact { grid-template-columns: 1fr; }
@@ -455,14 +470,14 @@
       <div class="hero-video-wrap" style="position:relative;overflow:hidden;">
         <video
           autoplay muted loop playsinline preload="metadata"
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;"
-          poster="Miniature_Paradis_Fleuri.jpg"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+          poster="poster-showreel-2026.jpg"
         >
-          <source src="paradis-fleuri-hero.mp4" type="video/mp4"/>
+          <source src="https://pub-e0b6e14dbef540d4922427ae40f82f13.r2.dev/Fragments-Showreel.mp4" type="video/mp4"/>
         </video>
         <div class="hero-video-overlay"></div>
         <div class="hero-video-label">Réalisation & Montage · 2025</div>
-        <div class="hero-video-title">PARADIS FLEURI<span>Spot publicitaire · Gîte du Vexin</span></div>
+        <div class="hero-video-title">LA LUMIÈRE DES PROJETS<span>Showreel · 2026</span></div>
       </div>
     </div>
   </section>
@@ -528,7 +543,7 @@
             autoplay muted loop playsinline preload="metadata"
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"
           >
-            <source src="rig-presentation.mp4" type="video/mp4"/>
+            <source src="https://pub-e0b6e14dbef540d4922427ae40f82f13.r2.dev/rig-presentation.mp4" type="video/mp4"/>
           </video>
         </div>
       </div>
@@ -575,7 +590,7 @@
       <!-- 03 VIDÉO D'ENTREPRISE & SPOT -->
       <div class="service-card">
         <div class="service-card-num">03</div>
-        <div class="service-card-title">VIDÉO D'ENTREPRISE, SPOT</div>
+        <div class="service-card-title">VIDÉO D'ENTREPRISE & SPOT</div>
         <div class="service-card-sub">Communication & marque</div>
         <p class="service-card-desc">Film institutionnel, spot de communication, contenu de marque. Un regard structuré et efficace pour valoriser vos projets, vos équipes et votre identité. Adapté à vos canaux de diffusion : web, réseaux sociaux, broadcast.</p>
         <div class="service-card-tags">
@@ -681,14 +696,26 @@
 
   <!-- TESTIMONIAL -->
   <div class="testimonial">
-    <blockquote class="testimonial-quote" id="testimonialQuote">"Ponctuel, à l'écoute, sensible et rigoureux. C'est un plaisir de travailler avec lui, car il est passionné !"</blockquote>
-    <div class="testimonial-author">
-      <div class="author-name" id="testimonialName">LOUISE SOULIÉ</div>
-      <div class="author-role" id="testimonialRole">Compagnie l'Êttre-Louve · Captation de performance</div>
-      <div class="author-line"></div>
+    <div class="testimonial-num" id="testimonialNum">01</div>
+    <div class="testimonial-body">
+      <div class="testimonial-mark">"</div>
+      <blockquote class="testimonial-quote" id="testimonialQuote">Ponctuel, à l'écoute, sensible et rigoureux. C'est un plaisir de travailler avec lui, car il est passionné !</blockquote>
+      <div class="testimonial-author">
+        <div class="author-line"></div>
+        <div>
+          <div class="author-name" id="testimonialName">LOUISE SOULIÉ</div>
+          <div class="author-role" id="testimonialRole">Compagnie l'Êttre-Louve · Captation de performance</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-nav-col">
+      <div id="testimonialDots"></div>
+      <div class="testimonial-arrows">
+        <button class="t-arrow" id="tPrev" aria-label="Témoignage précédent">↑</button>
+        <button class="t-arrow" id="tNext" aria-label="Témoignage suivant">↓</button>
+      </div>
     </div>
   </div>
-  <div class="testimonial-nav" id="testimonialDots"></div>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
@@ -722,7 +749,7 @@
             <option value="">Sélectionner...</option>
             <option>Tournage (Opérateur caméra)</option>
             <option>After movie / Événements</option>
-            <option>Vidéo d'entreprise, Spot communication</option>
+            <option>Vidéo d'entreprise / Spot communication</option>
             <option>Making-of de tournage</option>
             <option>Documentaire / Interview</option>
             <option>Autre</option>
@@ -770,7 +797,6 @@
     Me contacter
   </a>
 
-  <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

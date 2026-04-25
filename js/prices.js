@@ -12,7 +12,7 @@ const SACRECLAP_PRICES = {
     },
     cinema: {
       label: "Le Cinéma",
-      prix: 2490,
+      prix: 2390,
       valeur: 2650,
       heures: 14,
     },
