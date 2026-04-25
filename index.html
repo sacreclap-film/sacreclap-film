@@ -28,10 +28,9 @@
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Fonts chargées directement pour éviter le flash (FOUT) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap"/>
+  <!-- Fonts chargées en non-bloquant via js/fonts.js (defer) -->
   <!-- Preload du poster hero pour accélérer le LCP mobile -->
-  <link rel="preload" href="poster-showreel-2026.jpg" as="image" fetchpriority="high"/>
+  <link rel="preload" href="poster-showreel-2026.webp" as="image" type="image/webp" fetchpriority="high"/>
   <style>
     /* Fallback Bebas Neue — réduit le CLS au moment du font-swap */
     @font-face {
@@ -471,7 +470,7 @@
         <video
           autoplay muted loop playsinline preload="metadata"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
-          poster="poster-showreel-2026.jpg"
+          poster="poster-showreel-2026.webp"
         >
           <source src="https://pub-e0b6e14dbef540d4922427ae40f82f13.r2.dev/Fragments-Showreel.mp4" type="video/mp4"/>
         </video>
@@ -797,6 +796,7 @@
     Me contacter
   </a>
 
+  <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
