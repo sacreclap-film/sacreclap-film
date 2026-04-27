@@ -3,32 +3,32 @@
 
   <!-- Page d'accueil — cible : corporate, documentaire, événements, fiction -->
   <url>
-    <loc>https://www.sacreclap-film.fr/</loc>
-    <lastmod>2026-04-20</lastmod>
+    <loc>https://sacreclap-film.fr/</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Page mariages — priorité max, cible : vidéaste mariage IDF / Val-d'Oise -->
   <url>
-    <loc>https://www.sacreclap-film.fr/mariages.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <loc>https://sacreclap-film.fr/mariages.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Portfolio — cible : découverte des réalisations, notoriété -->
   <url>
-    <loc>https://www.sacreclap-film.fr/portfolio.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <loc>https://sacreclap-film.fr/portfolio.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Mentions légales — aucun intérêt SEO, crawl limité -->
   <url>
-    <loc>https://www.sacreclap-film.fr/mentions-legales.html</loc>
-    <lastmod>2026-04-20</lastmod>
+    <loc>https://sacreclap-film.fr/mentions-legales.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>

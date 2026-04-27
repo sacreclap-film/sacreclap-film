@@ -7,7 +7,7 @@
   <meta name="description" content="Films de mariage sur mesure en Val-d'Oise et partout en France. Style cinématographique, rendu en 4K. Disponible à partir de mai 2026 – Sacréclap Film."/>
   <meta name="author" content="Sacréclap Film"/>
   <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://www.sacreclap-film.fr/mariages"/>
+  <link rel="canonical" href="https://sacreclap-film.fr/mariages.html"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Film de Mariage — Sacréclap Film"/>
   <meta property="og:description" content="Film de mariage cinématographique. Deux formules, tarif de lancement — Val d'Oise & IDF."/>
@@ -19,8 +19,26 @@
   <meta name="theme-color" content="#f5f2ec"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Fonts chargées directement pour éviter le flash (FOUT) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Playfair+Display:ital@1&display=swap"/>
+  <!-- Fonts chargées en non-bloquant via js/fonts.js (defer) -->
+  <!-- Données structurées vidéo — aide Google à indexer le trailer -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Mariage Valérie et Patrick",
+    "description": "Film de mariage cinématographique réalisé par Sacréclap Film. Cérémonie et réception filmées en Île-de-France.",
+    "thumbnailUrl": "https://www.sacreclap-film.fr/poster-mariage-hero.jpg",
+    "uploadDate": "2025-11-01",
+    "duration": "PT27S",
+    "contentUrl": "https://pub-e0b6e14dbef540d4922427ae40f82f13.r2.dev/Trailer_2_V3_Mariage_Pat_Val.mp4",
+    "embedUrl": "https://www.sacreclap-film.fr/mariages",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Sacréclap Film",
+      "url": "https://www.sacreclap-film.fr"
+    }
+  }
+  </script>
   <style>
     /* Fallback Bebas Neue — réduit le CLS au moment du font-swap */
     @font-face {
@@ -706,6 +724,7 @@
     Me contacter
   </a>
 
+  <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
   <script src="js/mariages.js" defer></script>
 </body>
