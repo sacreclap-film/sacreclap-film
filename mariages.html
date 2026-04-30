@@ -323,6 +323,36 @@
     a.wa-btn-hover:hover { opacity: .85; }
     #floatingCta:hover { background: var(--orange) !important; }
     .footer-copy a:hover { color: var(--orange) !important; }
+
+    /* FORMULE TAGLINE */
+    .formule-tagline { font-family: var(--font-italic); font-style: italic; font-size: .88rem; color: var(--ink-mid); line-height: 1.55; margin: .45rem 0 1.4rem; font-weight: 300; }
+
+    /* PULL-QUOTE ACCROCHE */
+    .accroche-temoignage { padding: 2.8rem 3rem; background: var(--ink); color: #f0ebe3; display: flex; align-items: center; gap: 3rem; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .accroche-temoignage blockquote { font-family: var(--font-italic); font-style: italic; font-size: clamp(1rem,1.6vw,1.35rem); line-height: 1.65; color: #f0ebe3; margin: 0; flex: 1; position: relative; padding-left: 1.4rem; }
+    .accroche-temoignage blockquote::before { content: ''; position: absolute; left: 0; top: .2em; width: 2px; height: 100%; background: var(--orange); }
+    .accroche-temoignage-author { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(240,235,227,.45); margin-top: .8rem; }
+    .accroche-temoignage-link { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); text-decoration: none; white-space: nowrap; transition: opacity .3s; }
+    .accroche-temoignage-link:hover { opacity: .7; }
+    @media (max-width:600px) { .accroche-temoignage { flex-direction: column; padding: 2rem 1.5rem; gap: 1.2rem; } }
+
+    /* FAQ ACCORDÉON */
+    .faq { border-bottom: 1px solid var(--border); }
+    .faq-header { padding: 3rem 3rem 2rem; border-bottom: 1px solid var(--border); }
+    .faq-title { font-family: var(--font-display); font-size: clamp(2rem,3.5vw,3.2rem); letter-spacing: .04em; color: var(--ink); }
+    .faq-list { list-style: none; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-trigger { width: 100%; background: none; border: none; cursor: pointer; padding: 1.6rem 3rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; text-align: left; }
+    .faq-trigger:hover { background: rgba(0,0,0,.02); }
+    .faq-q { font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); font-weight: 500; }
+    .faq-icon { width: 22px; height: 22px; border: 1px solid var(--border-strong); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .3s, border-color .3s; }
+    .faq-icon::after { content: '+'; font-size: .75rem; color: var(--ink-mid); transition: transform .3s, color .3s; display: block; line-height: 1; }
+    .faq-item.active .faq-icon { background: var(--ink); border-color: var(--ink); }
+    .faq-item.active .faq-icon::after { transform: rotate(45deg); color: var(--cream); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .faq-item.active .faq-body { max-height: 400px; }
+    .faq-a { padding: 0 3rem 1.8rem; font-size: .9rem; color: var(--ink-mid); line-height: 1.75; font-weight: 300; max-width: 640px; }
+    @media (max-width:600px) { .faq-trigger { padding: 1.3rem 1.5rem; } .faq-a { padding: 0 1.5rem 1.5rem; } .faq-header { padding: 2rem 1.5rem 1.5rem; } }
   </style>
 </head>
 <body>
@@ -333,7 +363,6 @@
   <nav>
     <a href="index.html" class="nav-logo">SACRÉ<span>CLAP</span> FILM</a>
     <ul class="nav-links">
-      <li><a href="index.html#services">Services</a></li>
       <li><a href="portfolio.html">Filmographie</a></li>
       <li><a href="#approche">Mon approche</a></li>
       <li><a href="#formules">Formules</a></li>
@@ -349,7 +378,6 @@
 
   <div class="nav-overlay" id="navOverlay">
     <ul class="nav-overlay-links">
-      <li><a href="index.html#services" class="nav-overlay-link">Services</a></li>
       <li><a href="portfolio.html" class="nav-overlay-link">Filmographie</a></li>
       <li><a href="#approche" class="nav-overlay-link">Mon approche</a></li>
       <li><a href="#formules" class="nav-overlay-link">Formules</a></li>
@@ -452,6 +480,15 @@
   </section>
 
   <!-- FORMULES -->
+  <!-- ACCROCHE TÉMOIGNAGE -->
+  <div class="accroche-temoignage reveal">
+    <blockquote>
+      Le montage est impeccable. La vidéo nous apporte une vision différente de notre mariage que nous n'aurions pas pu avoir autrement.
+      <div class="accroche-temoignage-author">Patrick & Valérie · Mariage 2025</div>
+    </blockquote>
+    <a href="#testimonial-complet" class="accroche-temoignage-link">Lire le témoignage complet ↓</a>
+  </div>
+
   <section class="formules" id="formules">
     <div class="formules-header reveal">
       <p class="section-label" style="justify-content:center;margin-bottom:0;--lbl-before:none;">Formules</p>
@@ -461,10 +498,11 @@
 
     <div class="formules-grid">
 
-      <!-- ESSENTIELLE -->
+      <!-- LE RÉCIT -->
       <div class="formule-card reveal">
         <div class="formule-label">Formule 01</div>
-        <div class="formule-name">L'ESSENTIELLE</div>
+        <div class="formule-name">LE RÉCIT</div>
+        <p class="formule-tagline">Pour les mariés qui veulent l'essentiel — filmé avec soin, monté avec intention.</p>
         <div class="formule-price-block">
           <div class="formule-price">1 890<span style="font-size:.4em;color:var(--ink-faint);">€</span></div>
           <div class="formule-price-launch">Tarif de lancement · valeur 2 100 €</div>
@@ -494,10 +532,8 @@
           <div class="formule-section-title">Livrables</div>
           <div class="specs-list">
             <div class="spec-row"><span class="spec-key">Film final</span><span class="spec-val">7 – 10 min</span></div>
-            <div class="spec-row"><span class="spec-key">Teaser</span><span class="spec-val">60 – 90 sec</span></div>
-            <div class="spec-row"><span class="spec-key">Livraison teaser</span><span class="spec-val">3 – 5 semaines</span></div>
-            <div class="spec-row"><span class="spec-key">Livraison film</span><span class="spec-val">7 – 10 semaines</span></div>
-            <div class="spec-row"><span class="spec-key">Boîte & clé USB</span><span class="spec-val">Personnalisée Sacréclap Film</span></div>
+            <div class="spec-row"><span class="spec-key">Délai</span><span class="spec-val">5 – 8 semaines</span></div>
+            <div class="spec-row"><span class="spec-key">Livraison</span><span class="spec-val">Lien privé YouTube + téléchargement</span></div>
           </div>
         </div>
 
@@ -507,6 +543,7 @@
             <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Montage chronologique soigné</span></div>
             <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Étalonnage colorimétrique</span></div>
             <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Habillage sonore musical</span></div>
+            <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Micros dédiés pour les discours et la cérémonie</span></div>
           </div>
         </div>
 
@@ -521,6 +558,7 @@
         </div>
         <div class="formule-label">Formule 02</div>
         <div class="formule-name">LE CINÉMA</div>
+        <p class="formule-tagline">Pour ceux qui veulent un film qui ressemble à un vrai film — chaque plan pensé, chaque lumière cherchée.</p>
         <div class="formule-price-block">
           <div class="formule-price">2 390<span style="font-size:.4em;color:var(--ink-faint);">€</span></div>
           <div class="formule-price-launch">Tarif de lancement · valeur 2 650 €</div>
@@ -548,8 +586,6 @@
           <div class="formule-section-title">Livrables</div>
           <div class="specs-list">
             <div class="spec-row"><span class="spec-key">Film final</span><span class="spec-val">12 – 15 min</span></div>
-            <div class="spec-row"><span class="spec-key">Teaser</span><span class="spec-val">90 sec</span></div>
-            <div class="spec-row"><span class="spec-key">Livraison teaser</span><span class="spec-val">3 – 5 semaines</span></div>
             <div class="spec-row"><span class="spec-key">Livraison film</span><span class="spec-val">7 – 10 semaines</span></div>
             <div class="spec-row"><span class="spec-key">Boîte & clé USB</span><span class="spec-val">Personnalisée Sacréclap Film</span></div>
           </div>
@@ -561,6 +597,16 @@
             <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Montage cinématographique</span></div>
             <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Étalonnage colorimétrique</span></div>
             <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Habillage sonore musical</span></div>
+            <div class="service-row"><span class="svc-arrow">→</span><span class="svc-text">Micros dédiés pour les discours et la cérémonie</span></div>
+          </div>
+        </div>
+
+        <!-- EXCLUSIVITÉS CINÉMA -->
+        <div class="formule-section" style="background:rgba(224,120,32,.05);border:1px solid rgba(224,120,32,.22);padding:1.4rem 1.4rem 1.2rem;margin-bottom:1.8rem;">
+          <div class="formule-section-title" style="border-bottom-color:rgba(224,120,32,.22);margin-bottom:.9rem;">Exclusivités Cinéma</div>
+          <div class="services-list">
+            <div class="service-row"><span class="svc-arrow" style="color:var(--orange);">◆</span><span class="svc-text" style="color:var(--ink-mid);font-weight:400;">Prises de vues aériennes, drone DJI Mini 5 Pro</span></div>
+            <div class="service-row"><span class="svc-arrow" style="color:var(--orange);">◆</span><span class="svc-text" style="color:var(--ink-mid);font-weight:400;">Sunset shoot — séquence portraits en fin de journée</span></div>
           </div>
         </div>
 
@@ -578,30 +624,91 @@
     </div>
     <div class="supp-grid reveal">
       <div class="supp-item">
+        <div class="supp-name">TEASER CINÉMATIQUE</div>
+        <div class="supp-detail">Tout film mérite sa bande-annonce. Le teaser est un format court de 1 à 2 minutes, soigneusement construit pour condenser les moments les plus forts de votre journée : l'émotion brute, le rythme, l'atmosphère. C'est le meilleur moyen de revivre rapidement l'esprit de cette journée, et de le partager sur les réseaux sociaux. Livré en 3 à 5 semaines, bien avant le film complet.</div>
+        <div class="supp-price">250 €</div>
+        <div class="supp-basis">Disponible avec les deux formules</div>
+      </div>
+      <div class="supp-item">
         <div class="supp-name">SÉQUENCE PRÉ-MARIAGE</div>
-        <div class="supp-detail">Format documentaire avant le grand jour<br>Demi-journée tournage + 6 h montage</div>
+        <div class="supp-detail">Les jours qui précèdent un mariage sont souvent aussi intenses que le jour J lui-même. Cette séquence filmée en format documentaire capture l'effervescence des préparatifs, les derniers moments à deux avant le grand saut, l'agitation des proches, la fébrilité qui monte. Une demi-journée de tournage, puis un montage soigné de 6h pour livrer un film court qui vient enrichir le récit global de votre mariage.</div>
         <div class="supp-price">450 €</div>
         <div class="supp-basis">10 h × 45 €/h</div>
       </div>
       <div class="supp-item">
         <div class="supp-name">RETOUR LIEUX DE RENCONTRE</div>
-        <div class="supp-detail">Séquence filmée sur les lieux de votre histoire<br>Demi-journée tournage + 6 h montage</div>
+        <div class="supp-detail">Certains endroits ont une histoire. Le café où vous vous êtes retrouvés pour la première fois, le quartier de votre premier appartement, le chemin d'une balade mémorable. Cette séquence vous emmène filmer ces lieux qui font partie de votre histoire commune. Une demi-journée sur le terrain pour poser une image sur ce qui est souvent indicible, suivie de 6h de montage pour en faire un vrai film à part entière.</div>
         <div class="supp-price">450 € + km</div>
         <div class="supp-basis">10 h × 45 €/h · frais kilométriques réels</div>
       </div>
       <div class="supp-item">
         <div class="supp-name">DRONE</div>
-        <div class="supp-detail">Prises de vue aériennes le jour J · DJI Mini 5 Pro<br>Vérification espace aérien, coordination avec le lieu,<br>1h30 de vol + intégration au montage</div>
+        <div class="supp-detail">Certains lieux n'ont de sens que vus du ciel. Le drone DJI Mini 5 Pro permet d'intégrer des plans aériens dans le film du jour J : révélation du domaine, vue sur le parc pendant le vin d'honneur, séquence depuis les hauteurs en fin de journée. La vérification de l'espace aérien et la coordination avec le lieu sont assurées en amont. Comprend 1h30 de vol et l'intégration complète des plans au montage. Disponible avec la formule Le Récit uniquement, inclus dans Le Cinéma.</div>
         <div class="supp-price">250 €</div>
-        <div class="supp-basis">Sous réserve d'autorisation de vol sur le lieu</div>
+        <div class="supp-basis">Formule Le Récit uniquement · Sous réserve d'autorisation de vol</div>
       </div>
       <div class="supp-item">
         <div class="supp-name">HEURE SUPPLÉMENTAIRE</div>
-        <div class="supp-detail">Tournage au-delà de la formule choisie<br>Facturation à l'heure</div>
+        <div class="supp-detail">Chaque formule couvre un nombre d'heures de présence défini. Si votre journée se prolonge, si un moment fort survient après la fin du créneau prévu, ou si vous souhaitez simplement une couverture plus étendue, les heures supplémentaires sont facturées au taux horaire unique. Sans minimum, sans forfait imposé : vous payez exactement ce dont vous avez besoin.</div>
         <div class="supp-price">45 €/h</div>
         <div class="supp-basis">Taux horaire unique</div>
       </div>
     </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-header reveal">
+      <p class="section-label">Questions fréquentes</p>
+      <h2 class="faq-title">CE QU'ON ME<br>DEMANDE SOUVENT</h2>
+    </div>
+    <ul class="faq-list">
+      <li class="faq-item reveal">
+        <button class="faq-trigger" type="button">
+          <span class="faq-q">Combien de temps à l'avance faut-il réserver ?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-a">Les dates se réservent généralement 6 à 12 mois avant le mariage, parfois plus tôt pour les saisons estivales. Je travaille sur un nombre limité de mariages par an pour pouvoir m'investir pleinement dans chaque film. Si votre date approche, n'hésitez pas à me contacter : il reste parfois des créneaux disponibles.</p>
+        </div>
+      </li>
+      <li class="faq-item reveal">
+        <button class="faq-trigger" type="button">
+          <span class="faq-q">Vous filmez les mariages religieux, laïcs, civils ?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-a">Oui, sans distinction. Cérémonie religieuse, laïque ou civile, chaque format a sa propre émotion, et c'est précisément ce que j'essaie de capter. Je me renseigne en amont sur les contraintes du lieu (position caméra, lumière, accès) pour ne rien manquer.</p>
+        </div>
+      </li>
+      <li class="faq-item reveal">
+        <button class="faq-trigger" type="button">
+          <span class="faq-q">Que se passe-t-il si la météo est mauvaise le jour J ?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-a">La pluie, la grisaille, même un ciel chargé, tout ça peut être magnifique à l'image. Je m'adapte aux conditions réelles : lumière artificielle, angles choisis, découpe du montage. Certains des films les plus beaux que j'ai montés ont été tournés sous un ciel couvert. La météo ne change pas l'histoire que vous vivez.</p>
+        </div>
+      </li>
+      <li class="faq-item reveal">
+        <button class="faq-trigger" type="button">
+          <span class="faq-q">Quels sont vos frais de déplacement ?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-a">Pour les mariages en Île-de-France, aucun frais supplémentaire n'est appliqué. En dehors de la région, un forfait couvre les coûts réels du trajet, sans aucune marge dessus. Pour un mariage à moins de 3h de Paris, comptez 200 € (transport, péages, carburant). Au-delà de 3h, le forfait est de 500 € et inclut également l'hébergement et les repas. Ces montants reflètent uniquement ce que le déplacement coûte réellement.</p>
+        </div>
+      </li>
+      <li class="faq-item reveal">
+        <button class="faq-trigger" type="button">
+          <span class="faq-q">Comment allons-nous recevoir notre film ?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-body">
+          <p class="faq-a">Votre film vous est transmis par lien privé YouTube, accessible uniquement à vous et aux personnes que vous choisissez de partager, ainsi qu'en téléchargement direct pour le conserver dans la meilleure qualité possible. Prévoyez au moins 30 Go d'espace disponible sur votre ordinateur : la 4K avec les réglages de compression les plus avancés, ça prend de la place, et c'est précisément ce qui fait la différence à l'image.</p>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <!-- PROCESSUS -->
@@ -629,13 +736,13 @@
       <div class="step">
         <div class="step-num">04</div>
         <div class="step-title">Livraison</div>
-        <p class="step-desc">Le teaser vous est livré en 3 à 5 semaines, une première fenêtre sur votre journée, à partager si vous le souhaitez. Le film complet suit dans les 7 à 10 semaines, transmis par lien privé en haute définition. Et parce qu'un souvenir mérite un écrin à sa mesure, vous recevrez également une boîte personnalisée Sacréclap Film contenant votre film sur clé USB, pour le poser sur une étagère, l'offrir, ou le retrouver dans vingt ans.</p>
+        <p class="step-desc">Votre film vous est transmis par lien privé YouTube et en téléchargement direct, en 7 à 10 semaines. Si vous souhaitez recevoir un teaser en amont, un film court de 1 à 2 minutes livré en 3 à 5 semaines, l'essentiel de votre journée distillé en quelques plans, il est disponible en supplément. Avec la formule Le Cinéma, vous recevrez également une boîte personnalisée Sacréclap Film contenant votre film sur clé USB, pour le poser sur une étagère, l'offrir, ou le retrouver dans vingt ans.</p>
       </div>
     </div>
   </section>
 
   <!-- TÉMOIGNAGE -->
-  <div class="testimonial">
+  <div class="testimonial" id="testimonial-complet">
     <blockquote class="testimonial-quote">"Maxence a couvert l'intégralité de notre mariage. Il a su filmer tous les événements marquants de cette journée jusqu'au moindre petit détail drôle. Le montage est impeccable, les musiques d'accompagnement respectées selon nos choix. La vidéo nous apporte une vision différente de notre mariage que nous n'aurions pas pu avoir autrement. C'est fabuleux. Très à l'écoute, très professionnel. Nous recommandons !"</blockquote>
     <div class="testimonial-author">
       <div class="author-name">PATRICK & VALÉRIE D.</div>
@@ -649,7 +756,7 @@
     <div class="contact-info reveal">
       <p class="section-label">Réservons votre date</p>
       <h2 class="contact-title">PARLONS<span class="outline">MARIAGE</span></h2>
-      <p class="contact-sub">Une date en tête ? Décrivez-moi votre projet : lieu, formule envisagée, ambiance souhaitée. Je vous réponds sous 24h.</p>
+      <p class="contact-sub">Une date en tête, une ambiance en tête, ou simplement une envie de voir si ça matche. C'est exactement pour ça que je suis là. Décrivez-moi votre projet, je reviens vers vous sous 24h.</p>
       <div style="display:flex;align-items:center;gap:.7rem;padding:.8rem 1.1rem;background:rgba(224,120,32,.07);border:1px solid rgba(224,120,32,.2);width:fit-content;">
         <div style="width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite;flex-shrink:0;"></div>
         <span style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);">Disponible à partir de mai 2026</span>
@@ -689,7 +796,7 @@
           <label for="formule">Formule envisagée</label>
           <select id="formule" name="formule" autocomplete="off">
             <option value="">Sélectionner...</option>
-            <option id="formule-essentielle-option" value="essentielle">L'Essentielle — 1 890 €</option>
+            <option id="formule-essentielle-option" value="essentielle">Le Récit — 1 890 €</option>
             <option id="formule-cinema-option" value="cinema">Le Cinéma — 2 390 €</option>
             <option>Je ne sais pas encore</option>
           </select>
@@ -726,6 +833,7 @@
 
   <script src="js/fonts.js" defer></script>
   <script src="js/prices.js" defer></script>
+  <script src="js/faq.js" defer></script>
   <script src="js/mariages.js" defer></script>
 </body>
 </html>
